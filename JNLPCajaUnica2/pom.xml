@@ -1,0 +1,609 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>cl.claro.caja</groupId>
+
+	<version>2.0.2</version>
+
+	<artifactId>JNLPCajaUnica2</artifactId>
+	<packaging>war</packaging>
+	<name>JNLPCajaUnica2</name>
+	<description>WAR contenedor de caja compatible con move 5000</description>
+
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.5.1</version>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>webstart-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>jnlp-download-servlet</goal>
+							</goals>
+						</execution>
+					</executions>
+
+					<configuration>
+
+						<!-- This is the directory containing the Velocity
+						templates from which 
+							the JNLP files will be generated. The default location is 'src/main/jnlp'. -->
+						<templateDirectory>src/main/resources/jnlpTemplates</templateDirectory>
+
+						<!-- This is the name of the directory within which the
+						processed JNLP 
+							artifacts will be placed. This directory will reside in the root of the WAR 
+							file produced by the enclosing project. The name provided here must match 
+							the servlet-mapping url-pattern provided in the web.xml file. The default 
+							value is 'webstart'. -->
+						<outputDirectoryName>app</outputDirectoryName>
+
+						<verbose>true</verbose>
+
+						<jnlpFiles>
+
+							<jnlpFile>
+								<inputTemplate>app.vm</inputTemplate>
+								<outputFilename>app.jnlp</outputFilename>
+								<jarResources>
+									<jarResource>
+										<groupId>cl.claro.caja</groupId>
+										<artifactId>claroCajaPos2</artifactId>
+										<version>${project.version}</version>
+										<!-- A mainClass element must be
+										specified on one, and only one, 
+											jarResource per jnlpFile -->
+										<mainClass>cl.hyh.base.Main</mainClass>
+									</jarResource>
+								</jarResources>
+							</jnlpFile>
+
+						</jnlpFiles>
+
+						<!-- Set to true to exclude all transitive dependencies
+						from the JNLP 
+							bundle. Default is false. -->
+						<excludeTransitive>false</excludeTransitive>
+
+						<codebase>http://192.168.1.138:7101</codebase>
+
+
+						<!-- SIGNING -->
+						<!-- defining this will automatically sign the jar and
+						its dependencies, 
+						if necessary -->
+						<sign>
+							<keystore>
+								${project.basedir}/src/main/resources/myKeystore</keystore>
+							<!-- <keypass>fillme</keypass> we need to override
+							passwords easily 
+							from the command line. ${keypass} -->
+							<storepass>123456</storepass> <!-- ${storepass} -->
+							<!--storetype>fillme</storetype -->
+							<alias>myself</alias>
+
+							<!-- habilitar para generar la key, 
+										si no se habilita algunos elmentos no podran ser firmados correctamente  -->
+							<!-- <keysize>1024</keysize> -->
+
+							<!-- <validity>365000</validity> -->
+
+							<!-- only required for generating the keystore -->
+							<!-- <dnameCn>Aligare</dnameCn>
+							<dnameOu>Aligare</dnameOu> <dnameO>Aligare</dnameO> 
+											<dnameL>Chile</dnameL> <dnameSt>Santiago</dnameSt> <dnameC>CH</dnameC> -->
+
+							<verify>true</verify> <!-- verify that the signing
+							operation succeeded -->
+
+							<!-- KEYSTORE MANAGEMENT -->
+							<keystoreConfig>
+								<delete>true</delete> <!-- delete the keystore -->
+								<gen>false</gen>       <!-- optional shortcut to
+								generate the store. -->
+							</keystoreConfig>
+						</sign>
+
+						<unsign>true</unsign>
+
+					</configuration>
+
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>3.1.0</version>
+					<configuration>
+						<webResources>
+							<resource>
+								<directory>src/main/webapp</directory>
+							</resource>
+						</webResources>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>cl.claro.caja</groupId>
+			<artifactId>claroCajaPos2</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jnlp.sample</groupId>
+			<artifactId>jnlp-download-servlet</artifactId>
+			<version>1</version>
+		</dependency>
+
+	</dependencies>
+	<!--<repositories> <repository> <id>aligare-releases</id> <name>Aligare</name> 
+		<url>https://nexus.arquitectura-aligare.com/repository/aligare-releases/</url> 
+		</repository> </repositories> -->
+
+	<properties>
+		<codebase.jnlp>http://192.168.1.138:7101</codebase.jnlp>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>desa</id>
+			<properties>
+				<codebase.jnlp>http://192.168.1.138:7101</codebase.jnlp>
+			</properties>
+			<build>
+				<finalName>JNLPCajaUnica2</finalName>
+				<plugins>
+					<plugin>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.5.1</version>
+						<configuration>
+							<source>1.6</source>
+							<target>1.6</target>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>webstart-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>jnlp-download-servlet</goal>
+								</goals>
+								<configuration>
+
+									<!-- This is the directory containing the
+									Velocity templates from 
+										which the JNLP files will be generated. The default location is
+									'src/main/jnlp'. -->
+									<templateDirectory>
+										src/main/resources/jnlpTemplates</templateDirectory>
+
+									<!-- This is the name of the directory
+									within which the processed 
+										JNLP artifacts will be placed. This directory will reside in the root of 
+										the WAR file produced by the enclosing project. The name provided here must 
+										match the servlet-mapping url-pattern provided in the web.xml file. The default 
+										value is 'webstart'. -->
+									<outputDirectoryName>app</outputDirectoryName>
+
+									<verbose>true</verbose>
+
+									<jnlpFiles>
+
+										<jnlpFile>
+											<inputTemplate>app.vm</inputTemplate>
+											<outputFilename>app.jnlp</outputFilename>
+											<jarResources>
+												<jarResource>
+													<groupId>cl.claro.caja</groupId>
+													<artifactId>claroCajaPos2</artifactId>
+													<version>${project.version}</version>
+													<!-- A mainClass element
+													must be specified on one,
+													and only 
+														one, jarResource per jnlpFile -->
+													<mainClass>cl.hyh.base.Main</mainClass>
+												</jarResource>
+											</jarResources>
+										</jnlpFile>
+
+									</jnlpFiles>
+
+									<!-- Set to true to exclude all transitive
+									dependencies from the 
+										JNLP bundle. Default is false. -->
+									<excludeTransitive>false</excludeTransitive>
+
+									<codebase>${codebase.jnlp}</codebase>
+
+
+									<!-- SIGNING -->
+									<!-- defining this will automatically sign
+									the jar and its dependencies, 
+										if necessary -->
+									<sign>
+										<keystore>
+											${project.basedir}/src/main/resources/myKeystore</keystore>
+										<!-- <keypass>fillme</keypass> we need
+										to override passwords easily 
+											from the command line. ${keypass} -->
+										<storepass>123456</storepass> <!--
+										${storepass} -->
+										<!--storetype>fillme</storetype -->
+										<alias>myself</alias>
+
+										<!-- habilitar para generar la key, 
+										si no se habilita algunos elmentos no podran ser firmados correctamente  -->
+										<!-- <keysize>1024</keysize> -->
+
+										<!-- <validity>365000</validity> -->
+
+										<!-- only required for generating the
+										keystore -->
+										<!-- <dnameCn>Aligare</dnameCn>
+										<dnameOu>Aligare</dnameOu>
+										<dnameO>Aligare</dnameO> 
+											<dnameL>Chile</dnameL> <dnameSt>Santiago</dnameSt> <dnameC>CH</dnameC> -->
+
+										<verify>true</verify> <!-- verify that
+										the signing operation succeeded -->
+
+										<!-- KEYSTORE MANAGEMENT -->
+										<keystoreConfig>
+											<delete>true</delete> <!-- delete the
+											keystore -->
+											<gen>false</gen>       <!-- optional
+											shortcut to generate the store. -->
+										</keystoreConfig>
+									</sign>
+
+									<unsign>true</unsign>
+
+								</configuration>
+							</execution>
+
+						</executions>
+
+
+					</plugin>
+
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>3.1.0</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>war</goal>
+								</goals>
+								<configuration>
+									<webResources>
+										<resource>
+											<directory>src/main/webapp</directory>
+										</resource>
+									</webResources>
+									<classifier>desa</classifier>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+
+				</plugins>
+			</build>
+		</profile>
+
+
+		<profile>
+			<id>test</id>
+			<properties>
+				<codebase.jnlp>http://wlrecaudaciontest.clarochile.cl</codebase.jnlp>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.5.1</version>
+						<configuration>
+							<source>1.6</source>
+							<target>1.6</target>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>webstart-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>jnlp-download-servlet</goal>
+								</goals>
+								<configuration>
+
+									<!-- This is the directory containing the
+									Velocity templates from 
+										which the JNLP files will be generated. The default location is
+									'src/main/jnlp'. -->
+									<templateDirectory>
+										src/main/resources/jnlpTemplates</templateDirectory>
+
+									<!-- This is the name of the directory
+									within which the processed 
+										JNLP artifacts will be placed. This directory will reside in the root of 
+										the WAR file produced by the enclosing project. The name provided here must 
+										match the servlet-mapping url-pattern provided in the web.xml file. The default 
+										value is 'webstart'. -->
+									<outputDirectoryName>app</outputDirectoryName>
+
+									<verbose>true</verbose>
+
+									<jnlpFiles>
+
+										<jnlpFile>
+											<inputTemplate>app.vm</inputTemplate>
+											<outputFilename>app.jnlp</outputFilename>
+											<jarResources>
+												<jarResource>
+													<groupId>cl.claro.caja</groupId>
+													<artifactId>claroCajaPos2</artifactId>
+													<version>${project.version}</version>
+													<!-- A mainClass element
+													must be specified on one,
+													and only 
+														one, jarResource per jnlpFile -->
+													<mainClass>cl.hyh.base.Main</mainClass>
+												</jarResource>
+											</jarResources>
+										</jnlpFile>
+
+									</jnlpFiles>
+
+									<!-- Set to true to exclude all transitive
+									dependencies from the 
+										JNLP bundle. Default is false. -->
+									<excludeTransitive>false</excludeTransitive>
+
+									<codebase>${codebase.jnlp}</codebase>
+
+
+									<!-- SIGNING -->
+									<!-- defining this will automatically sign
+									the jar and its dependencies, 
+										if necessary -->
+									<sign>
+										<keystore>
+											${project.basedir}/src/main/resources/myKeystore</keystore>
+										<!-- <keypass>fillme</keypass> we need
+										to override passwords easily 
+											from the command line. ${keypass} -->
+										<storepass>123456</storepass> <!--
+										${storepass} -->
+										<!--storetype>fillme</storetype -->
+										<alias>myself</alias>
+
+										<!-- habilitar para generar la key, si
+										no se habilita algunos elmentos 
+											no podran ser firmados correctamente -->
+										<!-- <keysize>1024</keysize> -->
+
+										<!-- <validity>365000</validity> -->
+
+										<!-- only required for generating the
+										keystore -->
+										<!-- <dnameCn>Aligare</dnameCn>
+										<dnameOu>Aligare</dnameOu>
+										<dnameO>Aligare</dnameO> 
+											<dnameL>Chile</dnameL> <dnameSt>Santiago</dnameSt> <dnameC>CH</dnameC> -->
+
+										<verify>true</verify> <!-- verify that
+										the signing operation succeeded -->
+
+										<!-- KEYSTORE MANAGEMENT -->
+										<keystoreConfig>
+											<delete>true</delete> <!-- delete the
+											keystore -->
+											<gen>false</gen>       <!-- optional
+											shortcut to generate the store. -->
+										</keystoreConfig>
+									</sign>
+
+									<unsign>true</unsign>
+
+								</configuration>
+							</execution>
+
+						</executions>
+
+
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>3.1.0</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>war</goal>
+								</goals>
+								<configuration>
+									<webResources>
+										<resource>
+											<directory>src/main/webapp</directory>
+										</resource>
+									</webResources>
+									<classifier>test</classifier>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>produccion</id>
+			<properties>
+				<codebase.jnlp>http://wlrecaudacion.clarochile.cl</codebase.jnlp>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.5.1</version>
+						<configuration>
+							<source>1.6</source>
+							<target>1.6</target>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>webstart-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>jnlp-download-servlet</goal>
+								</goals>
+								<configuration>
+
+									<!-- This is the directory containing the
+									Velocity templates from 
+										which the JNLP files will be generated. The default location is
+									'src/main/jnlp'. -->
+									<templateDirectory>
+										src/main/resources/jnlpTemplates</templateDirectory>
+
+									<!-- This is the name of the directory
+									within which the processed 
+										JNLP artifacts will be placed. This directory will reside in the root of 
+										the WAR file produced by the enclosing project. The name provided here must 
+										match the servlet-mapping url-pattern provided in the web.xml file. The default 
+										value is 'webstart'. -->
+									<outputDirectoryName>app</outputDirectoryName>
+
+									<verbose>true</verbose>
+
+									<jnlpFiles>
+
+										<jnlpFile>
+											<inputTemplate>app.vm</inputTemplate>
+											<outputFilename>app.jnlp</outputFilename>
+											<jarResources>
+												<jarResource>
+													<groupId>cl.claro.caja</groupId>
+													<artifactId>claroCajaPos2</artifactId>
+													<version>${project.version}</version>
+													<!-- A mainClass element
+													must be specified on one,
+													and only 
+														one, jarResource per jnlpFile -->
+													<mainClass>cl.hyh.base.Main</mainClass>
+												</jarResource>
+											</jarResources>
+										</jnlpFile>
+
+									</jnlpFiles>
+
+									<!-- Set to true to exclude all transitive
+									dependencies from the 
+										JNLP bundle. Default is false. -->
+									<excludeTransitive>false</excludeTransitive>
+
+									<codebase>${codebase.jnlp}</codebase>
+
+
+									<!-- SIGNING -->
+									<!-- defining this will automatically sign
+									the jar and its dependencies, 
+										if necessary -->
+									<sign>
+										<keystore>
+											${project.basedir}/src/main/resources/myKeystore</keystore>
+										<!-- <keypass>fillme</keypass> we need
+										to override passwords easily 
+											from the command line. ${keypass} -->
+										<storepass>123456</storepass> <!--
+										${storepass} -->
+										<!--storetype>fillme</storetype -->
+										<alias>myself</alias>
+
+										<!-- habilitar para generar la key, si
+										no se habilita algunos elmentos 
+											no podran ser firmados correctamente -->
+										<!-- <keysize>1024</keysize> -->
+
+										<!-- <validity>365000</validity> -->
+
+										<!-- only required for generating the
+										keystore -->
+										<!-- <dnameCn>Aligare</dnameCn>
+										<dnameOu>Aligare</dnameOu>
+										<dnameO>Aligare</dnameO> 
+											<dnameL>Chile</dnameL> <dnameSt>Santiago</dnameSt> <dnameC>CH</dnameC> -->
+
+										<verify>true</verify> <!-- verify that
+										the signing operation succeeded -->
+
+										<!-- KEYSTORE MANAGEMENT -->
+										<keystoreConfig>
+											<delete>true</delete> <!-- delete the
+											keystore -->
+											<gen>false</gen>       <!-- optional
+											shortcut to generate the store. -->
+										</keystoreConfig>
+									</sign>
+
+									<unsign>true</unsign>
+
+								</configuration>
+							</execution>
+
+						</executions>
+
+
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>3.1.0</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>war</goal>
+								</goals>
+								<configuration>
+									<webResources>
+										<resource>
+											<directory>src/main/webapp</directory>
+										</resource>
+									</webResources>
+									<classifier>produccion</classifier>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

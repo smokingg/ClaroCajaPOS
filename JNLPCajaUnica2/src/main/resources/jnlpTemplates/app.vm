@@ -1,0 +1,19 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <jnlp codebase="$jnlpCodebase/JNLPCajaUnica2/app" href="$$name"> 
+     <information>
+         <title>Aplicacion Cajas Claro</title>
+         <vendor>Aligare Consultores v 1.16.5 (Move 5000 compat)</vendor>
+         <homepage href="index.html"/>
+         <description>POS Claro</description>
+         <offline-allowed/>
+     </information>
+       <security>
+       	 <all-permissions/>
+       </security>
+     <update check="always" policy="prompt-update" />
+     <resources>
+       <j2se version="1.6"/>
+       $dependencies
+     </resources>
+     <application-desc main-class="$mainClass"/>
+   </jnlp>
