@@ -1,0 +1,751 @@
+<vouchers>
+<!--
+******************************************************************* 
+Voucher para la boleta principal
+*******************************************************************
+-->
+
+<voucher name="VoucherBoletaHeader">
+    <line center="yes" bold="yes" caps="yes">
+        <print value="Claro"/>
+    </line>
+    <line/>
+    <line center="yes">
+        <print field="posDat.Direccion"/>
+    </line>
+    <line/>
+    <line center="yes">
+        <print value="*** Para consultas conserve ***"/>
+    </line>
+    <line center="yes">
+        <print value="***      este documento     ***"/>
+    </line>   
+    <line/>
+</voucher>
+
+
+<voucher name="VoucherBoletaHeaderOffLine">
+    <line center="yes" bold="yes" caps="yes">
+        <print value="Claro"/>
+    </line>
+    <line/>
+    <line center="yes" bold="yes">
+        <print value="COMPROBANTE DE PAGO CONTINGENCIA"/>
+    </line>
+
+    <line center="yes">
+        <print field="posDat.Direccion"/>
+    </line>
+    <line/>
+    <line center="yes">
+        <print value="*** Para consultas conserve ***"/>
+    </line>
+    <line center="yes">
+        <print value="***      este documento     ***"/>
+    </line>   
+    <line/>
+</voucher>
+
+
+
+
+<voucher name="VoucherBoletaFooterDocumentos">  
+    <!--  <line right="yes" underline="yes">
+        <print value=" ,"/>
+        <print value=" "/>
+    </line> -->
+    <line right="yes" bold="yes" condField="datos.ventaDirecta" value="true" cond="false" type="char">
+        <print value="TOTAL DOC,"/>
+        <print field="datos.Total"/>
+    </line>
+    <line right="yes" bold="yes" condField="datos.ventaDirecta" value="true" cond="true" type="char">
+        <print value="TOTAL RECARGA,"/>
+        <print field="datos.Total"/>
+    </line>
+    <line/>
+</voucher>
+
+<voucher name="VoucherBoletaFooterPagos">  
+    <line right="yes" underline="yes">
+        <print value=" ,"/>
+        <print value=" "/>
+    </line>
+    <line right="yes">
+        <print value=" ,"/>
+        <print value=" "/>
+    </line>
+    <line right="yes" bold="yes">
+        <print value="TOTAL PAGADO,"/>
+        <print field="datos.Total"/>
+    </line>
+    <line right="yes" underline="yes">
+        <print value=" ,"/>
+        <print value=" "/>
+    </line>
+    <line/>
+    <line right="yes" bold="yes" condField="datos.isVuelto" value="true" cond="true" type="char">
+        <print value="VUELTO,"/>
+        <print field="datos.Vuelto"/>
+    </line>
+    <line/>
+</voucher>
+
+<voucher name="VoucherBoletaDatos"> 
+    <line>
+        <print value="Agencia:"/>
+        <print field="posDat.Agencia" />
+        <print value=" Caja:"/>
+        <print field="posDat.Caja" />       
+    </line> 
+</voucher>
+
+<voucher name="VoucherBoletaFooterRecargaMovil"> 
+    <line/>
+    <line center="yes">
+        <print value="** Su Teléfono ha sido recargado **"/>
+    </line>
+</voucher>
+
+<voucher name="VoucherBoletaFooterRecargaFija"> 
+    <line/>
+    <line center="yes">
+        <print value="** La recarga ha sido realizada **"/>
+    </line>
+</voucher>
+
+<voucher name="VoucherBoletaFooterMensajeDuplicado"> 
+    <line/>
+</voucher>
+
+<voucher name="VoucherBoletaFooterMensaje"> 
+    <line/>
+    <line center="yes">
+        <print value="*** Para reclamos y para consultas de ***"/>
+    </line>
+    <line center="yes">
+        <print value="**   productos llame al (800 171 171)  **"/>
+    </line>
+    <line center="yes"> 
+        <print value="** Visítenos en (D) www.clarochile.cl **"/>
+    </line>
+</voucher>
+
+<voucher name="VoucherBoletaFooterPagosPantalla"> 
+    <line/>   
+    <line right="yes" underline="yes">
+        <print value="Resumen Pagos"/>
+        <print value=" "/>
+    </line>
+    <line right="yes" caps="yes" bold="yes">
+        <print value="Total,"/>
+        <print field="datos.Total"/>
+    </line>
+    <line right="yes" caps="yes" bold="yes">
+        <print value="Vuelto,"/>
+        <print field="datos.Vuelto"/>
+    </line>
+</voucher>
+<!--
+******************************************************************* 
+Voucher para la boleta VTR
+*******************************************************************
+-->
+<voucher name="VoucherDocumentoCuentaVtr">
+	<line bold="yes" condField="datos.Cliente" value="" cond="false" type="char">
+        <print value="Cliente: "/>
+        <print field="datos.Cliente"/>
+    </line>
+    <line bold="yes" condField="datos.Rut" value="" cond="false" type="char">
+        <print value="RUT: "/>
+        <print field="datos.RutCliente"/>
+    </line>
+    <line right="yes" underline="yes">
+        <print value=" ,"/>
+        <print value=" "/>
+    </line>
+    <line right="yes">
+        <print value="Cuenta,"/>
+        <print field="datos.NumeroCuenta" />
+    </line>
+    <line right="yes">
+        <print value="Valor Pagado,"/>
+        <print field="datos.Monto"/>
+    </line>
+    <line/>
+</voucher>
+
+<voucher name="VoucherDocumentoVtr">
+	<line bold="yes" condField="datos.Cliente" value="" cond="false" type="char">
+        <print value="Cliente: "/>
+        <print field="datos.Cliente"/>
+    </line>
+    <line bold="yes" condField="datos.Rut" value="" cond="false" type="char">
+        <print value="RUT: "/>
+        <print field="datos.RutCliente"/>
+    </line>
+    <line right="yes" underline="yes">
+        <print value=" ,"/>
+        <print value=" "/>
+    </line>
+    <line bold="yes" right="yes">
+        <print value="Documento Vtr,"/>
+        <print field="datos.Monto"/>
+    </line>        
+    <line>
+        <print value="Cuenta Unica "/>
+        <print field="datos.CuentaUnica" />
+    </line>
+    <line>
+        <print value="Dir.Cobranza "/>
+        <print field="datos.DireccionCobranza" />
+    </line>
+    <line>
+        <print value="N° Cuenta "/>
+        <print field="datos.NumeroCuenta" />
+    </line>
+     <line>
+        <print value="N°Documento "/>
+        <print field="datos.NumeroDocumento" />
+    </line>
+    <line>
+        <print value="Sist.Origen "/>
+        <print field="datos.SistemaOrigen" />
+    </line>
+    <line/>
+</voucher>
+
+<voucher name="VoucherDocumentoServicioVtr">
+	<line bold="yes" condField="datos.Cliente" value="" cond="false" type="char">
+        <print value="Cliente: "/>
+        <print field="datos.Cliente"/>
+    </line>
+    <line bold="yes" condField="datos.Rut" value="" cond="false" type="char">
+        <print value="RUT: "/>
+        <print field="datos.RutCliente"/>
+    </line>
+    <line right="yes" underline="yes">
+        <print value=" ,"/>
+        <print value=" "/>
+    </line>
+    <line bold="yes" right="yes">
+        <print value="Servicio Vtr,"/>
+        <print field="datos.Monto"/>
+    </line>        
+    <line>
+        <print value="Cuenta Unica "/>
+        <print field="datos.CuentaUnica" />
+    </line>
+    <line>
+        <print value="Servicio "/>
+        <print field="datos.IdentificadorServicio" />
+    </line>
+    <line>
+        <print value="Dir.Cobranza "/>
+        <print field="datos.DireccionCobranza" />
+    </line>
+    <line>
+        <print value="N° Cuenta "/>
+        <print field="datos.NumeroCuenta" />
+    </line>
+     <line>
+        <print value="N°Documento "/>
+        <print field="datos.NumeroDocumento" />
+    </line>
+    <line>
+        <print value="N° Servicio "/>
+        <print field="datos.NumeroServicio" />
+    </line>
+    <line>
+        <print value="Sist.Origen "/>
+        <print field="datos.SistemaOrigen" />
+    </line>
+    <line/>
+</voucher>
+
+<voucher name="VoucherDocumentoAbonoVtr">
+    <line bold="yes" right="yes">
+        <print value="Abono Vtr,"/>
+        <print field="datos.Monto"/>
+    </line>        
+    <line>
+        <print value="Cuenta Unica "/>
+        <print field="datos.CuentaUnica" />
+    </line>
+    <line>
+        <print value="N° Cuenta "/>
+        <print field="datos.NumeroCuenta" />
+    </line>
+    <line/>
+</voucher>
+
+
+<voucher name="VoucherDocumentoAbonoClaro">
+    <line bold="yes" right="yes">
+        <print value="Abono Claro,"/>
+        <print field="datos.Monto"/>
+    </line>        
+    <line>
+        <print value="N° Cuenta "/>
+        <print field="datos.NumeroCuenta" />
+    </line>
+    <line/>
+</voucher>
+
+<voucher name="VoucherDocumentoAccesorioClaro">
+    <line bold="yes">
+        <print value="Pago Venta Accesorio"/>
+    </line>     
+    <line>
+        <print value="RUT: "/>
+        <print field="datos.RutAccesorio"/>
+    </line>
+    <line>
+        <print value="Vendedor: "/>
+        <print field="datos.CodigoRecaudador" />
+    </line>
+    <line>
+        <print value="Nro. Doc.: "/>
+        <print field="datos.NumeroDocumento" />
+    </line>
+    <line>
+        <print value="Cod. Sucursal: "/>
+        <print field="datos.CodigoSucursal" />
+    </line>
+    <line right="yes" underline="yes">
+        <print value="Monto Doc.:,"/>
+        <print field="datos.Monto"/>
+    </line>
+    <line/>
+</voucher>
+
+<voucher name="VoucherDocumentoDevolucionVtr">
+    <line bold="yes" right="yes">
+        <print value="Devolución Vtr,"/>
+        <print field="datos.Monto"/>
+    </line>        
+    <line>
+        <print value="Cuenta Unica "/>
+        <print field="datos.CuentaUnica" />
+    </line>
+    <line>
+        <print value="N° Cuenta "/>
+        <print field="datos.NumeroCuenta" />
+    </line>
+    <line/>
+</voucher>
+
+<voucher name="VoucherDocumentoDevolucionClaro">
+    <line bold="yes" right="yes">
+        <print value="Devolución Claro,"/>
+        <print field="datos.Monto"/>
+    </line>        
+    <line>
+        <print value="N° Cuenta "/>
+        <print field="datos.NumeroCuenta" />
+    </line>
+    <line/>
+</voucher>
+
+<voucher name="VoucherDocumentoDevolucionVtr">
+    <line bold="yes" right="yes">
+        <print value="Devolución Vtr,"/>
+        <print field="datos.Monto"/>
+    </line>        
+    <line>
+        <print value="Cuenta Unica "/>
+        <print field="datos.CuentaUnica" />
+    </line>
+    <line>
+        <print value="Descripcion "/>
+        <print field="datos.Descripcion" />
+    </line>
+    <line/>
+</voucher>
+    
+
+<voucher name="VoucherRemesaEfectivo">
+    <line bold="yes" right="yes">
+        <print value="Remesa Efectivo,"/>
+        <print field="datos.Monto"/>
+    </line>        
+    <line/>
+</voucher>
+
+<voucher name="VoucherRemesaCheque">
+    <line bold="yes" right="yes">
+        <print value="Remesa Cheque,"/>
+        <print field="datos.Monto"/>
+    </line>        
+    <line/>
+</voucher>
+
+<voucher name="VoucherRemesaChequeFecha">
+    <line bold="yes" right="yes">
+        <print value="Remesa Cheque Fecha,"/>
+        <print field="datos.Monto"/>
+    </line>        
+    <line/>
+</voucher>
+
+<!--
+******************************************************************* 
+Voucher para las Recargas
+*******************************************************************
+-->
+
+<voucher name="VoucherRecarga">
+    <line bold="yes" right="yes">
+        <print value="Recarga Prepago,"/>
+        <print field="datos.Monto"/>
+    </line>        
+    <line >
+        <print value="Teléfono "/>
+        <print field="datos.Telefono" />
+    </line>
+    <line >
+        <print value="Cód. Autorización "/>
+        <print field="datos.CodAutorizacion" />
+    </line>
+    <line/>
+</voucher>
+
+<!--
+******************************************************************* 
+Vouchers para las remesas
+*******************************************************************
+-->
+
+<voucher name="VoucherRemesa">
+    <line bold="yes" right="yes" condField="datos.TipoTotal" value="mpEfectivo" cond="true" type="char">
+        <print value="Monto Remesa Efectivo,"/>
+        <print field="datos.Monto" />
+    </line> 
+    <line bold="yes" right="yes" condField="datos.TipoTotal" value="mpCheque" cond="true" type="char">
+        <print value="Monto Remesa Cheque,"/>
+        <print field="datos.Monto" />
+    </line>
+    <line bold="yes" right="yes" condField="datos.TipoTotal" value="mpChequeFecha" cond="true" type="char">
+        <print value="Monto Remesa Cheque Fecha,"/>
+        <print field="datos.Monto" />
+    </line> 
+    <line bold="yes" right="yes" condField="datos.TipoTotal" value="VV" cond="true" type="char">
+        <print value="Monto Remesa Vale Vista,"/>
+        <print field="datos.Monto" />
+    </line> 
+    <line/>
+</voucher>
+
+<!--
+******************************************************************* 
+Vouchers para los medios de pago
+*******************************************************************
+-->
+<!--
+******************************************************************* 
+Voucher Efectivo
+*******************************************************************
+-->
+<voucher name="VoucherMedioPagoEfectivo">
+	<line>
+        <print value="Efectivo"/>
+    </line> 
+    <line right="yes">
+        <print value="Valor Pagado,"/>
+        <print field="datos.Monto"/>
+    </line>
+    <line/>        
+</voucher>
+
+<voucher name="VoucherMedioPagoAjusteSencillo">
+	<line>
+        <print value="Ajuste Redondeo"/>
+    </line> 
+    <line right="yes">
+        <print value="Monto Ajustado,"/>
+        <print field="datos.MontoAjustado"/>
+    </line>
+    <line/>        
+</voucher>
+
+<voucher name="VoucherTarjetaDirecto">
+	<line>
+        <print value="Tarjeta"/>
+    </line> 
+    <line right="yes">
+        <print value="Valor Pagado,"/>
+        <print field="datos.Monto"/>
+    </line>
+    <line/>        
+</voucher>
+
+<!--
+******************************************************************* 
+Voucher Tbk Manual
+*******************************************************************
+-->
+<voucher name="VoucherTbkManual">
+    <line condField="datos.Emisor" value="1000" cond="true" type="char">
+        <print value="Tarjeta "/>
+        <print field="datos.TipoTarjeta"/>
+    </line> 
+    <line right="yes">
+        <print value="Valor Pagado,"/>
+        <print field="datos.Monto"/>
+    </line> 
+    <line/>      
+</voucher>
+
+
+<!--
+******************************************************************* 
+Voucher Tarjeta Manual
+*******************************************************************
+-->
+<voucher name="VoucherTarjetaManual">
+    <line condField="datos.Emisor" value="1000" cond="true" type="char">
+        <print value="Tarjeta "/>
+        <print field="datos.TipoTarjeta"/>
+    </line> 
+    <line right="yes">
+        <print value="Valor Pagado,"/>
+        <print field="datos.Monto"/>
+    </line> 
+    <line/>      
+</voucher>
+
+<!--
+******************************************************************* 
+Voucher Regularizacion
+*******************************************************************
+-->
+<voucher name="VoucherMedioPagoRegularizacion">
+    <line right="yes">
+        <print value="Regularizacion,"/>
+        <print field="datos.Monto"/>
+    </line>        
+</voucher>
+
+
+<!--
+******************************************************************* 
+Voucher Otro Medio Pago Claro
+*******************************************************************
+-->
+<voucher name="VoucherMedioPagoOtroMedioPago">
+    <line right="yes">
+        <print value="Otro Medio Pago,"/>
+        <print field="datos.Monto"/>
+    </line>        
+</voucher>
+
+<!--
+******************************************************************* 
+Voucher Vale Vista
+*******************************************************************
+-->
+<voucher name="VoucherMedioPagoVale">
+    <line right="yes">
+        <print value="Vale Vista,"/>
+        <print field="datos.Monto"/>
+    </line>        
+</voucher>
+
+<!--
+******************************************************************* 
+Voucher Canje
+*******************************************************************
+-->
+<voucher name="VoucherMedioPagoCanje">
+    <line right="yes">
+        <print value="Canje,"/>
+        <print field="datos.Monto"/>
+    </line>        
+</voucher>
+
+<!--
+******************************************************************* 
+Voucher Deposito
+*******************************************************************
+-->
+<voucher name="VoucherMedioPagoDeposito">
+    <line right="yes" condField="datos.Tipo" value="Efectivo" cond="true" type="char">
+        <print value="Deposito Efectivo,"/>
+        <print field="datos.Monto"/>
+    </line>
+    <line right="yes" condField="datos.Tipo" value="Cheque" cond="true" type="char">
+        <print value="Deposito Cheque,"/>
+        <print field="datos.Monto"/>
+    </line>
+    <line right="yes" condField="datos.Tipo" value="Vale Vista" cond="true" type="char">
+        <print value="Deposito Vale Vista,"/>
+        <print field="datos.Monto"/>
+    </line>
+    <line right="yes" condField="datos.Tipo" value="Transferencia" cond="true" type="char">
+        <print value="Transferencia Electrónica,"/>
+        <print field="datos.Monto"/>
+    </line>
+    <line right="yes" condField="datos.Tipo" value="Papeleta Depósito" cond="true" type="char">
+        <print value="Papeleta Depósito,"/>
+        <print field="datos.Monto"/>
+    </line>           
+</voucher>
+
+<!--
+******************************************************************* 
+Voucher Pagare
+*******************************************************************
+-->
+<voucher name="VoucherMedioPagoPagare">
+    <line right="yes">
+        <print value="Pagare,"/>
+        <print field="datos.Monto"/>
+    </line>        
+</voucher>
+
+<!--
+******************************************************************* 
+Voucher Cheque
+*******************************************************************
+-->
+<voucher name="VoucherMedioPagoCheque">
+	 <line>
+        <print value="Cheque al día"/>
+    </line>
+    <line right="yes">
+        <print value="Vencimiento,"/>
+        <print field="datos.Fecha"/>
+    </line>
+    <line right="yes">
+        <print value="Valor Pagado,"/>
+        <print field="datos.Monto"/>
+    </line> 
+    <line right="yes">
+        <print value="Número,"/>
+        <print field="datos.Serial"/>
+    </line> 
+    <line right="yes">
+        <print value="Banco,"/>
+        <print field="datos.BancoV"/>
+    </line>
+    <line/>       
+</voucher>
+
+<!--
+******************************************************************* 
+Voucher Cheque a fecha
+*******************************************************************
+-->
+<voucher name="VoucherMedioPagoChequeFecha">
+    <line>
+        <print value="Cheque Fecha"/>
+    </line>
+    <line right="yes">
+        <print value="Vencimiento,"/>
+        <print field="datos.Fecha"/>
+    </line>
+    <line right="yes">
+        <print value="Valor Pagado,"/>
+        <print field="datos.Monto"/>
+    </line> 
+    <line right="yes">
+        <print value="Número,"/>
+        <print field="datos.Serial"/>
+    </line> 
+    <line right="yes">
+        <print value="Banco,"/>
+        <print field="datos.BancoV"/>
+    </line>  
+    <line/>      
+</voucher>
+
+
+<!-- cbriones: creamos un Voucher para Claro -->
+<voucher name="VoucherDocumentoCuentaClaro">
+	<line bold="yes" condField="datos.ClienteClaro" value="" cond="false" type="char">
+        <print value="Cliente: "/>
+        <print field="datos.ClienteClaro"/>
+    </line>
+    <line bold="yes" condField="datos.Rut" value="" cond="false" type="char">
+        <print value="RUT: "/>
+        <print field="datos.Rut"/>
+    </line>
+    <line condField="datos.SistemaOrigenClaro" value="" cond="false" type="char">
+        <print value="Sistema Origen: "/>
+        <print field="datos.SistemaOrigenClaro"/>
+    </line>
+    <line bold="yes" condField="datos.CuentaClaro" value="" cond="false" type="char">
+        <print value="Cuenta: "/>
+        <print field="datos.CuentaClaro" />
+    </line>
+    <line bold="yes" condField="datos.FolioDocumentoClaro" value="" cond="false" type="char">
+        <print value="Nro. Doc.: "/>
+        <print field="datos.FolioDocumentoClaro" />
+    </line>
+    <line bold="yes" condField="datos.IdServicioClaro" value="" cond="false" type="char">
+        <print value="Control Int.: "/>
+        <print field="datos.IdServicioClaro" />
+    </line>
+    <line right="yes" underline="yes">
+        <print value="Monto Doc.:,"/>
+        <print field="datos.SaldoAdeudadoClaro"/>
+    </line>
+</voucher>
+
+
+<voucher name="VoucherDocumentoItemClaro">
+	<line bold="yes" condField="datos.Cliente" value="" cond="false" type="char">
+        <print value="Cliente: "/>
+        <print field="datos.Cliente"/>
+    </line>
+    <line bold="yes" condField="datos.Rut" value="" cond="false" type="char">
+        <print value="RUT: "/>
+        <print field="datos.Rut"/>
+    </line>
+    <line right="yes" underline="yes">
+        <print value=" ,"/>
+        <print value=" "/>
+    </line>
+    <line bold="yes" right="yes">
+        <print value="Item Claro,"/>
+        <print field="datos.Monto"/>
+    </line>        
+    <line>
+        <print value="N° Cuenta "/>
+        <print field="datos.NumeroCuenta" />
+    </line>
+     <line>
+        <print value="N°Documento "/>
+        <print field="datos.NumeroDocumento" />
+    </line>
+    <line>
+        <print value="N° Item "/>
+        <print field="datos.NumeroItem" />
+    </line>
+    <line>
+        <print value="Desc. item "/>
+        <print field="datos.DescripcionItem" />
+    </line>
+    <line>
+        <print value="Sist.Origen "/>
+        <print field="datos.SistemaOrigen" />
+    </line>
+    <line/>
+</voucher>
+
+<voucher name="VoucherDocumentoRecargaClaro">
+    <line bold="yes" condField="datos.RutRec" value="" cond="false" type="char">
+        <print value="RUT: "/>
+        <print field="datos.RutRec"/>
+    </line>
+    <line bold="yes" condField="datos.Telefono" value="" cond="false" type="char">
+        <print value="PCS: "/>
+        <print field="datos.Telefono"/>
+    </line>
+    <line right="yes" underline="yes">
+        <print value=" ,"/>
+        <print value=" "/>
+    </line>
+    <line/>
+</voucher>
+
+</vouchers>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xs:schema version="1.0" targetNamespace="http://osbservicios.clarochile.cl/PlataformaPagoNotificar/" xmlns:tns="http://osbservicios.clarochile.cl/PlataformaPagoNotificar/" xmlns:ns2="http://osbservicios.clarochile.cl/GLOBAL/EMP/HeaderRequest" xmlns:ns1="http://osbservicios.clarochile.cl/GLOBAL/EMP/HeaderResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://osbservicios.clarochile.cl/GLOBAL/EMP/HeaderResponse" schemaLocation="PlataformaPagoNotificar_1.xsd"/>
+  <xs:import namespace="http://osbservicios.clarochile.cl/GLOBAL/EMP/HeaderRequest" schemaLocation="PlataformaPagoNotificar_1_2.xsd"/>
+  <xs:element name="NotificacionRequest" type="tns:NotificacionEnvio"/>
+  <xs:element name="NotificacionResponse" type="tns:NotificacionRespuesta"/>
+  <xs:element name="headerRequest" type="ns2:datosHeaderRequest"/>
+  <xs:element name="headerResponse" type="ns1:datosHeaderResponse"/>
+  <xs:complexType name="Respuesta">
+    <xs:sequence>
+      <xs:element name="retCode" type="xs:int"/>
+      <xs:element name="retDesc" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Caja">
+    <xs:sequence>
+      <xs:element name="idCaja" type="xs:int"/>
+      <xs:element name="entidad" type="xs:string"/>
+      <xs:element name="canal" type="xs:int"/>
+      <xs:element name="agencia" type="xs:string"/>
+      <xs:element name="recaudador" type="xs:string" minOccurs="0"/>
+      <xs:element name="usuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoSesion" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NotificacionRespuesta">
+    <xs:sequence>
+      <xs:element name="respuesta" type="tns:Respuesta"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NotificacionEnvio">
+    <xs:sequence>
+      <xs:element name="operacion" type="tns:Operacion"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Operacion">
+    <xs:sequence>
+      <xs:element name="tipoOperacion" type="xs:int"/>
+      <xs:element name="numeroOperacion" type="xs:long" minOccurs="0"/>
+      <xs:element name="fechaPago" type="xs:string" minOccurs="0"/>
+      <xs:element name="monto" type="xs:long"/>
+      <xs:element name="caja" type="tns:Caja" minOccurs="0"/>
+      <xs:element name="transaccion" type="tns:Transaccion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="medioPago" type="tns:MedioPago" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="numEdicionPago" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Transaccion">
+    <xs:sequence>
+      <xs:element name="tipoTransaccion" type="xs:string"/>
+      <xs:element name="numeroDocumento" type="xs:long" minOccurs="0"/>
+      <xs:element name="tipoDocumento" type="xs:string" minOccurs="0"/>
+      <xs:element name="servicio" type="xs:string" minOccurs="0"/>
+      <xs:element name="monto" type="xs:long"/>
+      <xs:element name="origen" type="xs:string"/>
+      <xs:element name="empresa" type="xs:int" minOccurs="0"/>
+      <xs:element name="rut" type="xs:long" minOccurs="0"/>
+      <xs:element name="dv" type="xs:string" minOccurs="0"/>
+      <xs:element name="tipoRegistro" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaVencimiento" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoPortador" type="xs:int" minOccurs="0"/>
+      <xs:element name="cuentaCliente" type="xs:string" minOccurs="0"/>
+      <xs:element name="nroOperacionAReversar" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MedioPago">
+    <xs:sequence>
+      <xs:element name="tipoTransaccion" type="xs:string"/>
+      <xs:element name="codigoBanco" type="xs:int" minOccurs="0"/>
+      <xs:element name="codigoPlaza" type="xs:int" minOccurs="0"/>
+      <xs:element name="monto" type="xs:long"/>
+      <xs:element name="fechaVencimiento" type="xs:string" minOccurs="0"/>
+      <xs:element name="numeroCheque" type="xs:string" minOccurs="0"/>
+      <xs:element name="numeroCtaCte" type="xs:string" minOccurs="0"/>
+      <xs:element name="pagadorRut" type="xs:string" minOccurs="0"/>
+      <xs:element name="pagadorDigitoVerificador" type="xs:string" minOccurs="0"/>
+      <xs:element name="pagadorNombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoAutorizacion" type="xs:string" minOccurs="0"/>
+      <xs:element name="numeroTarjeta" type="xs:string" minOccurs="0"/>
+      <xs:element name="cantidadCuotas" type="xs:int" minOccurs="0"/>
+      <xs:element name="serieValeVista" type="xs:string" minOccurs="0"/>
+      <xs:element name="numeroDeposito" type="xs:string" minOccurs="0"/>
+      <xs:element name="depositante" type="xs:string" minOccurs="0"/>
+      <xs:element name="tipoTotal" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaContable" type="xs:string" minOccurs="0"/>
+      <xs:element name="idTrxTbk" type="xs:string" minOccurs="0"/>
+      <xs:element name="tbkContingencia" type="xs:string" minOccurs="0"/>
+      <xs:element name="productoTarjeta" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

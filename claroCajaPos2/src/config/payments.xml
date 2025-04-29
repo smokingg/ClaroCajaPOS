@@ -1,0 +1,253 @@
+<mediosPago>
+
+<medioPago name="Tarjeta" class="cl.hyh.redpagos.caja.mpago.Tarjeta" customerVoucher="VoucherVentaTarjeta" >
+    <field name="Monto" type="monto"/>    
+    <field name="TipoTarjeta" type="char"/>
+    <field name="NumeroTarjeta" type="char"/>
+    <field name="TitularTarjeta" type="char"/>
+    <field name="IdPlanCuotas" type="char"/>
+    <field name="CantidadCuotas" type="char"/>
+    <field name="FechaAutorizacion" type="char"/>
+    <field name="HoraAutorizacion" type="char"/>
+    <field name="CodigoAutorizacion" type="char"/>
+    <field name="NumeroUnico" type="char"/>
+    <field name="FechaRendicion" type="char"/>
+    <field name="FechaAutorizacionOriginal" type="char" transmit="no"/>
+    <field name="HoraAutorizacionOriginal" type="char" transmit="no"/>  
+    <field name="Emisor" type="char"/> 
+    <field name="TipoTotal" type="char"/> 
+</medioPago>
+
+<medioPago name="TarjetaTbkDirecto" class="cl.hyh.redpagos.caja.mpago.TrxTarjetaTbkDirecto" customerVoucher="VoucherTarjetaDirecto" >
+    <field name="Monto" type="monto"/>    
+    <field name="TipoTarjeta" type="char"/>
+    <field name="NumeroTarjeta" type="char"/>
+    <field name="TitularTarjeta" type="char"/>
+    <field name="IdPlanCuotas" type="char"/>
+    <field name="CantidadCuotas" type="char"/>
+    <field name="FechaAutorizacion" type="char"/>
+    <field name="HoraAutorizacion" type="char"/>
+    <field name="CodigoAutorizacion" type="char"/>
+    <field name="NumeroUnico" type="char"/>
+    <field name="FechaRendicion" type="char"/>
+    <field name="FechaAutorizacionOriginal" type="char" transmit="no"/>
+    <field name="HoraAutorizacionOriginal" type="char" transmit="no"/>  
+    <field name="Emisor" type="char"/> 
+    <field name="TipoTotal" type="char"/> 
+</medioPago>
+
+<medioPago name="TarjetaCreditoTbk" class="cl.hyh.redpagos.caja.mpago.TarjetaCreditoTbk" customerVoucher="VoucherVentaCredito" >
+    <field name="Monto" type="monto"/>    
+    <field name="CodAutorizacion" type="char"/>
+    <field name="NumeroSecuencia" type="char"/>
+    <field name="FechaOriginal" type="char"/>
+    <field name="HoraOriginal" type="char"/>
+    <field name="NumeroUnico" type="char"/>
+    <field name="NumeroCuotas" type="char"/>
+    <field name="TipoCuotas" type="char"/>
+    <field name="IndProducto" type="char"/>
+    <field name="CodMoneda" type="char"/>
+    <field name="Boleta" type="char"/>
+    <field name="CuatroDigitos" type="char"/>
+    <field name="IndConfPos" type="char"/>   
+    <field name="TipoTotal" type="char"/> 
+</medioPago>
+
+<medioPago name="TarjetaDebitoTbk" class="cl.hyh.redpagos.caja.mpago.TarjetaDebitoTbk" customerVoucher="VoucherVentaDebito">
+    <field name="Rut" type="char"/>
+    <field name="Monto" type="monto"/>    
+    <field name="CodAutorizacion" type="char"/>
+    <field name="NumeroSecuencia" type="char"/>
+    <field name="FechaOriginal" type="char"/>
+    <field name="HoraOriginal" type="char"/>
+    <field name="NumeroUnico" type="char"/>
+    <field name="NumeroCuotas" type="char"/>
+    <field name="TipoCuotas" type="char"/>
+    <field name="IndProducto" type="char"/>
+    <field name="CodMoneda" type="char"/>
+    <field name="Boleta" type="char"/>
+    <field name="CuatroDigitos" type="char"/>
+    <field name="IndConfPos" type="char"/>   
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="TarjetaTbkManual" class="cl.hyh.redpagos.caja.mpago.TbkManual" customerVoucher="VoucherTbkManual" >
+    <field name="Monto" type="monto"/>    
+    <field name="CodAutorizacion" type="char"/>
+    <field name="NumeroUnico" type="char"/>
+    <field name="NumeroCuotas" type="char"/>
+    <field name="Emisor" type="char"/>   
+    <field name="TipoTotal" type="char"/> 
+    <field name="TipoTarjeta" type="char"/>
+    <field name="isCredito" type="char" transmit="no" default="0"/>
+</medioPago>
+
+<medioPago name="TarjetaTbkManualDirecto" class="cl.hyh.redpagos.caja.trx.TrxTarjetaTbkManualDirecto" customerVoucher="VoucherTbkManual" >
+    <field name="Monto" type="monto"/>    
+    <field name="CodAutorizacion" type="char"/>
+    <field name="NumeroUnico" type="char"/>
+    <field name="NumeroCuotas" type="char"/>
+    <field name="Emisor" type="char"/>   
+    <field name="TipoTotal" type="char"/> 
+    <field name="TipoTarjeta" type="char"/>
+    <field name="isCredito" type="char" transmit="no" default="0"/>
+</medioPago>
+
+<medioPago name="TarjetaManual" class="cl.hyh.redpagos.caja.mpago.TarjetaManual" customerVoucher="VoucherTarjetaManual" >
+    <field name="Monto" type="monto"/>    
+    <field name="CodAutorizacion" type="char"/>
+    <field name="NumeroUnico" type="char"/>
+    <field name="NumeroCuotas" type="char"/>
+    <field name="Emisor" type="char"/>   
+    <field name="TipoTotal" type="char"/> 
+</medioPago>
+
+<medioPago name="Cheque"  class="cl.hyh.redpagos.caja.mpago.Cheque" customerVoucher="VoucherMedioPagoCheque" commerceVoucher="VoucherMedioPagoChequeCommerce">
+	<field name="Banco" type="num"/>
+	<field name="Sucursal" type="char"/>
+	<field name="Cuenta" type="char"/>
+	<field name="Serial" type="char"/>
+	<field name="Rut" type="char"/>
+	<field name="Monto" type="monto"/>
+	<field name="CodigoAutorizacion" type="char"/>
+	<field name="Titular" type="char"/>
+	<field name="Fecha" type="char"/>
+	<field name="BancoV" type="char"/>
+	<field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="ChequeFecha"  class="cl.hyh.redpagos.caja.mpago.ChequeFecha" customerVoucher="VoucherMedioPagoChequeFecha" commerceVoucher="VoucherMedioPagoChequeFechaCommerce">
+	<field name="Banco" type="num"/>
+	<field name="Sucursal" type="char"/>
+	<field name="Cuenta" type="char"/>
+	<field name="Serial" type="char"/>
+	<field name="Rut" type="char"/>
+	<field name="Monto" type="monto"/>
+	<field name="CodigoAutorizacion" type="char"/>
+	<field name="Titular" type="char"/>
+	<field name="Fecha" type="char"/>
+	<field name="Dias" type="num"/>
+	<field name="BancoV" type="char"/>
+	<field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="Efectivo"  class="cl.hyh.redpagos.caja.mpago.Efectivo" customerVoucher="VoucherMedioPagoEfectivo" commerceVoucher="VoucherMedioPagoEfectivoCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="AjusteSencillo"  class="cl.hyh.redpagos.caja.mpago.AjusteSencillo" customerVoucher="VoucherMedioPagoAjusteSencillo" commerceVoucher="VoucherMedioPagoEfectivoCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="MontoAjustado" type="monto"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="DevolucionEfectivo"  class="cl.hyh.redpagos.caja.mpago.DevolucionEfectivo" customerVoucher="VoucherMedioPagoEfectivo" commerceVoucher="VoucherMedioPagoEfectivoCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="Regularizacion"  class="cl.hyh.redpagos.caja.mpago.Regularizacion" customerVoucher="VoucherMedioPagoRegularizacion" commerceVoucher="VoucherMedioPagoRegularizacionCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="OtroMedioPago"  class="cl.hyh.redpagos.caja.mpago.OtroMedioPago" customerVoucher="VoucherMedioPagoOtroMedioPago" commerceVoucher="VoucherMedioPagoRegularizacionCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="ValeVista"  class="cl.hyh.redpagos.caja.mpago.ValeVista" customerVoucher="VoucherMedioPagoVale" commerceVoucher="VoucherMedioPagoValeCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="NumeroDocumento" type="char"/>
+    <field name="Banco" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="Transferencia"  class="cl.hyh.redpagos.caja.mpago.Transferencia" customerVoucher="VoucherMedioPagoDeposito" commerceVoucher="VoucherMedioPagoDepositoCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="NumeroDocumento" type="char"/>
+    <field name="Banco" type="char"/>
+    <field name="Cuenta" type="char"/>
+    <field name="FechaDeposito" type="char"/>
+    <field name="Depositante" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="DepositoEfectivo"  class="cl.hyh.redpagos.caja.mpago.Deposito" customerVoucher="VoucherMedioPagoDeposito" commerceVoucher="VoucherMedioPagoDepositoCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="NumeroDocumento" type="char"/>
+    <field name="Banco" type="char"/>
+    <field name="Tipo" type="char"/>
+    <field name="Cantidad" type="char"/>
+    <field name="Cuenta" type="char"/>
+    <field name="FechaDeposito" type="char"/>
+    <field name="Solicitante" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="DepositoCheque"  class="cl.hyh.redpagos.caja.mpago.Deposito" customerVoucher="VoucherMedioPagoDeposito" commerceVoucher="VoucherMedioPagoDepositoCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="NumeroDocumento" type="char"/>
+    <field name="Banco" type="char"/>
+    <field name="Tipo" type="char"/>
+    <field name="Cantidad" type="char"/>
+    <field name="Cuenta" type="char"/>
+    <field name="FechaDeposito" type="char"/>
+    <field name="Solicitante" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="DepositoValeVista"  class="cl.hyh.redpagos.caja.mpago.Deposito" customerVoucher="VoucherMedioPagoDeposito" commerceVoucher="VoucherMedioPagoDepositoCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="NumeroDocumento" type="char"/>
+    <field name="Banco" type="char"/>
+    <field name="Tipo" type="char"/>
+    <field name="Cantidad" type="char"/>
+    <field name="Cuenta" type="char"/>
+    <field name="FechaDeposito" type="char"/>
+    <field name="Solicitante" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="PapeletaDeposito"  class="cl.hyh.redpagos.caja.mpago.Deposito" customerVoucher="VoucherMedioPagoDeposito" commerceVoucher="VoucherMedioPagoDepositoCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="NumeroDocumento" type="char"/>
+    <field name="Banco" type="char"/>
+    <field name="Tipo" type="char"/>
+    <field name="Cantidad" type="char"/>
+    <field name="Cuenta" type="char"/>
+    <field name="FechaDeposito" type="char"/>
+    <field name="Solicitante" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="TransferenciaElectronica"  class="cl.hyh.redpagos.caja.mpago.Deposito" customerVoucher="VoucherMedioPagoDeposito" commerceVoucher="VoucherMedioPagoDepositoCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="NumeroDocumento" type="char"/>
+    <field name="Banco" type="char"/>
+    <field name="Tipo" type="char"/>
+    <field name="Cantidad" type="char"/>
+    <field name="Cuenta" type="char"/>
+    <field name="FechaDeposito" type="char"/>
+    <field name="Solicitante" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="Pagare"  class="cl.hyh.redpagos.caja.mpago.Pagare" customerVoucher="VoucherMedioPagoPagare" commerceVoucher="VoucherMedioPagoPagareCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="NumeroPagare" type="char"/>
+    <field name="FechaPagare" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+<medioPago name="Canje"  class="cl.hyh.redpagos.caja.mpago.Canje" customerVoucher="VoucherMedioPagoCanje" commerceVoucher="VoucherMedioPagoCanjeCommerce">
+    <field name="Monto" type="monto"/>
+    <field name="NumeroProveedor" type="char"/>
+    <field name="Filial" type="char"/>
+    <field name="FacturaProveedor" type="char"/>
+    <field name="CantidadFacturas" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</medioPago>
+
+</mediosPago>

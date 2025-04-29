@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. --><WL5G3N0:definitions xmlns="" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://osbservicios.clarochile.cl/PlataformaPagoEnviarAlmacenarDocumento/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" name="PlataformaPagoEnviarAlmacenarDocumento" targetNamespace="http://osbservicios.clarochile.cl/PlataformaPagoEnviarAlmacenarDocumento/">
+  <WL5G3N0:types>
+    <xsd:schema xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://osbservicios.clarochile.cl/PlataformaPagoEnviarAlmacenarDocumento/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://osbservicios.clarochile.cl/PlataformaPagoEnviarAlmacenarDocumento/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://osbservicios.clarochile.cl/PlataformaPagoEnviarAlmacenarDocumento/">
+      <xsd:element name="almacenarDocumento">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="numeroOperacion" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>      
+      <xsd:element name="almacenarDocumentoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="status" type="xsd:string"/>
+            <xsd:element name="errorCode" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="almacenarDocumentoRequest">
+    <WL5G3N0:part element="WL5G3N1:almacenarDocumento" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="almacenarDocumentoResponse">
+    <WL5G3N0:part element="WL5G3N1:almacenarDocumentoResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="PlataformaPagoEnviarAlmacenarDocumento">
+    <WL5G3N0:operation name="almacenarDocumento">
+      <WL5G3N0:input message="WL5G3N1:almacenarDocumentoRequest"/>
+      <WL5G3N0:output message="WL5G3N1:almacenarDocumentoResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="PlataformaPagoEnviarAlmacenarDocumentoSOAP" type="WL5G3N1:PlataformaPagoEnviarAlmacenarDocumento">
+    <WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="almacenarDocumento">
+      <WL5G3N2:operation soapAction="http://osbservicios.clarochile.cl/PlataformaPagoEnviarAlmacenarDocumento/almacenarDocumento"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="PlataformaPagoEnviarAlmacenarDocumentoSOAPQSService">
+    <WL5G3N0:port binding="WL5G3N1:PlataformaPagoEnviarAlmacenarDocumentoSOAP" name="PlataformaPagoEnviarAlmacenarDocumentoSOAPQSPort">
+      <WL5G3N2:address location="http://172.16.1.132:7001/AppControlCaja/PlataformaPagoEnviarAlmacenarDocumentoSOAPQSService"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

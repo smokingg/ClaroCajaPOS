@@ -1,0 +1,8 @@
+<posConfiguration>
+<include file="config/records.xml" parser="cl.hyh.redpagos.caja.base.parser.ParserRecord"/>
+<include file="config/payments.xml" parser="cl.hyh.redpagos.caja.base.parser.ParserPayment"/>
+<include file="config/services.xml" parser="cl.hyh.redpagos.caja.base.parser.ParserService"/>
+<include file="config/vouchers.xml" parser="cl.hyh.redpagos.caja.base.parser.ParserVoucher"/>
+<include file="config/documents.xml" parser="cl.hyh.redpagos.caja.base.parser.ParserDocument"/>
+<include file="config/parameters.xml" parser="cl.hyh.redpagos.caja.base.parser.ParserParamSet"/>
+</posConfiguration>

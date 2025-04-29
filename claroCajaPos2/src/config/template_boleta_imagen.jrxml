@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="boleta_con_imagen"
+              pageWidth="595" pageHeight="842" columnWidth="555"
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20"
+              whenNoDataType="AllSectionsNoDetail" uuid="b90f0c20-4e53-4429-b5b7-2bc06d3b1a2d">
+
+    <parameter name="boletaImagen" class="java.awt.Image"/>
+
+    <title>
+        <band height="750">
+            <image>
+                <reportElement x="0" y="0" width="555" height="750"/>
+                <imageExpression><![CDATA[$P{boletaImagen}]]></imageExpression>
+            </image>
+        </band>
+    </title>
+
+</jasperReport>

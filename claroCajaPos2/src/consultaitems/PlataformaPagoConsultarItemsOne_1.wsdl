@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><WL5G3N0:definitions name="PlataformaPagoConsultarItemsOne" targetNamespace="http://osbservicios.clarochile.cl/PlataformaPagoConsultarItemsOne/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://osbservicios.clarochile.cl/PlataformaPagoConsultarItemsOne/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xsd:schema targetNamespace="http://osbservicios.clarochile.cl/PlataformaPagoConsultarItemsOne/" xmlns:pref="http://osbservicios.clarochile.cl/GLOBAL/EMP/HeaderRequest" xmlns:pref1="http://osbservicios.clarochile.cl/GLOBAL/EMP/HeaderResponse" xmlns:pref2="http://osbservicios.clarochile.cl/GLOBAL/EMP/HeaderResponse" xmlns:pref3="http://osbservicios.clarochile.cl/GLOBAL/EMP/HeaderRequest" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://osbservicios.clarochile.cl/PlataformaPagoConsultarItemsOne/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://osbservicios.clarochile.cl/GLOBAL/EMP/HeaderRequest" schemaLocation="PlataformaPagoConsultarItemsOne.xsd"/>
+      <xsd:import namespace="http://osbservicios.clarochile.cl/GLOBAL/EMP/HeaderResponse" schemaLocation="PlataformaPagoConsultarItemsOne_1.xsd"/>
+      <xsd:element name="consultar">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="operacionIn" type="tns:OperacionIn"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="consultarResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="operacionOut" type="tns:OperacionOut"/>
+            <xsd:element name="respuesta" type="tns:Respuesta"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="OperacionIn">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="tipoOperacion" type="xsd:string"/>
+          <xsd:element minOccurs="1" name="valorOperacion" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="origen" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="OperacionOut">
+        <xsd:sequence>
+          <xsd:element name="totalSaldo" type="xsd:long"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="detalleProducto" type="tns:DetalleProducto"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DetalleProducto">
+        <xsd:sequence>
+          <xsd:element name="idServicio" type="xsd:string"/>
+          <xsd:element name="sistemaOrigen" type="xsd:string"/>
+          <xsd:element name="tipoDocumento" type="xsd:string"/>
+          <xsd:element name="saldoAdeudado" type="xsd:long"/>
+          <xsd:element name="fechaEmisionDocumento" type="xsd:string"/>
+          <xsd:element name="fechaVencimientoDocumento" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Respuesta">
+        <xsd:sequence>
+          <xsd:element name="retCode" type="xsd:int"/>
+          <xsd:element name="retDescError" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Caja">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="idCaja" type="xsd:int"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="entidad" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="canal" type="xsd:int"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="agencia" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="recaudador" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="usuario" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="codigoSesion" type="xsd:long"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="headerRequest" type="pref:datosHeaderRequest"/>
+      <xsd:element name="headerResponse" type="pref1:datosHeaderResponse"/>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="headerRequest">
+    <WL5G3N0:part element="WL5G3N1:headerRequest" name="headerRequest"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="headerResponse">
+    <WL5G3N0:part element="WL5G3N1:headerResponse" name="headerResponse"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="consultar">
+    <WL5G3N0:part element="WL5G3N1:consultar" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="consultarResponse">
+    <WL5G3N0:part element="WL5G3N1:consultarResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="PlataformaPagoConsultarItemsOne">
+    <WL5G3N0:operation name="consultar">
+      <WL5G3N0:input message="WL5G3N1:consultar"/>
+      <WL5G3N0:output message="WL5G3N1:consultarResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="PlataformaPagoConsultarSOAP" type="WL5G3N1:PlataformaPagoConsultarItemsOne">
+    <WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="consultar">
+      <WL5G3N2:operation soapAction="http://osbservicios.clarochile.cl/PlataformaPagoConsultarItemsOne/consultar"/>
+      <WL5G3N0:input>
+        <WL5G3N2:header message="WL5G3N1:headerRequest" part="headerRequest" use="literal"/>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:header message="WL5G3N1:headerResponse" part="headerResponse" use="literal"/>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="PlataformaPagoConsultarItemsOne">
+    <WL5G3N0:port binding="WL5G3N1:PlataformaPagoConsultarSOAP" name="PlataformaPagoConsultarSOAP">
+      <WL5G3N2:address location="http://localhost:7001/AppControlCaja/PlataformaPagoConsultarItemsOne"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

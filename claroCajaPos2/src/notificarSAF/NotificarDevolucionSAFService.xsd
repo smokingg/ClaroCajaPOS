@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xs:schema version="1.0" targetNamespace="http://osbservicios.clarochile.cl/PlataformaPagoNotificar/" xmlns:tns="http://osbservicios.clarochile.cl/PlataformaPagoNotificar/" xmlns:ns3="http://osbcorp.vtr.cl/GLOBAL/EMP/HeaderResponse" xmlns:ns2="http://osbcorp.vtr.cl/GLOBAL/EMP/HeaderRequest" xmlns:ns1="http://osbcorp.vtr.cl/REC/EMP/DevolverSaldoFavor" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://osbcorp.vtr.cl/REC/EMP/DevolverSaldoFavor" schemaLocation="NotificarDevolucionSAFService_1.xsd"/>
+  <xs:import namespace="http://osbcorp.vtr.cl/GLOBAL/EMP/HeaderRequest" schemaLocation="NotificarDevolucionSAFService_3.xsd"/>
+  <xs:import namespace="http://osbcorp.vtr.cl/GLOBAL/EMP/HeaderResponse" schemaLocation="NotificarDevolucionSAFService_4.xsd"/>
+  <xs:element name="devolverSaldoFavor" type="tns:devolverSaldoFavor"/>
+  <xs:element name="devolverSaldoFavorResponse" type="tns:devolverSaldoFavorResponse"/>
+  <xs:complexType name="devolverSaldoFavor">
+    <xs:sequence>
+      <xs:element name="arg0" type="ns1:DevuelveSaldoFavorPeticionType" minOccurs="0"/>
+      <xs:element name="arg1" type="ns2:HeaderRequest" minOccurs="0"/>
+      <xs:element name="arg2" type="ns1:DevuelveSaldoFavorRespuestaType" minOccurs="0"/>
+      <xs:element name="arg3" type="ns3:datosHeaderResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="devolverSaldoFavorResponse">
+    <xs:sequence>
+      <xs:element name="arg2" type="ns1:DevuelveSaldoFavorRespuestaType" minOccurs="0"/>
+      <xs:element name="arg3" type="ns3:datosHeaderResponse" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

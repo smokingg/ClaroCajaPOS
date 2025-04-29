@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xsd:schema elementFormDefault="qualified" targetNamespace="http://osbservicios.clarochile.cl/GLOBAL/EMP/HeaderResponse" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://osbservicios.clarochile.cl/GLOBAL/EMP/HeaderResponse" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="datosHeaderResponse">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="1" name="IdServer" type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="1" name="ReqSrvDate" type="xsd:dateTime"/>
+      <xsd:element maxOccurs="1" minOccurs="1" name="RespSrvDate" type="xsd:dateTime"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

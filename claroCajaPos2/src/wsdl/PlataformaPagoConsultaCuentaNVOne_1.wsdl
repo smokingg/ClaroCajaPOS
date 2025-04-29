@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><WL5G3N0:definitions name="PlataformaPagoConsultaNVOne" targetNamespace="http://osbservicios.clarochile.cl/PlataformaPagoConsultaNVOne/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://osbservicios.clarochile.cl/PlataformaPagoConsultaNVOne/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xsd:schema targetNamespace="http://osbservicios.clarochile.cl/PlataformaPagoConsultaNVOne/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://osbservicios.clarochile.cl/PlataformaPagoConsultaNVOne/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="consultar">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="operacionIn" type="tns:OperacionIn"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="consultarResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="operacionOut" type="tns:OperacionOut"/>
+            <xsd:element name="respuesta" type="tns:Respuesta"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Respuesta">
+        <xsd:sequence>
+          <xsd:element name="retCode" type="xsd:int"/>
+          <xsd:element name="retDescError" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="OperacionOut">
+        <xsd:sequence>
+          <xsd:element name="codigoPais" type="xsd:string"/>
+          <xsd:element name="empresa" type="xsd:string"/>
+          <xsd:element name="saldo" type="xsd:long"/>
+          <xsd:element name="idFactura" type="xsd:long"/>
+          <xsd:element name="numLegalfactura" type="xsd:long"/>
+          <xsd:element name="monto" type="xsd:long"/>
+          <xsd:element name="fechaCreacion" type="xsd:string"/>
+          <xsd:element name="fechaVencimiento" type="xsd:string"/>
+          <xsd:element name="vencimiento" type="xsd:string"/>
+          <xsd:element name="respuesta" type="tns:Respuesta"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="OperacionIn">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="numeroOrden" type="xsd:string"/>
+          <xsd:element minOccurs="1" name="cuenta" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="consultarRequest">
+    <WL5G3N0:part element="WL5G3N1:consultar" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="consultarResponse">
+    <WL5G3N0:part element="WL5G3N1:consultarResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="PlataformaPagoConsultaCuentaNVOne">
+    <WL5G3N0:operation name="consultar">
+      <WL5G3N0:input message="WL5G3N1:consultarRequest"/>
+      <WL5G3N0:output message="WL5G3N1:consultarResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="PlataformaPagoConsultaCuentaNVOneSOAP" type="WL5G3N1:PlataformaPagoConsultaCuentaNVOne">
+    <WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="consultar">
+      <WL5G3N2:operation soapAction="http://osbservicios.clarochile.cl/PlataformaPagoConsultaNVOne/consultar"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="PlataformaPagoConsultaCuentaNVOne">
+    <WL5G3N0:port binding="WL5G3N1:PlataformaPagoConsultaCuentaNVOneSOAP" name="PlataformaPagoConsultaCuentaNVOneSOAP">
+      <WL5G3N2:address location="http://localhost:7001/AppControlCaja/PlataformaPagoConsultaCuentaNVOne"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

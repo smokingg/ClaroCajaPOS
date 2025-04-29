@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5.--><xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://osbcorp.vtr.cl/REC/EMP/ConsultarSaldoFavor" xmlns:tns="http://osbcorp.vtr.cl/REC/EMP/ConsultarSaldoFavor" xmlns:ns1="http://osbcorp.vtr.cl/GLOBAL/EMP/ResultadoEjecucion" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://osbcorp.vtr.cl/GLOBAL/EMP/ResultadoEjecucion" schemaLocation="ConsultaDevolucionSAFService_2.xsd"/>
+  <xs:complexType name="ConsultaSaldoFavorPeticionType">
+    <xs:sequence>
+      <xs:element name="rutCliente" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConsultaSaldoFavorRespuestaType">
+    <xs:sequence>
+      <xs:element name="rutCliente" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombreCliente" type="xs:string" minOccurs="0"/>
+      <xs:element name="saldoTotal" type="xs:string" minOccurs="0"/>
+      <xs:element name="listaCuenta" type="tns:ListaCuentaType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="resultadoEjecucion" type="ns1:ResultadoEjecucionType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListaCuentaType">
+    <xs:sequence>
+      <xs:element name="numeroCuenta" type="xs:string" minOccurs="0"/>
+      <xs:element name="tipoCuenta" type="xs:string" minOccurs="0"/>
+      <xs:element name="saldoCuenta" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

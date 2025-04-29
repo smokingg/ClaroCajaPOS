@@ -1,0 +1,24 @@
+<records>
+
+<record name="HeaderIn">
+	<field name="TipoOperacion" type="char" default="TRV"/>
+	<field name="Agencia" type="char"/>
+	<field name="Entidad" type="char"/>	
+	<field name="Cajero" type="char"/>
+	<field name="Operador" type="char"/>
+	<field name="Caja" type="char"/>
+	<field name="FechaPago" type="char"/>
+	<field name="NumeroOperacion" type="char"/>
+	<field name="FechaOperacion" type="char"/>
+	<field name="HoraOperacion" type="char"/>
+</record>
+
+<record name="HeaderOut">
+    <field name="RetCode" type="char"/>
+	<field name="RetDesc" type="char"/>
+	<field name="RetClass" type="char"/>
+	<field name="FechaIngreso" type="char"/>
+	<field name="FechaRespuesta" type="char"/>
+</record>
+
+</records>

@@ -1,0 +1,1324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transactions>
+
+<trx name="configura" 
+     title="Configuración" >
+     <buttons pf1="Configura Caja"/>
+	 <pf1 action="trx" name="configuraCaja" parameter="" />
+</trx>
+
+<trx name="configuraCaja" 
+     title="Configura Caja" 
+     class="cl.hyh.redpagos.caja.trx.ConfiguraCaja" 
+     parameter="" >
+	<!--  el parametro lo obtiene de init() o execute() de la variable Datos
+	      con nombre 'trxParam' -->
+	<buttons 
+		pf9="Volver" />
+		
+	<pf9 action="exit" />
+	<return value="13" action="exit"/>
+</trx>
+
+<trx name="configuraImpresora" 
+     title="Configura Impresora" 
+     class="cl.hyh.redpagos.caja.trx.ConfiguraImpresora" 
+     parameter="" >
+    <!--  el parametro lo obtiene de init() o execute() de la variable Datos
+          con nombre 'trxParam' -->
+    <buttons 
+        pf9="Volver" />
+        
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+</trx>
+
+<trx name="inicio" 
+     title="Menú Inicial" >
+     <buttons>
+		 <pf id="1" text="Apertura de Caja"/>
+	     <pf id="2" text="" />
+	     <pf id="3" text="" />
+		 <pf id="4" text=""/>
+	     <pf id="5" text="" />
+		 <pf id="6" text=""/>
+	     <pf id="7" text="" />
+		 <pf id="8" text=""/>
+	     <pf id="9" text="" />
+     </buttons>
+    <pf2 action="trx" name="aperturaAgencia" parameter="" />
+	<pf1 action="trx" name="aperturaCaja" parameter="" />
+	<!--  el parametro lo obtiene de init() o execute() de la variable Datos
+	      con nombre 'btnParam' -->
+</trx>
+
+<trx name="aperturaCaja" 
+     title="Apertura de Cajas" 
+     class="cl.hyh.redpagos.caja.trx.AperturaCaja" 
+     parameter="" >
+	<!--  el parametro lo obtiene de init() o execute() de la variable Datos
+	      con nombre 'trxParam' -->
+	<buttons 
+		pf9="Volver" />
+	<pf9 action="exit" />
+	<return value="11" action="trx" name="menuCajero" replace="true" parameter=""/>
+	<return value="20" action="trx" name="claveSupervisor" />
+	<!--  el parametro lo obtiene de init() o execute() de la variable Datos
+	      con nombre 'raParam' -->
+	<return value="13" action="exit"/>
+</trx>
+
+<trx name="login" 
+     title="Ingreso Sistema" 
+     class="cl.hyh.redpagos.caja.trx.Login" 
+     parameter="" >
+	<return value="11" action="trx" name="menuCajero" replace="true" parameter=""/>
+	<return value="20" action="trx" name="claveSupervisor" />
+	<return value="13" action="exit"/>
+</trx>
+
+<trx name="aperturaAgencia" 
+     title="Apertura de Agencia" 
+     class="cl.hyh.redpagos.caja.trx.AperturaAgencia" 
+     parameter="" >
+    <buttons 
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="11" action="exit"/>
+    <return value="13" action="exit"/>
+</trx>
+
+<trx name="claveSupervisor" 
+     title="Autorización por Supervisor" 
+     class="cl.hyh.redpagos.caja.trx.ClaveSupervisor" 
+     parameter="" >
+	<buttons 
+		pf9="Volver" />
+	<pf9 action="exit" />
+	<!--  se usa htParam de execute() para saber como nos fue
+	      clave: supervisor
+	      valor: 0=falla, 1=ok -->
+	<return value="11" action="exit"/>
+	<return value="15" action="exit"/>
+</trx>
+
+<trx name="menuCajero" 
+     title="Menú de Cajero" >
+	<buttons>
+	    <pf id="1" text="Pagos" />
+	    <pf id="2" text="Recargas" />
+	    <pf id="3" text="Devoluciones" />
+		<pf id="4" text="Cierre Caja" />     
+        <pf id="5" text="Remesa" />
+		<pf id="6" text="Edicion Pago" />
+		<pf id="7" text="Impresion Cierre Anterior" />
+		<!-- cbriones: Se agrega accion a boton 8 -->
+        <pf id="8" text= "Hacer Algo" />		
+		<pf id="9" text="" />
+	</buttons>
+	<pf1 action="trx" name="trv1" />
+	<pf2 action="trx" name="recargaEfectivo" />
+	<pf3 action="trx" name="devoluciones" />
+	<pf4 action="trx" name="cierre" />
+	<pf5 action="trx" name="remesa" />
+    <pf6 action="trx" name="edicionAnterior" />    
+	<pf7 action="trx" name="cierreAnterior" />
+	<!-- cbriones: Se agrega accion a boton 8 -->
+	<pf8 action="trx" name="hacerAlgo" />		
+	<pf9 action="trx" name="" />
+</trx>
+
+
+<!-- cbriones: Se crea una nueva trx para Hacer Algo !!! -->
+
+<trx name="hacerAlgo" 
+     title="Se debe hacer Algo" 
+     preClass="" 
+     class="cl.hyh.redpagos.caja.trx.HacerAlgo">
+      <!-- cbriones: arriba, se define la preclase que genera el carro de compras....-->
+     <!-- cbriones: arriba, se indica la clase que implementa la accion definida..-->
+    <buttons 
+        pf1="Algo 1"
+        pf2="Algo 2"
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <!-- cbriones: al retornar codigo 123, se vuelve a una anterior -->
+    <return value="123" action="exit" />
+     <!-- cbriones: si presiona f1, debiese invocar a "cargar carrito" -->
+    <pf1 action="trx" name="cargarCarrito" replace="true"/>    
+    <pf2 action="trx" name="cierreCajaDia" replace="true"/>
+    <!-- cbriones: si presiona f9, debiese volver a una anterior  ?? -->
+    <pf9 action="exit" />
+</trx>
+<!-- FIN.. cbriones: Se crea una nueva trx para Hacer Algo !!! -->
+
+
+<!-- cbriones: Se crea una nueva trx para Cargar un carrito .. desde Hacer Algo  -->
+
+<trx name="cargarCarrito" 
+     title="Cargar un Carrito" 
+     class="cl.hyh.redpagos.caja.trx.CargarCarrito"
+     preClass="cl.hyh.trx.CreaOperTRV"
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="trx" name="trvSalirRapido" replace="true" />
+    <return value="13" action="exit"/>
+    <return value="20" action="stack" name="trv1,trv2,trv3,trv4,trv5"/>
+    <!-- cbriones: se indica el nombre del carro que se manipulara ?? -->
+    <cart name="shopping" />  
+</trx>
+
+
+
+
+
+<trx name="cierre" 
+     title="Cierre de Cajas" 
+     class="">
+    <buttons 
+        pf1="Cierre Caja Temporal"
+        pf2="Cierre Caja Dia"
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <return value="11" action="exit2" />
+    <pf1 action="trx" name="cierreCaja" replace="true"/>    
+    <pf2 action="trx" name="cierreCajaDia" replace="true"/>
+    <pf9 action="exit" />
+</trx>
+<trx name="configuraCajaSuper" 
+     title="Configurar Caja" 
+     class="cl.hyh.redpagos.caja.trx.ConfiguraCaja">
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="" />
+    <pf9 action="exit" />
+    <return value="13" action="exit" /> <!--  sale 2 para atrás -->
+    <return value="11" action="exit" />
+</trx>
+
+<trx name="reimprimirBoleta" 
+     title="Reimpresión" 
+     class="cl.hyh.redpagos.caja.trx.ReImpresion">
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="" />
+    <return value="11" action="exit" /> <!--  sale 2 para atrás -->
+</trx>
+
+<trx name="cierreAnterior" 
+     title="Impresion Cierre Anterior" 
+     class="cl.hyh.redpagos.caja.trx.TrxCerrarCajaAnterior">
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="" />
+    <return value="11" action="exit" /> <!--  sale 2 para atrás -->
+    <return value="13" action="exit" /> <!--  sale 2 para atrás -->
+</trx>
+
+<trx name="cierreAgencia" 
+     title="Cierre de Agencia" 
+     class="cl.hyh.redpagos.caja.trx.CierreAgencia">
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="" />
+    <pf9 action="exit" />
+    <return value="13" action="exit" />
+    <return value="11" action="exit2" /> <!--  sale 2 para atrás -->
+</trx>
+
+<trx name="cierreCaja" 
+     title="Cierre de Caja" 
+     class="cl.hyh.redpagos.caja.trx.CierreCaja">
+	<buttons 
+	    pf1=""
+		pf2=""
+		pf3=""
+		pf4=""
+		pf5=""
+		pf6=""
+		pf7=""
+		pf8=""
+		pf9="" />
+	<return value="11" action="exit2" /> <!--  sale 2 para atrás -->
+</trx>
+
+<trx name="cierreCajaDia" 
+     title="Cierre de Caja" 
+     class="cl.hyh.redpagos.caja.trx.TrxCerrarCaja"
+     >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="" />
+    <return value="12" action="exit" />
+    <return value="11" action="exit2" /> <!--  sale 2 para atrás -->
+</trx>
+
+<trx name="cambiaClave" 
+     title="Cambio de Clave de Usuario" 
+     class="cl.hyh.redpagos.caja.trx.CambiaClave" 
+     parameter="" >
+	<buttons 
+		pf9="Volver" />
+	<pf9 action="exit" />
+	<return value="13" action="exit"/>
+</trx>
+
+<trx name="cambiaFechaPago" 
+     title="Cambio de Fecha de Pago" 
+     class="cl.hyh.trx.CambiaFechaPago" 
+     parameter="" >
+	<buttons 
+		pf9="Volver" />
+	<pf9 action="exit" />
+	<return value="13" action="exit"/>
+</trx>
+<trx name="cambiaAgencia" 
+     title="Cambio de Agencia" 
+     class="cl.hyh.trx.CambiaAgencia" 
+     parameter="" >
+    <buttons 
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+</trx>
+<trx name="cambiaCajero" 
+     title="Cambio de Cajero" 
+     class="cl.hyh.trx.CambiaCajero" 
+     parameter="" >
+    <buttons 
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+</trx>
+
+<trx name="trv1"
+     title="Venta y Recaudación"
+     preClass="cl.hyh.trx.CreaOperTRV" > 
+	<buttons	    
+		pf1="Saldo Rut"
+		pf2="Saldo Cuenta"
+		pf3=""		
+        pf4="CUT Rut"
+		pf5="CUT Cuenta"
+		pf6="Abono"
+		pf7=""
+		pf8="Vaciar Carro"
+		pf9="Volver"
+		pf10="Efectivo"
+		pf11="Tarjeta"
+		pf12="Otros Medios" />
+	<pf1 action="trx" name="vtrRut"/>    
+    <pf2 action="trx" name="vtrCuenta"/>
+    <pf4 action="trx" name="vtrRutCut"/>    
+    <pf5 action="trx" name="vtrCuentaCut"/>
+	<pf6 action="trx" name="vtrAbono"/>
+	<pf12 action="trx" name="pagoRevisa"/>
+	<pf8 action="trx" name="trvVaciarCarro"/>
+	<pf9 action="trx" name="trvSalir"  />
+	<pf10 action="trx" name="efectivoRapido"  />
+	<pf11 action="trx" name="pagoTarjetaManualDirecto"  />
+	<cart name="shopping" />
+</trx>
+
+<trx name="trv2"
+     title="Venta y Recaudación"
+     preClass="cl.hyh.trx.CreaOperTRV" > 
+	<!--  <buttons	    
+		pf1="Rut"
+		pf2="Cuenta/Contrato"
+		pf3="Boleta/Factura"		
+        pf4="Número Contacto"
+		pf5="Dirección"
+		pf6="Servicio"
+		pf7="Anulación"
+		pf8=""
+		pf9="Volver"
+		pf10="Efectivo"
+		pf11="Cheque al dia"
+		pf12="Otros Medios" />-->
+	<buttons	    
+		pf1=""
+		pf2=""
+		pf3=""		
+        pf4=""
+		pf5=""
+		pf6=""
+		pf7="Anulación"
+		pf8=""
+		pf9="Volver"
+		pf10="Efectivo"
+		pf11="Cheque al dia"
+		pf12="Otros Medios" />
+	<pf1 action="trx" name="vtrRut"/>    
+    <pf2 action="trx" name="vtrCuenta"/>
+    <pf3 action="trx" name="externaGen" parameter="ConsultaProsegur,DocumentoProsegur,true,true,01"/> 
+    <pf4 action="trx" name="externaGen" parameter="ConsultaRetail,DocumentoRetail,true,true,01"/>  
+	<pf4 action="trx" name="externaGen" parameter="ConsultaRetail,DocumentoRetail,true,true,01"/>  
+	<pf6 action="trx" name="externaGen" parameter="ConsultaProsegur,DocumentoProsegur,true,true,01"/>
+	<pf7 action="trx" name="ajuste"/>  
+	<pf12 action="trx" name="pagoRevisa"/>
+	<pf8 action="trx" name=""/>
+	<pf9 action="trx" name="trvSalir"  />
+	<pf10 action="trx" name="efectivoRapido"  />
+	<pf11 action="trx" name="chequeRapido"  />
+	<cart name="shopping" />
+</trx>
+
+<trx name="trv3"
+     title="Venta y Recaudación"
+     preClass="cl.hyh.trx.CreaOperTRV" > 
+	<buttons	    
+		pf1="Saldo Rut"
+		pf2="Saldo Cuenta"
+		pf3=""		
+        pf4="CUT Rut"
+		pf5="CUT Cuenta"
+		pf6="Abono"
+		pf7=""
+		pf8="Vaciar Carro"
+		pf9="Volver"
+		pf10="Confirmar"
+		pf11=""
+		pf12="" />
+	<pf1 action="trx" name="vtrRut"/>    
+    <pf2 action="trx" name="vtrCuenta"/>
+    <pf4 action="trx" name="vtrRutCut"/>    
+    <pf5 action="trx" name="vtrCuentaCut"/>
+	<pf6 action="trx" name="vtrAbono"/>
+	<pf12 action="trx" name="pagoRevisa"/>
+	<pf8 action="trx" name="trvVaciarCarro"/>
+	<pf9 action="trx" name="trvSalir"  />
+	<pf10 action="trx" name="cerrarPago"/>
+	<cart name="shopping" />
+</trx>
+
+<trx name="remesa" 
+     title="Remesa de Cajas" 
+     class="cl.hyh.redpagos.caja.trx.OperRemesa"
+     postClass="">
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit" />
+</trx>
+<trx name="cuadraturaCaja" 
+     title="Cuadratura de Cajas" 
+     class="cl.hyh.redpagos.caja.trx.TrxConsultaTotalesCaja"
+     postClass="">
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit" />
+</trx>
+<trx name="cuadraturaAgencia" 
+     title="Cuadratura Agencia" 
+     class="cl.hyh.redpagos.caja.trx.TrxConsultaTotalesAgencia"
+     postClass="">
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit" />
+</trx>
+
+<trx name="recargaEfectivo" 
+     title="Venta Directa" 
+     preClass="cl.hyh.trx.CreaOperTRV"
+     class="cl.hyh.redpagos.caja.trx.TrxRecarga">
+    <buttons
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <return value="15" action="trx" name="recargaMovistarDirecto" replace="true"/>
+    <pf9 action="trx" name="trvSalirRapido" replace="true"/>
+    <cart name="shopping" />
+</trx>
+<trx name="recargaMovistarDirecto" 
+     title="Recarga VTR" 
+     class="cl.hyh.redpagos.caja.trx.TrxVtrRecarga"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="trx" name="trvSalirRecarga2" replace="true"/>
+    <return value="13" action="exit"/>
+    <return value="14" action="exit"/>
+    <return value="15" action="trx" name="pagoRevisa" replace="true"/>
+    <cart name="shopping"/>    
+</trx>
+<trx name="devoluciones" 
+     title="Devolución Saldo a Favor" 
+     preClass="cl.hyh.trx.CreaOperTRV"
+     class="cl.hyh.redpagos.caja.trx.TrxDevolucion">
+    <buttons
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <return value="13" action="exit"/>
+    <return value="15" action="trx" name="pagoRevisa" replace="true"/>
+    <pf9 action="trx" name="trvSalirRapido" replace="true"/>
+    <cart name="shopping" />
+</trx>
+<trx name="trvSalir" 
+     title="Sale de TRV" 
+     class="cl.hyh.trx.TRVSalir">
+	<buttons 
+	    pf1=""
+		pf2=""
+		pf3=""
+		pf4=""
+		pf5=""
+		pf6=""
+		pf7=""
+		pf8=""
+		pf9="" />
+	<return value="11" action="exit" /> <!--  queda donde está -->
+	<return value="12" action="exit2" /> <!--  sale 2 para atrás -->
+	<cart name="shopping" />
+</trx>
+<trx name="trvVaciarCarro" 
+     title="Vaciar Carro" 
+     class="cl.hyh.trx.TRVVaciar">
+	<buttons 
+	    pf1=""
+		pf2=""
+		pf3=""
+		pf4=""
+		pf5=""
+		pf6=""
+		pf7=""
+		pf8=""
+		pf9="" />
+	<return value="11" action="exit" /> <!--  queda donde está -->
+	<return value="12" action="exit2" /> <!--  sale 2 para atrás -->
+	<cart name="shopping" />
+</trx>
+
+<trx name="trvSalirRapido" 
+     title="Sale de TRV" 
+     class="cl.hyh.trx.TrvSalirRapido">
+	<buttons 
+	    pf1=""
+		pf2=""
+		pf3=""
+		pf4=""
+		pf5=""
+		pf6=""
+		pf7=""
+		pf8=""
+		pf9="" />
+	<return value="11" action="exit" /> <!--  queda donde está -->
+	<return value="12" action="exit" /> <!--  sale 2 para atrás -->
+	<cart name="shopping" />
+</trx>
+<trx name="trvSalirRecarga" 
+     title="Sale de TRV" 
+     class="cl.hyh.trx.TrvSalirRapido">
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="" />
+    <return value="11" action="exit" /> <!--  queda donde está -->
+    <return value="12" action="exit2" /> <!--  sale 2 para atrás -->
+    <cart name="shopping" />
+</trx>
+<trx name="trvSalirRecarga2" 
+     title="Sale de TRV" 
+     class="cl.hyh.trx.TrvSalirRapido">
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="" />
+    <return value="11" action="exit" /> <!--  queda donde está -->
+    <return value="12" action="exit" /> <!--  sale 2 para atrás -->
+    <cart name="shopping" />
+</trx>
+<!--
+******************************************************************* 
+Flujos para pago de documentos Atis por codigo de barra rapidos
+*******************************************************************
+-->
+<trx name="journal"
+     title="Journal"     
+     class="cl.hyh.redpagos.caja.trx.TrxConsultaJournal"
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3="Buscar"
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit"/>
+    <return value="13" action="exit"/>
+    <return value="100" action="trx" name="anularPagos" />
+    <return value="14" action="trx" name="trv3" replace="true" />
+</trx>
+<trx name="anularPagos"
+     title="Anulación"     
+     class="cl.hyh.redpagos.caja.mpago.Tarjeta"
+     postClass="" 
+     parameter="anular">
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="" />
+    <return value="13" action="exit"/>
+</trx>
+<trx name="edicionAnterior" 
+     title="Edición Anterior" 
+     class="cl.hyh.redpagos.caja.trx.EdicionAnterior">
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit"/>
+    <return value="13" action="exit" /> <!--  sale 2 para atrás -->
+    <return value="14" action="trx" name="trv3" replace="true" />
+    <return value="15" action="trx" name="trv3" replace="true" />
+</trx>
+
+<!--
+*******************************************************************
+Flujos genericos para las empresas externas
+*******************************************************************
+-->
+<trx name="externaGen" 
+     title="Pago Empresas Externas" 
+     class="cl.hyh.redpagos.caja.trx.TrxExternas"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="20" action="stack" name="trv1,trv2,trv3,trv4,trv5"/>
+    <cart name="shopping"/>    
+</trx>
+
+<trx name="vtrRut" 
+     title="Pago por Rut" 
+     class="cl.hyh.redpagos.caja.trx.TrxVtrRut"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="20" action="stack" name="trv1,trv2,trv3,trv4,trv5"/>
+    <cart name="shopping"/>    
+</trx>
+<trx name="vtrRutCut" 
+     title="Pago por Rut Cut" 
+     class="cl.hyh.redpagos.caja.trx.TrxVtrRutCut"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="20" action="stack" name="trv1,trv2,trv3,trv4,trv5"/>
+    <cart name="shopping"/>    
+</trx>
+<trx name="vtrCuenta" 
+     title="Pago por Rut" 
+     class="cl.hyh.redpagos.caja.trx.TrxVtrCuenta"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="20" action="stack" name="trv1,trv2,trv3,trv4,trv5"/>
+    <cart name="shopping"/>    
+</trx>
+<trx name="vtrCuentaCut" 
+     title="Pago por Cuenta Cut" 
+     class="cl.hyh.redpagos.caja.trx.TrxVtrCuentaCut"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="20" action="stack" name="trv1,trv2,trv3,trv4,trv5"/>
+    <cart name="shopping"/>    
+</trx>
+<trx name="vtrAbono" 
+     title="Abono a Cuenta" 
+     class="cl.hyh.redpagos.caja.trx.TrxVtrAbono"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="20" action="stack" name="trv1,trv2,trv3,trv4,trv5"/>
+    <cart name="shopping"/>    
+</trx>
+<trx name="ajuste" 
+     title="Anulación por Ajuste" 
+     class="cl.hyh.redpagos.caja.trx.TrxAnular"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="20" action="stack" name="trv1,trv2,trv3,trv4,trv5"/>
+    <cart name="shopping"/>    
+</trx>
+<!--
+*******************************************************************
+Flujos para los medios de Pago
+*******************************************************************
+-->
+<trx name="pagoRevisa" 
+     title="Revisión Pago" 
+     class="cl.hyh.trx.TRVRevisar"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="" />
+    <return value="14" action="trx" name ="pago1" replace="true"/>
+    <return value="13" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="pago1" 
+     title="Ingreso de Medios de Pago" >
+	<buttons>
+        <pf id="1" text="Efectivo" />
+        <pf id="2" text="Cheque" />
+        <pf id="3" text="Cheque a Fecha" />
+        <pf id="4" text="Tarjetas" />
+        <pf id="6" text=""/> 
+        <pf id="5" text=""/>        
+        <pf id="7" text="Cerrar Pago" />              
+        <pf id="8" text="Más" />
+        <pf id="9" text="Volver" />
+    </buttons>
+	<pf1 action="trx" name="pagoEfectivo" />
+	<pf2 action="trx" name="pagoCheque" />
+	<pf3 action="trx" name="pagoChequeFecha" />
+	<pf4 action="trx" name="pagoMulti" />
+	<pf6 action="trx" name="devoEfectivo" />
+	<pf5 action="trx" name="pagoCargado" />
+	<pf7 action="trx" name="cerrarPago" replace ="true"/>
+	<pf8 action="trx" name="pago2" replace="true" />
+	<pf9 action="trx" name="Volver" />
+	<cart name="payment" />
+</trx>
+
+<trx name="pago2" 
+     title="Ingreso de Medios de Pago" >
+	<buttons>
+        <pf id="1" text="Vale Vista" />
+        <pf id="2" text="Tarjetas Manual"/>
+        <pf id="3" text="Canje" profile="b" />
+        <pf id="4" text="Depósito" profile="b" />
+        <pf id="5" text="Pagaré" profile="b" /> 
+        <pf id="6" text="Regularización" profile="b"/>        
+        <pf id="7" text="Cerrar Pago" />              
+        <pf id="8" text="Más" />
+        <pf id="9" text="Volver" />
+    </buttons>
+	<pf1 action="trx" name="pagoVale" />
+	<pf2 action="trx" name="pagoTarjetaManual" />
+	<pf3 action="trx" name="pagoCanje" />
+	<pf4 action="trx" name="pagoDeposito" />
+	<pf5 action="trx" name="pagoPagare" />
+	<pf6 action="trx" name="pagoRegular" />
+	<pf7 action="trx" name="cerrarPago" replace ="true"/>
+	<pf8 action="trx" name="pago1" replace="true" />
+	<pf9 action="exit" />
+	<cart name="payment" />
+</trx>
+
+<trx name="pago" 
+     title="Ingreso de Medios de Pago" >
+    <buttons>
+        <pf id="1" text="Vale Vista" />
+        <pf id="2" text="Canje" profile="b" />
+        <pf id="3" text="Depósito" profile="b" />
+        <pf id="4" text="Pagaré" profile="b" />
+        <pf id="5" text="" />
+        <pf id="6" text="" />
+        <pf id="7" text="Cerrar Pago" />        
+        <pf id="8" text="Más" />
+        <pf id="9" text="Volver" />
+    </buttons>
+    <pf1 action="trx" name="pagoVale" />
+    <pf2 action="trx" name="pagoCanje" />
+    <pf3 action="trx" name="pagoDeposito" />
+    <pf4 action="trx" name="pagoPagare" />        
+    <pf7 action="trx" name="cerrarPago" replace ="true"/>
+    <pf8 action="trx" name="pago1" replace="true" />
+    <pf9 action="exit" />
+    <cart name="payment" />
+</trx>
+<trx name="cerrarPago" 
+     title="CerrarPago" 
+     class="cl.hyh.redpagos.caja.trx.TrxCerrarPago"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="trx" name ="pago1" replace="true"/>
+    <return value="13" action="trx" name ="pago1" replace="true"/>
+    <return value="14" action="exit"/>
+    <return value="15" action="exit2"/>
+    <return value="16" action="exit2"/>
+    <return value="17" action="exit"/>
+    <return value="20" action="exit"/>
+</trx>
+<trx name="pagoCargado" 
+     title="Medios de Pago Cargados" 
+     class="cl.hyh.redpagos.caja.trx.TrxCargarPago"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="trx" name ="pago1" replace="true"/>
+    <return value="13" action="trx" name ="pago1" replace="true"/>
+    <return value="14" action="exit"/>
+    <return value="15" action="exit2"/>
+    <return value="16" action="exit2"/>
+    <return value="17" action="exit"/>
+</trx>
+<trx name="Volver" 
+     title="" 
+     class="cl.hyh.redpagos.caja.mpago.Volver"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="" />
+    <return value="14" action="exit2"/>
+    <return value="13" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="pagoCheque" 
+     title="Pago con Cheque" 
+     class="cl.hyh.redpagos.caja.mpago.Cheque"
+     preClass="" 
+     postClass="" >
+	<buttons 
+	    pf1=""
+		pf2=""
+		pf3=""
+		pf4=""
+		pf5=""
+		pf6=""
+		pf7=""
+		pf8=""
+		pf9="Volver" />
+	<pf9 action="exit" />
+	<return value="13" action="exit"/>
+	<return value="15" action="exit"/>
+	<cart name="payment" />
+</trx>
+<trx name="pagoChequeFecha" 
+     title="Pago con Cheque Fecha" 
+     class="cl.hyh.redpagos.caja.mpago.ChequeFecha"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="15" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="pagoEfectivo" 
+     title="Pago con Efectivo" 
+     class="cl.hyh.redpagos.caja.mpago.Efectivo"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="devoEfectivo" 
+     title="Devolución Efectivo" 
+     class="cl.hyh.redpagos.caja.mpago.DevolucionEfectivo"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="pagoVale" 
+     title="Pago con Vale Vista" 
+     class="cl.hyh.redpagos.caja.mpago.ValeVista"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="pagoCanje" 
+     title="Pago con Canje" 
+     class="cl.hyh.redpagos.caja.mpago.Canje"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="pagoDeposito" 
+     title="Pago con Deposito" 
+     class="cl.hyh.redpagos.caja.mpago.Deposito"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="pagoPagare" 
+     title="Pago con Pagare" 
+     class="cl.hyh.redpagos.caja.mpago.Pagare"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="pagoRegular" 
+     title="Pago de Regularización" 
+     class="cl.hyh.redpagos.caja.mpago.Regularizacion"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="pagoTbkManual" 
+     title="Pago Transbank Manual" 
+     class="cl.hyh.redpagos.caja.mpago.TbkManual"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="15" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="pagoTarjetaManual" 
+     title="Pago Tarjeta Manual" 
+     class="cl.hyh.redpagos.caja.mpago.TarjetaManual"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="15" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="pagoTarjetaManualDirecto" 
+     title="Pago Tarjeta Manual" 
+     class="cl.hyh.redpagos.caja.trx.TrxTarjetaManualDirecto"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="15" action="exit"/>
+    <return value="14" action="stack" name="menuCajero,menuCajero2"/>
+    <cart name="payment" />
+</trx>
+<trx name="pagoCredito" 
+     title="Pago Tarjeta Credito" 
+     class="cl.hyh.redpagos.caja.mpago.TarjetaCreditoTbk"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="15" action="exit"/>
+    <cart name="payment" />
+</trx>
+<trx name="pagoMulti" 
+     title="Pago Tarjeta Múltiples" 
+     class="cl.hyh.redpagos.caja.mpago.Tarjeta"
+     preClass="" 
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit" />
+    <return value="13" action="exit"/>
+    <return value="14" action="stack" name="menuCajero,menuCajero2"/>
+    <return value="15" action="exit"/>
+</trx>
+
+<trx name="efectivoRapido"
+     title="Pago Efectivo"     
+     class="cl.hyh.redpagos.caja.trx.TrxEfectivoDirecto"
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit"/>
+    <return value="13" action="exit"/>
+    <return value="14" action="stack" name="menuCajero,menuCajero2"/>
+</trx>
+
+<trx name="chequeRapido"
+     title="Pago Cheque"     
+     class="cl.hyh.redpagos.caja.trx.TrxChequeDirecto"
+     postClass="" >
+    <buttons 
+        pf1=""
+        pf2=""
+        pf3=""
+        pf4=""
+        pf5=""
+        pf6=""
+        pf7=""
+        pf8=""
+        pf9="Volver" />
+    <pf9 action="exit"/>
+    <return value="13" action="exit"/>
+    <return value="14" action="stack" name="menuCajero,menuCajero2"/>
+</trx>
+
+</transactions>

@@ -1,0 +1,1875 @@
+<services>
+
+<service name="Login" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData" >
+	<input>
+		<field name="Usuario" type="char"/>
+		<field name="Password" type="char"/>
+	</input>
+	<output>
+		<field name="infoCajero" type="char"/>
+	</output>
+</service>
+
+<service name="AperturaCaja" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_OperCajaActualiza" appl="/applData" >
+	<input>
+	</input>
+	<output>
+	</output>
+</service>
+
+
+<service name="AperturaAgencia" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_OperCajaActualiza" appl="/applData" >
+    <input>
+    </input>
+    <output>
+    </output>
+</service>
+
+<service name="CierreCaja" saf="si" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_OperCajaActualiza" appl="/applData" >
+	<input>
+	</input>
+	<output>
+	</output>
+</service>
+
+<service name="CierreAgencia" saf="si" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_OperCajaActualiza" appl="/applData" >
+    <input>
+    </input>
+    <output>
+    </output>
+</service>
+
+<service name="CambioClave" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData" >
+	<input>
+		<field name="Usuario" type="char"/>
+		<field name="PasswordActual" type="char"/>
+		<field name="PasswordNueva" type="char"/>
+	</input>
+	<output>
+		<field name="infoCajero" type="char"/>
+	</output>
+</service>
+
+<service name="ConsultaMovistarCodBarras" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL" appl="/applData">
+	<input>
+		<field name="codBarras" type="long"/>
+	</input>
+	<output>
+		<field name="folio" type="long"/>
+		<field name="monto" type="monto"/>
+		<field name="fechaVencimiento" type="date"/>
+	</output>
+</service>
+
+<!--
+******************************************************************* 
+Servicios para el Journal
+*******************************************************************
+-->
+
+<service name="ConsultaJournal" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_OperCajaConsulta" appl="/applData">
+    <input>    
+    </input>        
+    <output>
+        <record name="Operacion" multiple="yes">
+        	<field name="Caja" type="char"/>
+            <field name="Fecha" type="char"/>
+            <field name="Hora" type="char"/>
+            <field name="NumeroOperacion" type="long"/>
+            <field name="Operacion" type="char"/>
+            <field name="NumeroItem" type="long"/>
+            <field name="Item" type="char"/>
+            <field name="Monto" type="monto"/>
+        </record>
+    </output>
+</service>
+
+<service name="ConsultaJournalOperacion" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.ServicioJournalDetalle" host="$URL_OperCajaConsulta" appl="/applData">
+    <input>
+        <field name="Caja" type="char"/>    
+        <field name="NumeroOperacion" type="long"/>
+    </input>        
+    <output>
+    </output>
+</service>
+
+<service name="ConsultaEdicion" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.ServicioJournalDetalle" host="$URL_OperCajaConsulta" appl="/applData">
+    <input>
+            <field name="Caja" type="char"/>
+            <field name="NumeroOperacion" type="long"/>    
+    </input>        
+    <output>
+    </output>
+</service>
+
+<!--
+******************************************************************* 
+Servicios para el init de la caja
+*******************************************************************
+-->
+
+<service name="InitCaja" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.ServicioInit" host="$URL_OperCajaConsulta" appl="/applData">
+    <input>    
+    </input>
+    <output>
+    </output>
+</service>
+
+<!--
+******************************************************************* 
+Servicios para el carro TRV
+*******************************************************************
+-->
+
+<service name="EnvioTrv" saf="no" type="Notificacion" timeout="15" class="cl.hyh.redpagos.caja.base.ServicioTRV" host="$URL_Notificacion" appl="/applData">
+    <input>    
+    </input>
+    <output>
+        <field name="CodRespuesta" type="num"/>
+    </output>
+</service>
+
+<!--
+******************************************************************* 
+Servicios para el admin TRV
+*******************************************************************
+-->
+
+<service name="EnvioRemesa" saf="no" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.ServicioOper" host="$URL_Actualiza" appl="/applData">
+    <input>
+        <field name="Monto" type="monto"/>
+        <field name="TipoTotal" type="char"/>
+    </input>
+    <output>
+        <field name="CodRespuesta" type="num"/>
+    </output>
+</service>
+
+<service name="ReversaRemesa" saf="no" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Actualiza" appl="/applData">
+    <input>
+        <field name="NumeroOperacion" type="char"/>
+        <field name="Caja" type="char"/> 
+    </input>
+    <output>   
+    </output>
+</service>
+
+<service name="EnvioReversa" saf="no" type="Notificacion" timeout="15" class="cl.hyh.redpagos.caja.base.ServicioOper" host="$URL_Notificacion" appl="/applData">
+    <input>
+        <field name="NumeroOperacion" type="char"/>
+        <field name="Caja" type="char"/>       
+    </input>
+    <output>
+    </output>
+</service>
+
+<service name="EnvioReversaTbk" saf="no" type="Notificacion" timeout="15" class="cl.hyh.redpagos.caja.base.ServicioOper" host="$URL_Notificacion" appl="/applData">
+    <input>
+        <field name="NumeroOperacion" type="char"/>
+        <field name="Caja" type="char"/>
+        <record name="ReversaTbk" multiple="no">
+            <field name="CodAutorizacion" type="char"/>
+            <field name="NumeroSecuencia" type="char"/>
+            <field name="FechaOriginal" type="char"/>
+            <field name="HoraOriginal" type="char"/>
+            <field name="NumeroUnico" type="char"/>
+        </record>
+    </input>
+    <output>
+    </output>
+</service>
+
+<service name="EnvioReversaTarjeta" saf="no" type="Notificacion" timeout="15" class="cl.hyh.redpagos.caja.base.ServicioOper" host="$URL_Notificacion" appl="/applData">
+    <input>
+        <field name="NumeroOperacion" type="char"/>
+        <field name="Caja" type="char"/>
+        <record name="ReversaTbk" multiple="no">
+            <field name="CodigoAutorizacion" type="char"/>
+            <field name="FechaOriginal" type="char"/>
+            <field name="HoraOriginal" type="char"/>
+            <field name="NumeroUnico" type="char"/>
+        </record>
+    </input>
+    <output>
+    </output>
+</service>
+
+<!--
+******************************************************************* 
+Servicios de totales para el admin TRV
+*******************************************************************
+-->
+
+<service name="ConsultaTotalesCaja" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_OperCajaConsulta" appl="/applData">
+    <input> 
+    </input>
+    <output>
+        <record name="Total" multiple="yes">
+            <field name="Concepto" type="char"/>
+            <field name="Cantidad" type="num"/>
+            <field name="Monto" type="monto"/>
+        </record>
+    </output>
+</service>
+
+<service name="ConsultaTotalesAgencia" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_OperCajaConsulta" appl="/applData">
+    <input> 
+    </input>
+    <output>
+        <record name="Total" multiple="yes">
+            <field name="Concepto" type="char"/>
+            <field name="Cantidad" type="num"/>
+            <field name="Monto" type="monto"/>
+        </record>
+    </output>
+</service>
+
+<service name="ConsultaDepositosAgencia" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_OperCajaConsulta" appl="/applData">
+    <input> 
+    </input>
+    <output>
+        <record name="Deposito" multiple="yes">
+            <field name="Concepto" type="char"/>
+            <field name="Cantidad" type="num"/>
+            <field name="Monto" type="monto"/>
+            <field name="NumeroDeposito" type="char"/>
+            <field name="Convenio" type="char"/>
+            <field name="FechaDeposito" type="char"/>
+            <record name="Cheque" multiple="yes">
+                <field name="Banco" type="num"/>
+                <field name="Cuenta" type="char"/>
+                <field name="Serial" type="char"/>
+                <field name="Monto" type="monto"/>
+            </record>
+        </record>
+    </output>
+</service>
+
+<service name="ConsultaBancosDepositos" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_OperCajaConsulta" appl="/applData">
+    <input> 
+    </input>
+    <output>
+        <record name="Banco" multiple="yes">
+            <field name="Codigo" type="num"/>            
+            <record name="Cuenta" multiple="yes">
+                <field name="Numero" type="char"/>
+            </record>
+        </record>
+    </output>
+</service>
+
+<service name="ConsultaDetalleMP" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_OperCajaConsulta" appl="/applData">
+    <input>
+         <field name="TipoMP" type="char"/>
+    </input>
+    <output>
+        <record name="MPCheque" multiple="yes">
+            <field name="Banco" type="num"/>
+            <field name="Sucursal" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="Serial" type="char"/>
+            <field name="Rut" type="char"/>
+            <field name="Monto" type="monto"/>
+            <field name="CodigoAutorizacion" type="char"/>
+            <field name="Titular" type="char"/>
+            <field name="Fecha" type="char"/>
+            <field name="TipoTotal" type="char"/>
+        </record>
+        <record name="MPChequeFecha" multiple="yes">
+            <field name="Banco" type="num"/>
+            <field name="Sucursal" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="Serial" type="char"/>
+            <field name="Rut" type="char"/>
+            <field name="Monto" type="monto"/>
+            <field name="CodigoAutorizacion" type="char"/>
+            <field name="Titular" type="char"/>
+            <field name="Fecha" type="char"/>
+            <field name="Dias" type="num"/>
+            <field name="TipoTotal" type="char"/>
+        </record>
+        <record name="MPValeVista" multiple="yes">
+            <field name="Monto" type="monto"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="Banco" type="char"/>
+            <field name="TipoTotal" type="char"/>
+        </record>
+        <record name="MPDepositoEfectivo" multiple="yes">
+            <field name="Monto" type="monto"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="Banco" type="char"/>
+            <field name="Tipo" type="char"/>
+            <field name="Cantidad" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="FechaDeposito" type="char"/>
+            <field name="Solicitante" type="char"/>
+            <field name="TipoTotal" type="char"/>
+        </record>
+        <record name="MPDepositoCheque" multiple="yes">
+            <field name="Monto" type="monto"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="Banco" type="char"/>
+            <field name="Tipo" type="char"/>
+            <field name="Cantidad" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="FechaDeposito" type="char"/>
+            <field name="Solicitante" type="char"/>
+            <field name="TipoTotal" type="char"/>
+        </record>
+        <record name="MPDepositoValeVista" multiple="yes">
+            <field name="Monto" type="monto"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="Banco" type="char"/>
+            <field name="Tipo" type="char"/>
+            <field name="Cantidad" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="FechaDeposito" type="char"/>
+            <field name="Solicitante" type="char"/>
+            <field name="TipoTotal" type="char"/>
+        </record>
+        <record name="MPPapeletaDeposito" multiple="yes">
+            <field name="Monto" type="monto"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="Banco" type="char"/>
+            <field name="Tipo" type="char"/>
+            <field name="Cantidad" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="FechaDeposito" type="char"/>
+            <field name="Solicitante" type="char"/>
+            <field name="TipoTotal" type="char"/>
+        </record>
+        <record name="TransferenciaElectronica" multiple="yes">
+            <field name="Monto" type="monto"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="Banco" type="char"/>
+            <field name="Tipo" type="char"/>
+            <field name="Cantidad" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="FechaDeposito" type="char"/>
+            <field name="Solicitante" type="char"/>
+            <field name="TipoTotal" type="char"/>
+        </record>
+        <record name="MPPagare" multiple="yes">
+            <field name="Monto" type="monto"/>
+            <field name="NumeroPagare" type="char"/>
+            <field name="FechaPagare" type="char"/>
+            <field name="TipoTotal" type="char"/>
+        </record>
+    </output>
+</service>
+
+<!--
+******************************************************************* 
+Servicios para los PF's de Atis
+*******************************************************************
+-->
+  
+<service name="ConsultaAtisDatosCliente" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+	<input>
+		<field name="Rut" type="char"/>
+		<field name="CodArea" type="char"/>
+		<field name="Telefono" type="char"/>	
+		<field name="ClienteInicioPag" type="num"/>
+		<field name="CuentaInicioPag" type="num"/>	
+	</input>
+	<output>
+	    <record name="DatosCliente" multiple="yes">
+            <field name="Cliente" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="Segmento" type="char"/>
+            <field name="Area" type="char"/>
+            <field name="Telefono" type="char"/>
+            <field name="Rut" type="char"/>
+            <field name="TitularApelPrimer" type="char"/>
+            <field name="TitularApelSegundo" type="char"/>
+            <field name="TitularNombre" type="char"/>
+            <field name="EstadoCuenta" type="char"/>
+            <field name="NombreEstado" type="char"/>
+            <field name="FechaVigencia" type="char"/>
+        </record>   
+        <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="ClienteSiguientePag" type="num"/>
+           <field name="CuentaSiguientePag" type="num"/>
+        </record>
+	</output>
+</service>
+
+<service name="ConsultaAtisCodigoBarra" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+	<input>
+		<field name="CodigoBarra" type="char"/>
+	</input>
+	<output>
+	    <record name="DatosCliente" multiple="no">
+		    <field name="Cliente" type="char"/>
+		    <field name="Cuenta" type="char"/>
+		    <field name="Segmento" type="char"/>
+		    <field name="Area" type="char"/>
+		    <field name="Telefono" type="char"/>
+		    <field name="TitularApelPrimer" type="char"/>
+		    <field name="TitularApelSegundo" type="char"/>
+		    <field name="TitularNombre" type="char"/>
+		</record>
+		<record name="DocumentoAtis" multiple="yes">
+			<field name="DocTipo" type="char"/>
+            <field name="DocNumeroLATAM" type="char"/>
+            <field name="DocSaldo" type="monto"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="CodTrxLatam" type="char"/>
+		</record>
+	</output>
+</service>
+
+<service name="ConsultaAtisMicromatico" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+	<input>
+		<field name="CodArea" type="char"/>
+		<field name="Telefono" type="char"/>
+	</input>
+	<output>	   
+	   <record name="DatosCliente" multiple="no">
+            <field name="Cliente" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="Segmento" type="char"/>
+            <field name="TitularApelPrimer" type="char"/>
+            <field name="TitularApelSegundo" type="char"/>
+            <field name="TitularNombre" type="char"/>
+        </record>
+		<record name="DocumentoAtis" multiple="yes">
+			<field name="DocTipo" type="char"/>
+            <field name="DocNumeroLATAM" type="char"/>
+            <field name="Folio" type="char"/>
+            <field name="DocSaldo" type="monto"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="CodTrxLatam" type="char"/>            
+		</record>
+		<record name="DetalleEmpresa" multiple="yes">
+						<field name="CodEmpresa" type="char"/>
+						<field name="DesEmpresa" type="char"/>
+						<field name="SaldoEmpresa" type="monto"/>
+						<field name="MontoImpugnado" type="monto"/>
+		</record>
+	</output>
+</service>
+
+<service name="ConsultaRecaudadorExt" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+	<input>		
+        <field name="Telefono" type="char"/>	
+        <field name="CodigoArea" type="char"/>
+	</input>
+	<output>	   
+	   <record name="DocumentoRecaudadorExt" multiple="no">
+            <field name="Cliente" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="Segmento" type="char"/>
+            <field name="Area" type="char"/>
+            <field name="Telefono" type="char"/>
+            <field name="TitularApelPrimer" type="char"/>
+            <field name="TitularApelSegundo" type="char"/>
+            <field name="TitularNombre" type="char"/>
+            <field name="CodTrxLatam" type="char"/>	            
+		</record>
+		<record name="DocumentoRecaudadorExterno" multiple="yes">
+            <field name="TipoDocumento" type="char"/> 
+            <field name="NumeroDocumento" type="char"/> 
+            <field name="NumeroFolio" type="char"/>     
+            <field name="FechaEmision" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="Monto" type="monto"/>  
+        </record>
+	</output>
+</service>
+
+<service name="ConsultaAtisClienteCuenta" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Cliente" type="char"/>
+        <field name="Cuenta" type="char"/>
+        <field name="FechaIni" type="char"/>
+        <field name="FechaFin" type="char"/>       
+        <field name="TipoTrx" type="num"/>         
+        <field name="InicioPaginacion" type="char"/>
+    </input>
+    <output>       
+       <record name="DatosCliente" multiple="no">
+            <field name="Cliente" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="Segmento" type="char"/>
+            <field name="Area" type="char"/>
+            <field name="Telefono" type="char"/>
+            <field name="TitularApelPrimer" type="char"/>
+            <field name="TitularApelSegundo" type="char"/>
+            <field name="TitularNombre" type="char"/>
+            <field name="TipoTrx" type="num"/>
+        </record>
+        <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="InicioPaginacion" type="int"/>
+        </record>
+        <record name="DocumentoAtis" multiple="yes">
+            <field name="DocTipo" type="char"/>
+            <field name="DocNumeroLATAM" type="char"/>
+            <field name="DocSaldo" type="monto"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+        </record>
+    </output>
+</service>
+
+<service name="ConsultaAtisCuotas" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Cliente" type="char"/>
+        <field name="Cuenta" type="char"/>
+        <field name="InicioPaginacion" type="char"/>
+        <field name="CodTrxLatam" type="char"/>        
+    </input>
+    <output>       
+       <record name="DatosCliente" multiple="no">
+            <field name="Cliente" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="Segmento" type="char"/>
+            <field name="Area" type="char"/>
+            <field name="Telefono" type="char"/>
+            <field name="TitularApelPrimer" type="char"/>
+            <field name="TitularApelSegundo" type="char"/>
+            <field name="TitularNombre" type="char"/>
+        </record>
+        <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="InicioPaginacion" type="int"/>
+        </record>
+        <record name="DocumentoAtis" multiple="yes">
+            <field name="DocTipo" type="char"/>
+            <field name="DocNumeroLATAM" type="char"/>
+            <field name="DocSaldo" type="monto"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="AcuerdoFinan" type="char"/>
+        </record>
+    </output>
+</service>
+
+<service name="ConsultaAtisNumeroDocumento" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="NumeroDocumento" type="char"/>
+    </input>
+    <output>
+        <record name="DatosCliente" multiple="no">
+            <field name="Cliente" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="Segmento" type="char"/>
+            <field name="Area" type="char"/>
+            <field name="Telefono" type="char"/>
+            <field name="TitularApelPrimer" type="char"/>
+            <field name="TitularApelSegundo" type="char"/>
+            <field name="TitularNombre" type="char"/>
+        </record>
+        <record name="DocumentoAtis" multiple="no">
+            <field name="DocTipo" type="char"/>
+            <field name="DocNumeroLATAM" type="char"/>
+            <field name="DocSaldo" type="monto"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="CodTrxLatam" type="char"/>
+        </record>
+    </output>
+</service>
+
+<service name="ConsultaAtisDevoluciones" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Cliente" type="char"/>
+        <field name="Cuenta" type="char"/>
+        <field name="InicioPaginacion" type="char"/>
+        <field name="CodTrxLatam" type="char"/>   
+    </input>
+    <output>
+        <record name="DatosCliente" multiple="no">
+            <field name="Cliente" type="char"/>
+            <field name="Cuenta" type="char"/>
+            <field name="Segmento" type="char"/>
+            <field name="TitularApelPrimer" type="char"/>
+            <field name="TitularApelSegundo" type="char"/>
+            <field name="TitularNombre" type="char"/>
+            <field name="Rut" type="char"/>
+            <field name="Area" type="char"/>
+            <field name="Telefono" type="char"/>
+        </record>
+        <record name="DocumentoAtis" multiple="yes">
+            <field name="DocTipo" type="char"/>
+            <field name="DocNumeroLATAM" type="char"/>
+            <field name="DocSaldo" type="monto"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+        </record>
+        <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="InicioPaginacion" type="int"/>
+        </record>
+    </output>
+</service>
+
+<service name="DevolucionAtis" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Actualiza" appl="/applData">
+    <input>
+        <field name="FechaDevolucion" type="char"/>
+        <field name="Cliente" type="char"/>
+        <field name="Cuenta" type="char"/>
+        <field name="CodArea" type="char"/>
+        <field name="Telefono" type="char"/>
+        <field name="Rut" type="char"/>
+        <field name="CodTrxLatam" type="char"/> 
+        <field name="CodigoMoneda" type="char"/>
+        <field name="SecuenciaOp" type="char"/>
+        <field name="DocTipo" type="char"/>
+        <field name="DocNumeroLATAM" type="char"/>
+        <field name="FechaEmision" type="char"/>
+        <field name="FechaVencimiento" type="char"/>
+        <field name="Monto" type="monto"/>
+        <field name="MontoDevolucion" type="monto"/>
+    </input>
+    <output>
+        <record name="DocumentoDevolucionAtis" multiple="no">
+                <field name="CodOperLatam" type="char"/>
+        </record>        
+    </output>
+</service>
+
+<service name="ReversaDevolucionAtis" saf="si" cola="colaAtis" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Actualiza" appl="/applData">
+    <input>
+        <field name="FechaDevolucion" type="char"/>
+        <field name="FechaRendicion" type="char"/>
+        <field name="CodigoOperacion" type="char"/>
+        <field name="CodigoOperacionRev" type="char"/>
+        <field name="Cliente" type="char"/>
+        <field name="Cuenta" type="char"/>
+        <field name="CodArea" type="char"/>
+        <field name="Telefono" type="char"/>
+        <field name="Rut" type="char"/>
+        <field name="CodTrxLatam" type="char"/> 
+        <field name="CodigoMoneda" type="char"/>
+        <field name="SecuenciaOp" type="char"/>
+        <field name="SecuenciaOpRev" type="char"/>
+        <field name="DocTipo" type="char"/>
+        <field name="DocNumeroLATAM" type="char"/>
+        <field name="FechaEmision" type="char"/>
+        <field name="FechaVencimiento" type="char"/>
+        <field name="Monto" type="monto"/>
+        <field name="MontoDevolucion" type="monto"/>
+    </input>
+    <output>
+        <record name="DocumentoDevolucionAtis" multiple="no">
+                <field name="CodOperLatam" type="char"/>
+        </record>     
+    </output>
+</service>
+
+<!--
+******************************************************************* 
+Servicios para los PF's de Telefonica
+*******************************************************************
+--> 
+
+<service name="ConsultaTelefonicaEmpresas" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>        
+        <field name="Rut" type="char"/>
+        <field name="TipoDocumento" type="char"/>
+        <field name="NumeroDocumento" type="char"/>
+        <field name="InicioPaginacion" type="char"/>
+    </input>
+    <output>
+        <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="InicioPaginacion" type="int"/>
+        </record>
+        <record name="DocumentoTelefonicaEmpresas" multiple="yes">
+        		<field name="CodigoEmpresa" type="char"/>
+        		<field name="CodigoCliente" type="char"/>
+        		<field name="Rut" type="char"/>
+        		<field name="Cliente" type="char"/>
+        		<field name="TipoDocumento" type="char"/>        
+                <field name="NumeroDocumento" type="char"/>
+                <field name="NumFolio" type="char"/>
+                <field name="BoletaFlexible" type="char"/>
+                <field name="Servicio" type="char"/>
+                <field name="Cut" type="char"/>
+    			<field name="MontoCut" type="monto"/>
+                <field name="MontoFacturado" type="monto"/>
+                <field name="MontoSaldo" type="monto"/>
+                <field name="FechaEmision" type="char"/>         
+                <field name="FechaVencimiento" type="char"/>
+        </record>
+    </output>
+</service>
+<service name="ConsultaTelefonicaEmpresasDetalle" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>        
+        <field name="movil" type="char"/>
+    </input>
+    <output>
+        <record name="DocumentoTelefonicaEmpresasDetalle" multiple="yes">
+        		<field name="CodigoEmpresa" type="char"/>
+        		<field name="CodigoCliente" type="char"/>
+        		<field name="Rut" type="char"/>
+        		<field name="Cliente" type="char"/>
+        		<field name="TipoDocumento" type="char"/>        
+                <field name="NumeroDocumento" type="char"/>
+                <field name="NumFolio" type="char"/>
+                <field name="Movil" type="char"/>
+                <field name="BoletaFlexible" type="char"/>
+                <field name="Servicio" type="char"/>
+                <field name="Cut" type="char"/>
+    			<field name="MontoCut" type="monto"/>
+                <field name="MontoFacturado" type="monto"/>
+                <field name="MontoSaldo" type="monto"/>
+                <field name="FechaEmision" type="char"/>         
+                <field name="FechaVencimiento" type="char"/>
+        </record>
+    </output>
+</service>
+<!--
+******************************************************************* 
+Servicios para los PF's de Publiguias
+*******************************************************************
+--> 
+
+<service name="ConsultaPubliguias" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Rut" type="char"/>
+        <field name="TipoDocumento" type="char"/>
+        <field name="NumeroDocumento" type="char"/>
+        <field name="InicioPaginacion" type="char"/>        
+    </input>
+    <output>
+        <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="InicioPaginacion" type="num"/>
+        </record>
+        <record name="DocumentoPubliguias" multiple="yes">
+        	<field name="CodigoEmpresa" type="char"/>
+            <field name="Rut" type="char"/>
+            <field name="Cliente" type="char"/>
+            <field name="MontoFacturado" type="monto"/>
+            <field name="MontoSaldo" type="monto"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="NumFolio" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="TipoDocumento" type="char"/>
+        </record>
+    </output>
+</service> 
+
+<!--
+******************************************************************* 
+Servicios para los PF's de Facturas Telefonica
+*******************************************************************
+--> 
+
+<service name="ConsultaTelefonica" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Rut" type="char"/>
+        <field name="TipoDocumento" type="char"/>
+        <field name="NumeroDocumento" type="char"/>
+        <field name="InicioPaginacion" type="char"/>        
+    </input>
+    <output>
+        <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="InicioPaginacion" type="num"/>
+        </record>
+        <record name="DocumentoTelefonica" multiple="yes">
+            <field name="CodigoEmpresa" type="char"/>        
+            <field name="Rut" type="char"/>
+            <field name="Cliente" type="char"/>
+            <field name="MontoFacturado" type="monto"/>
+            <field name="MontoSaldo" type="monto"/>
+            <field name="NumFolio" type="char"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="TipoDocumento" type="char"/>
+        </record>
+    </output>
+</service> 
+<!--
+******************************************************************* 
+Servicios para los PF's de Guias Telefonica
+*******************************************************************
+--> 
+
+<service name="ConsultaGuias" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Rut" type="char"/>
+        <field name="TipoDocumento" type="char"/>
+        <field name="NumeroDocumento" type="char"/>
+        <field name="InicioPaginacion" type="char"/>        
+    </input>
+    <output>
+        <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="InicioPaginacion" type="num"/>
+        </record>
+        <record name="DocumentoGuias" multiple="yes">
+        	<field name="CodigoEmpresa" type="char"/>        
+            <field name="Rut" type="char"/>
+            <field name="Cliente" type="char"/>
+            <field name="MontoFacturado" type="monto"/>
+            <field name="MontoSaldo" type="monto"/>
+            <field name="NumFolio" type="char"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="TipoDocumento" type="char"/>
+        </record>
+    </output>
+</service> 
+<!--
+******************************************************************* 
+Servicios para los PF's de Prosegur
+*******************************************************************
+--> 
+
+<service name="ConsultaProsegur" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Rut" type="char"/>
+        <field name="TipoDocumento" type="char"/>
+        <field name="NumeroDocumento" type="char"/>
+        <field name="InicioPaginacion" type="char"/>        
+    </input>
+    <output>
+        <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="InicioPaginacion" type="num"/>
+        </record>
+        <record name="DocumentoProsegur" multiple="yes">
+        	<field name="CodigoEmpresa" type="char"/>        
+            <field name="Rut" type="char"/>
+            <field name="Cliente" type="char"/>
+            <field name="MontoFacturado" type="monto"/>
+            <field name="MontoSaldo" type="monto"/>
+            <field name="NumFolio" type="char"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="TipoDocumento" type="char"/>
+        </record>
+    </output>
+</service> 
+<!--
+******************************************************************* 
+Servicios para la consulta Globus
+*******************************************************************
+--> 
+ 
+<service name="ConsultaGlobus" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Rut" type="char"/>
+        <field name="TipoDocumento" type="char"/>
+        <field name="NumeroDocumento" type="char"/>
+        <field name="InicioPaginacion" type="char"/>
+    </input>
+    <output>
+        <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="InicioPaginacion" type="int"/>
+        </record>
+        <record name="DocumentoGlobus" multiple="yes">
+        	<field name="CodigoEmpresa" type="char"/>        
+            <field name="Rut" type="char"/>
+            <field name="Cliente" type="char"/>
+            <field name="MontoFacturado" type="monto"/>
+            <field name="MontoSaldo" type="monto"/>
+            <field name="NumFolio" type="char"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="TipoDocumento" type="char"/>
+        </record>
+    </output>
+</service> 
+
+<!--
+******************************************************************* 
+Servicios para la consulta Terra
+*******************************************************************
+--> 
+ 
+<service name="ConsultaTerra" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Rut" type="char"/>
+        <field name="TipoDocumento" type="char"/>        
+        <field name="NumeroDocumento" type="char"/>
+        <field name="InicioPaginacion" type="char"/>
+    </input>
+    <output>
+        <record name="Paginacion" multiple="no">
+        	<field name="CodigoEmpresa" type="char"/>        
+        	<field name="IndicaPaginacion" type="char"/>
+           	<field name="InicioPaginacion" type="int"/>
+        </record>
+        <record name="DocumentoTerra" multiple="yes">
+            <field name="Rut" type="char"/>
+            <field name="Cliente" type="char"/>
+            <field name="MontoFacturado" type="monto"/>
+            <field name="MontoSaldo" type="monto"/>
+            <field name="NumFolio" type="char"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="TipoDocumento" type="char"/>
+        </record>
+    </output>
+</service> 
+
+<!--
+******************************************************************* 
+Servicios para la consulta Retail
+*******************************************************************
+--> 
+ 
+<service name="ConsultaRetail" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Rut" type="char"/>
+        <field name="TipoDocumento" type="char"/>        
+        <field name="NumeroDocumento" type="char"/>
+        <field name="InicioPaginacion" type="char"/>
+    </input>
+    <output>
+        <record name="Paginacion" multiple="no">
+            <field name="CodigoEmpresa" type="char"/>        
+            <field name="IndicaPaginacion" type="char"/>
+            <field name="InicioPaginacion" type="int"/>
+        </record>
+        <record name="DocumentoRetail" multiple="yes">
+            <field name="Rut" type="char"/>
+            <field name="Cliente" type="char"/>
+            <field name="MontoFacturado" type="monto"/>
+            <field name="MontoSaldo" type="monto"/>
+            <field name="NumFolio" type="char"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="TipoDocumento" type="char"/>
+        </record>
+    </output>
+</service> 
+
+<!--
+******************************************************************* 
+Servicios para la consulta CTC Mundo
+*******************************************************************
+--> 
+ 
+<service name="ConsultaMundo" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Rut" type="char"/>
+        <field name="TipoDocumento" type="char"/>        
+        <field name="NumeroDocumento" type="char"/>
+        <field name="InicioPaginacion" type="char"/>
+    </input>
+    <output>
+        <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="InicioPaginacion" type="int"/>
+        </record>
+        <record name="DocumentoMundo" multiple="yes">
+            <field name="Rut" type="char"/>
+            <field name="Cliente" type="char"/>
+            <field name="MontoFacturado" type="monto"/>
+            <field name="MontoSaldo" type="monto"/>
+            <field name="NumFolio" type="char"/>
+            <field name="NumeroDocumento" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="FechaEmision" type="char"/>
+            <field name="TipoDocumento" type="char"/>
+        </record>
+    </output>
+</service> 
+
+<!--
+******************************************************************* 
+Servicios para los PF's de Movistar Larga Distancia
+*******************************************************************
+--> 
+<service name="ConsultaMovistarDist" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Rut" type="char"/>
+        <field name="TipoDocumento" type="char"/>        
+        <field name="NumeroDocumento" type="char"/>
+        <field name="InicioPaginacion" type="char"/>
+    </input>
+    <output>
+        <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="InicioPaginacion" type="num"/>
+        </record>
+        <record name="DocumentoMovistarDist" multiple="yes">
+        	<field name="Rut" type="char"/>
+        	<field name="Cliente" type="char"/>
+            <field name="Monto" type="monto"/>
+            <field name="MontoSaldo" type="monto"/>
+            <field name="NumFolio" type="char"/>
+            <field name="MontoFacturado" type="monto"/>
+            <field name="TipoDocumento" type="char"/>    
+            <field name="NumeroDocumento" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="FechaEmision" type="char"/>
+        </record>
+    </output>
+</service>
+
+<service name="ConsultaMovistar" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Celular" type="char"/>
+        <field name="Cliente" type="char"/>
+        <field name="InicioPaginacion" type="char"/>
+    </input>
+    <output>
+    <record name="Paginacion" multiple="no">
+           <field name="IndicaPaginacion" type="char"/>
+           <field name="InicioPaginacion" type="num"/>
+    </record>    
+        <record name="DocumentoMovistar" multiple="yes">
+            <field name="OrigenConsulta" type="char"/> 
+        	<field name="CodigoEmpresa" type="char"/> 
+            <field name="TipoDocumento" type="char"/>            
+            <field name="NumeroDocumento" type="char"/>        
+            <field name="Folio" type="char"/>
+            <field name="Celular" type="long"/>
+            <field name="Cliente" type="char"/>
+            <field name="FechaVencimiento" type="char"/>
+            <field name="FechaEmision" type="char"/>            
+            <field name="MontoFacturado" type="monto"/>
+            <field name="MontoSaldo" type="monto"/>        
+        </record>
+    </output>
+</service>
+
+<service name="ConsultaMovistarPreAutorizacion" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Telefono" type="char"/>
+        <field name="Monto" type="monto"/>
+        <field name="NumeroSecuencia" type="num"/>
+        <field name="Fecha" type="char"/>
+        <field name="Hora" type="char"/>
+        <field name="ModoIngreso" type="char" default="001"/>
+        <field name="NII" type="char"/>
+        <field name="PosCondition" type="char" default="001"/>
+        <field name="IdTerminal" type="char"/>
+        <field name="IdEmpresa" type="char"/>
+        <field name="TipoTerminal" type="num" default="100"/>
+        <field name="TipoPago" type="num" default="001"/>
+        <field name="CodVendedor" type="char"/>
+        <field name="PinDistribuidor" type="char"/>
+        <field name="CodProducto" type="char"/>
+        <field name="CodUbicacion" type="char"/>
+    </input>
+    <output>
+        <record name="DocumentoRecarga" multiple="no">
+            <field name="Telefono" type="char"/>
+            <field name="Monto" type="monto"/>
+            <field name="NumeroSecuencia" type="num"/>
+            <field name="Fecha" type="char"/>
+            <field name="Hora" type="char"/>
+            <field name="CodAprobacion" type="char"/>
+            <field name="CodRespuesta" type="char"/>
+            <field name="IdTerminal" type="char"/>
+            <field name="IdEmpresa" type="char"/>
+        </record>
+    </output>
+</service>
+
+<service name="RecargaOnline" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Actualiza" appl="/applData">
+    <input>
+        <field name="Telefono" type="char"/>
+        <field name="Monto" type="monto"/>
+        <field name="NumeroSecuencia" type="num"/>
+        <field name="Fecha" type="char"/>
+        <field name="Hora" type="char"/>
+        <field name="ModoIngreso" type="char" default="001"/>
+        <field name="NII" type="long"/>
+        <field name="PosCondition" type="char" default="001"/>
+        <field name="CodAprobacion" type="num"/>
+        <field name="IdTerminal" type="char"/>
+        <field name="IdEmpresa" type="char"/>
+        <field name="TipoTerminal" type="num" default="100"/>
+        <field name="TipoPago" type="num" default="001"/>
+        <field name="CodVendedor" type="char"/>
+        <field name="PinDistribuidor" type="char"/>
+        <field name="CodProducto" type="char"/>
+        <field name="CodUbicacion" type="char"/>
+    </input>
+    <output>
+        <record name="DocumentoRecarga" multiple="no">
+            <field name="Telefono" type="char"/>
+            <field name="Monto" type="monto"/>
+            <field name="NumeroSecuencia" type="num"/>
+            <field name="Fecha" type="char"/>
+            <field name="Hora" type="char"/>
+            <field name="IdTrx" type="char"/>
+            <field name="CodRespuesta" type="char"/>
+            <field name="IdTerminal" type="char"/>
+            <field name="IdEmpresa" type="char"/>
+        </record>
+    </output>
+</service>
+
+<service name="VentaTLP" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="CodProcesamiento" type="char" default="500000"/>
+        <field name="Monto" type="monto"/>
+		<field name="CorrelativoTerminal" type="num"/>
+		<field name="FechaYHora" type="char"/>
+		<field name="CodigoFuncion" type="char" default="260"/>
+		<field name="CodigoAdquiriente" type="char" default="90.430.000-4"/>
+		<field name="IdentificacionTerminal" type="char"/>
+		<field name="CodigoComercio" type="char"/>
+		<field name="TipoMoneda" type="char" default="152"/>
+		<field name="CodigoAgente" type="char"/>
+    </input>
+    <output>
+        <record name="DocumentoVentaTLP" multiple="no">
+    		<field name="Monto" type="monto"/>
+    		<field name="CorrelativoTerminal" type="num"/>
+    		<field name="FechaYHora" type="char"/>
+    		<field name="FechaContable" type="char"/>
+    		<field name="CodigoAdquirente" type="char"/>
+    		<field name="NumRefRecuperacion" type="num"/>
+    		<field name="CodigoAprobacion" type="char"/>
+    		<field name="CodigoRespuesta" type="num"/>
+    		<field name="IdentificacionTerminal" type="char"/>
+    		<field name="CodigoComercio" type="char"/>
+    		<field name="CodigoAgente" type="char"/>
+    		<field name="GlosaError" type="char"/>
+    		<field name="FechaVencimientoTLP" type="char"/>
+    		<field name="DiasExpiracionTLP" type="num"/>
+    		<field name="PinTLP" type="num"/>
+    		<field name="SerieTLP" type="num"/>
+    		<field name="DatosPublicidad" type="char"/>
+		</record>
+    </output>
+</service>
+
+<service name="ReversaVentaTLP" cola="colaTE" saf="si" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="CodProcesamiento" type="char" default="500000"/>
+        <field name="Monto" type="monto"/>
+        <field name="CorrelativoTerminal" type="num"/>
+        <field name="FechaYHora" type="char"/>
+        <field name="CodigoFuncion" type="char" default="260"/>
+        <field name="CodigoAdquiriente" type="char" default="90.430.000-4"/>
+        <field name="IdentificacionTerminal" type="char"/>
+        <field name="CodigoComercio" type="char"/>
+        <field name="TipoMoneda" type="char"/>
+        <field name="CodigoAgente" type="char"/>
+    </input>
+    <output>
+        <record name="DocumentoVentaTLP" multiple="no">
+    		<field name="Monto" type="num"/>
+    		<field name="CorrelativoTerminal" type="num"/>
+    		<field name="FechaYHora" type="char"/>
+    		<field name="FechaContable" type="char"/>
+    		<field name="CodigoAdquirente" type="char"/>
+    		<field name="NumRefRecuperacion" type="num"/>
+    		<field name="CodigoAprobacion" type="char"/>
+    		<field name="CodigoRespuesta" type="num"/>
+    		<field name="IdentificacionTerminal" type="char"/>
+    		<field name="CodigoComercio" type="char"/>
+    		<field name="GlosaError" type="char"/>
+    		<field name="FechaVencimientoTLP" type="char"/>
+    		<field name="DiasExpiracionTLP" type="num"/>
+    		<field name="PinTLP" type="num"/>
+    		<field name="SerieTLP" type="num"/>
+    		<field name="DatosPublicidad" type="char"/>
+		</record>
+				
+    </output>
+</service>
+
+<service name="ConsultaLSE" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="CodProcesamiento" type="char" default="300000"/>
+		<field name="CorrelativoTerminal" type="num"/>
+		<field name="FechaYHora" type="char"/>
+        <field name="CodigoFuncion" type="char" default="263"/>
+        <field name="CodigoAdquiriente" type="char" default="90.430.000-4"/>
+        <field name="IdentificacionTerminal" type="char"/>
+        <field name="CodigoComercio" type="char"/>
+        <field name="TipoMoneda" type="char"/>
+        <field name="CodigoAgente" type="char"/>
+		<field name="Telefono" type="char"/>
+    </input>
+    <output>
+        <record name="DocumentoConsultaLSE" multiple="no">
+    		<field name="CorrelativoTerminal" type="num"/>
+    		<field name="FechaYHora" type="char"/>
+    		<field name="FechaContable" type="char"/>
+    		<field name="CodigoAdquirente" type="char"/>
+    		<field name="NumRefRecuperacion" type="num"/>
+    		<field name="CodigoRespuesta" type="num"/>
+    		<field name="IdentificacionTerminal" type="char"/>
+    		<field name="CodigoComercio" type="char"/>
+	        <field name="CodigoAgente" type="char"/>
+    		<field name="GlosaError" type="char"/>
+    		<field name="Cuenta" type="char"/>
+    		<field name="EstadoCliente" type="char"/>
+    		<field name="EstadoMCTAS" type="char"/>
+    		<field name="GlosaEstado" type="char"/>
+    		<field name="CostoActual" type="num"/>
+    		<field name="SaldoLlamadas" type="num"/>
+    		<field name="SaldoAdeudado" type="num"/>
+    		<field name="FechaUltPago" type="num"/>
+    		<field name="FechaSigPago" type="num"/>
+    		<field name="Promocion" type="char"/>
+    		<field name="PromoPorcAdic" type="num"/>
+    		<field name="PromoPorcBase" type="num"/>
+    		<field name="PromoMensaje" type="char"/>
+    		<field name="Concurso" type="char"/>
+    		<field name="ConcursoCodigo" type="char"/>
+    		<field name="Plan" type="char"/>
+    		<field name="Servicio" type="char"/>
+    		<field name="FolioLFacil" type="num"/>
+    		<field name="PermiteCambioPlan" type="char"/>
+    		<field name="CantidadPlanes" type="num"/>
+    		<record name="Planes" multiple="yes">
+    			<field name="TipoServicio" type="char"/>
+    			<field name="CodigoPlan" type="char"/>
+    			<field name="CostoPlan" type="monto"/>
+    			<field name="Tramo" type="char"/>
+    			<field name="Promocion" type="char"/>
+    			<field name="PorcAdic" type="num"/>
+    			<field name="PorcBase" type="num"/>
+    		</record>
+    		<field name="DatosPublicidad" type="char"/>
+		</record>				
+    </output>
+</service>
+
+<service name="CargaLSE" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="CodProcesamiento" type="char" default="500000"/>    
+        <field name="Monto" type="monto"/>
+		<field name="CorrelativoTerminal" type="num"/>
+		<field name="FechaYHora" type="char"/>
+		<field name="CodigoFuncion" type="char" default="262"/>
+        <field name="CodigoAdquiriente" type="char" default="90.430.000-4"/>
+        <field name="IdentificacionTerminal" type="char"/>
+        <field name="CodigoComercio" type="char"/>
+        <field name="TipoMoneda" type="char"/>
+        <field name="CodigoAgente" type="char"/>
+		<field name="Telefono" type="char"/>
+    </input>
+    <output>
+        <record name="DocumentoCargaLSE" multiple="no">
+    		<field name="Monto" type="monto"/>
+    		<field name="CorrelativoTerminal" type="num"/>
+    		<field name="FechaYHora" type="char"/>
+    		<field name="FechaContable" type="char"/>
+    		<field name="CodigoAdquirente" type="char"/>
+    		<field name="NumRefRecuperacion" type="num"/>
+    		<field name="CodigoAprobacion" type="char"/>
+    		<field name="CodigoRespuesta" type="num"/>
+    		<field name="IdentificacionTerminal" type="char"/>
+    		<field name="CodigoComercio" type="char"/>
+    		<field name="CodigoAgente" type="char"/>
+    		<field name="GlosaError" type="char"/>
+    		<field name="Cuenta" type="char"/>
+    		<field name="MontoAdicional" type="num"/>
+    		<field name="MontoPago" type="num"/>
+    		<field name="EstadoCliente" type="char"/>
+    		<field name="EstadoMCTAS" type="char"/>
+    		<field name="GlosaEstado" type="char"/>
+    		<field name="CostoPlanActual" type="num"/>
+    		<field name="SaldoLlamadas" type="num"/>
+    		<field name="SaldoAdeudado" type="num"/>
+    		<field name="FechaUltPago" type="char"/>
+    		<field name="FechaSigPago" type="char"/>
+    		<field name="FolioLFacil" type="num"/>
+    		<field name="Promocion" type="char"/>
+    		<field name="PromoPorcAdicional" type="num"/>
+    		<field name="PromoPorcBase" type="num"/>
+    		<field name="ConcursoGanador" type="char"/>
+    		<field name="ConcursoCodigo" type="char"/>
+    		<field name="ConcursoGlosa" type="char"/>
+    		<field name="Plan" type="char"/>
+    		<field name="Servicio" type="char"/>
+    		<field name="DatosPublicidad" type="char"/>
+		</record>				
+    </output>
+</service>
+<service name="ReversaCargaLSE" saf="si" cola="colaTE" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="CodProcesamiento" type="char" default="500000"/>    
+        <field name="Monto" type="monto"/>
+        <field name="CorrelativoTerminal" type="num"/>
+        <field name="FechaYHora" type="char"/>
+        <field name="CodigoFuncion" type="char" default="262"/>
+        <field name="CodigoAdquiriente" type="char" default="90.430.000-4"/>
+        <field name="IdentificacionTerminal" type="char"/>
+        <field name="CodigoComercio" type="char"/>
+        <field name="TipoMoneda" type="char"/>
+        <field name="CodigoAgente" type="char"/>
+        <field name="Telefono" type="char"/>
+    </input>
+    <output>
+        <record name="DocumentoReversaCargaLSE" multiple="no">
+    		<field name="Monto" type="monto"/>
+    		<field name="CorrelativoTerminal" type="num"/>
+    		<field name="FechaYHora" type="char"/>
+    		<field name="FechaContable" type="char"/>
+    		<field name="CodigoAdquirente" type="char"/>
+    		<field name="NumRefRecuperacion" type="num"/>
+    		<field name="CodigoAprobacion" type="char"/>
+    		<field name="CodigoRespuesta" type="num"/>
+    		<field name="IdentificacionTerminal" type="char"/>
+    		<field name="CodigoComercio" type="char"/>
+    		<field name="CodigoAgente" type="char"/>
+    		<field name="GlosaError" type="char"/>
+    		<field name="Cuenta" type="char"/>
+    		<field name="EstadoCliente" type="char"/>
+    		<field name="EstadoMCTAS" type="char"/>
+    		<field name="GlosaEstado" type="char"/>
+    		<field name="SaldoAdeudado" type="num"/>
+    		<field name="FechaUltPago" type="num"/>
+    		<field name="FechaSigPago" type="num"/>
+    		<field name="FolioLFacil" type="num"/>
+    		<field name="Plan" type="char"/>
+    		<field name="Servicio" type="char"/>
+    		<field name="DatosPublicidad" type="char"/>		
+		</record>		
+    </output>
+</service>
+
+<service name="CambioPlanLSE" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="CodProcesamiento" type="char" default="500000"/>    
+        <field name="Monto" type="monto"/>
+        <field name="CorrelativoTerminal" type="num"/>
+        <field name="FechaYHora" type="char"/>
+        <field name="CodigoFuncion" type="char" default="263"/>
+        <field name="CodigoAdquiriente" type="char" default="90.430.000-4"/>
+        <field name="IdentificacionTerminal" type="char"/>
+        <field name="CodigoComercio" type="char"/>
+        <field name="TipoMoneda" type="char"/>
+        <field name="CodigoAgente" type="char"/>
+		<field name="Telefono" type="char"/>
+		<field name="CodigoPlanNuevo" type="char"/>
+		<field name="CodigoServicioNuevo" type="char"/>
+    </input>
+    <output>
+        <record name="DocumentoCambioPlanLSE" multiple="no">
+    		<field name="Monto" type="monto"/>
+    		<field name="CorrelativoTerminal" type="num"/>
+    		<field name="FechaYHora" type="char"/>
+    		<field name="FechaContable" type="char"/>
+    		<field name="CodigoAdquirente" type="char"/>
+    		<field name="NumRefRecuperacion" type="num"/>
+    		<field name="CodigoAprobacion" type="char"/>
+    		<field name="CodigoRespuesta" type="num"/>
+    		<field name="IdentificacionTerminal" type="char"/>
+    		<field name="CodigoComercio" type="char"/>
+    		<field name="CodigoAgente" type="char"/>
+    		<field name="GlosaError" type="char"/>
+    		<field name="Cuenta" type="char"/>
+    		<field name="MontoAdicional" type="num"/>
+    		<field name="EstadoCliente" type="char"/>
+    		<field name="EstadoMCTAS" type="char"/>
+    		<field name="GlosaEstado" type="char"/>
+    		<field name="CostoPlanActual" type="monto"/>
+    		<field name="SaldoLlamadas" type="num"/>
+    		<field name="SaldoAdeudado" type="num"/>
+    		<field name="FechaUltPago" type="char"/>
+    		<field name="FechaSigPago" type="char"/>
+    		<field name="FolioLFacil" type="num"/>
+    		<field name="Promocion" type="char"/>
+    		<field name="PromoPorcAdicional" type="num"/>
+    		<field name="PromoPorcBase" type="num"/>
+    		<field name="ConcursoGanador" type="char"/>
+    		<field name="ConcursoCodigo" type="char"/>
+    		<field name="ConcursoGlosa" type="char"/>
+    		<field name="Plan" type="char"/>
+    		<field name="Servicio" type="char"/>
+    		<field name="DatosPublicidad" type="char"/>	
+		</record>			
+    </output>
+</service>
+
+<service name="ReversaCambioPlanLSE" cola="colaTE" saf="si" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="CodProcesamiento" type="char" default="500000"/>    
+        <field name="Monto" type="monto"/>
+        <field name="CorrelativoTerminal" type="num"/>
+        <field name="FechaYHora" type="char"/>
+        <field name="CodigoFuncion" type="char" default="263"/>
+        <field name="CodigoAdquiriente" type="char" default="90.430.000-4"/>
+        <field name="IdentificacionTerminal" type="char"/>
+        <field name="CodigoComercio" type="char"/>
+        <field name="TipoMoneda" type="char"/>
+        <field name="CodigoAgente" type="char"/>
+        <field name="Telefono" type="char"/>
+        <field name="CodigoPlanNuevo" type="char"/>
+        <field name="CodigoServicioNuevo" type="char"/>
+    </input>
+    <output>
+        <record name="DocumentoReversaCambioPlanLSE" multiple="no">
+    		<field name="Monto" type="monto"/>
+    		<field name="CorrelativoTerminal" type="num"/>
+    		<field name="FechaYHora" type="char"/>
+    		<field name="FechaContable" type="char"/>
+    		<field name="CodigoAdquirente" type="char"/>
+    		<field name="NumRefRecuperacion" type="num"/>
+    		<field name="CodigoAprobacion" type="char"/>
+    		<field name="CodigoRespuesta" type="num"/>
+    		<field name="IdentificacionTerminal" type="char"/>
+    		<field name="CodigoComercio" type="char"/>
+    		<field name="CodigoAgente" type="char"/>
+    		<field name="GlosaError" type="char"/>
+    		<field name="Cuenta" type="char"/>
+    		<field name="EstadoMCTAS" type="char"/>
+    		<field name="GlosaEstado" type="char"/>
+    		<field name="SaldoAdeudado" type="num"/>
+    		<field name="FechaUltPago" type="num"/>
+    		<field name="FechaSigPago" type="num"/>
+    		<field name="FolioLFacil" type="num"/>
+    		<field name="Plan" type="char"/>
+    		<field name="Servicio" type="char"/>
+    		<field name="DatosPublicidad" type="char"/>		
+		</record>		
+    </output>
+</service>
+<service name="CargaBandaAncha" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="CodProcesamiento" type="char" default="500000"/>
+        <field name="Monto" type="monto"/>
+        <field name="CorrelativoTerminal" type="num"/>
+        <field name="FechaYHora" type="char"/>
+        <field name="CodigoFuncion" type="char" default="267"/>
+        <field name="CodigoAdquiriente" type="char" default="90.430.000-4"/>
+        <field name="IdentificacionTerminal" type="char"/>
+        <field name="CodigoComercio" type="char"/>
+        <field name="TipoMoneda" type="char" default="152"/>
+        <field name="CodigoAgente" type="char"/>
+        <field name="Telefono" type="char"/>
+    </input>
+    <output>
+        <record name="DocumentoCargaBandaAncha" multiple="no">
+            <field name="Monto" type="monto"/>
+            <field name="CorrelativoTerminal" type="num"/>
+            <field name="FechaYHora" type="char"/>
+            <field name="FechaContable" type="char"/>
+            <field name="CodigoAdquirente" type="char"/>
+            <field name="NumRefRecuperacion" type="num"/>
+            <field name="CodigoAprobacion" type="char"/>
+            <field name="CodigoRespuesta" type="num"/>
+            <field name="IdentificacionTerminal" type="char"/>
+            <field name="CodigoComercio" type="char"/>
+            <field name="GlosaError" type="char"/>
+            <field name="CodigoRespuestaEmisor" type="char"/>
+            <field name="DatosPublicidad" type="char"/> 
+        </record>            
+    </output>
+</service>
+<service name="ReversaCargaBandaAncha" saf="si" cola="colaTE" type="Notificacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Monto" type="monto"/>
+        <field name="CorrelativoTerminal" type="num"/>
+        <field name="FechaYHora" type="char"/>
+        <field name="IdentificacionTerminal" type="char"/>
+        <field name="CodigoComercio" type="char"/>
+        <field name="CodigoAgente" type="char"/>
+        <field name="CodArea" type="char"/>
+        <field name="Telefono" type="char"/>
+    </input>
+    <output>
+        <field name="Monto" type="monto"/>
+        <field name="CorrelativoTerminal" type="num"/>
+        <field name="FechaYHora" type="char"/>
+        <field name="FechaContable" type="char"/>
+        <field name="CodigoAdquirente" type="char"/>
+        <field name="NumRefRecuperacion" type="num"/>
+        <field name="CodigoAprobacion" type="char"/>
+        <field name="CodigoRespuesta" type="num"/>
+        <field name="IdentificacionTerminal" type="char"/>
+        <field name="CodigoComercio" type="char"/>
+        <field name="GlosaError" type="char"/>
+        <field name="CodigoError" type="char"/>
+        <field name="DatosPublicidad" type="char"/>             
+    </output>
+</service>
+
+
+<!--
+******************************************************************* 
+Servicios para las transacciones bancarias
+*******************************************************************
+-->
+  
+<service name="ConsultaGuiaDevolucion" type="Consulta" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="NumeroDocumento" type="char"/>
+    </input>
+    <output>
+        <field name="Cliente" type="char"/>
+        <field name="Cuenta" type="char"/>
+        <record name="DocumentoGuiaDevolucion" multiple="yes">
+            <field name="NumeroDocumento" type="char"/>
+            <field name="MontoDocumento" type="monto"/>
+        </record>
+    </output>
+</service>
+
+<service name="DevolucionGuia" type="Actualizacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Monto" type="monto"/>
+        <field name="NumeroDocumento" type="char"/>
+    </input>
+    <output>
+        <field name="RespuestaDevolucion" type="long"/>
+    </output>
+</service> 
+
+<service name="ReversaDevolucionGuia" saf="si" cola="colaAtis" type="Notificacion" timeout="15" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="Monto" type="monto"/>
+        <field name="NumeroDocumento" type="char"/>
+    </input>
+    <output>
+        <field name="RespuestaDevolucion" type="long"/>
+    </output>
+</service> 
+ 
+ 
+<!--
+******************************************************************* 
+Servicios para las transacciones bancarias
+*******************************************************************
+--> 
+
+<service name="VentaCreditoTBK" type="Consulta" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+	<input>
+		<field name="requestSpdh" type="long"/>
+	</input>
+	<output>
+		<field name="responseSpdh" type="long"/>
+	</output>
+</service>
+
+<service name="ValidaCheque" type="Consulta" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+	<input>
+		<field name="Banco" type="char"/>
+		<field name="Cuenta" type="char"/>
+		<field name="Serial" type="char"/>
+		<field name="Monto" type="monto"/>
+		<field name="Rut" type="char"/>
+		<field name="Fecha" type="char"/>
+	</input>
+	<output>
+	   <record name="DocumentoValidaCheque" multiple="no">
+            <field name="CodigoAutorizacion" type="long"/>
+            <field name="GlosaRechazo" type="char"/>
+        </record>		
+	</output>
+</service>
+<!--
+******************************************************************* 
+Servicios para Presto
+*******************************************************************
+--> 
+<service name="ValidaPresto" type="Actualizacion" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Actualiza" appl="/applData">
+    <input>
+        <field name="NumTarjeta" type="char"/>
+        <field name="ProcCode" type="char" default="003000"/>
+        <field name="Monto" type="monto"/>
+        <field name="TrxDateTime" type="char"/>
+        <field name="NumJournal" type="long"/>
+        <field name="TrxLocTime" type="char"/>
+        <field name="TrxLocDate" type="char"/>
+        <field name="ExpDate" type="char"/>
+        <field name="DateSett" type="char"/>
+        <field name="MerchantType" type="num"/>
+        <field name="AcqInstCode" type="num"/>
+        <field name="PointOfService" type="char" default="021"/>
+        <field name="PointOfServiceCC" type="char" default="00"/>
+        <field name="AcqInstId" type="num"/>
+        <field name="FwdInstCode" type="num"/>
+        <field name="Track2" type="char"/>
+        <field name="RetRefNum" type="char"/>
+        <field name="TerminalId" type="char"/>
+        <field name="Local" type="char"/>
+        <field name="MerchantCode" type="char"/>
+        <field name="Address" type="char"/>
+        <field name="City" type="char"/>
+        <field name="CountryCode" type="char"/>
+        <field name="CurrencyCode" type="char"/>
+        <field name="NumeroCuotas" type="num"/>
+        <field name="Interes" type="char"/>
+        <field name="Posting" type="num" default="0"/>
+        <field name="TipoCredito" type="num"/>
+    </input>
+    <output>
+        <record name="DocumentoValidaPresto" multiple="no">
+            <field name="NumTarjeta" type="char"/>
+            <field name="ProcCode" type="char" default="003000"/>
+            <field name="Monto" type="monto"/>
+            <field name="TrxDateTime" type="char"/>
+            <field name="NumJournal" type="long"/>
+            <field name="TrxLocTime" type="char"/>
+            <field name="TrxLocDate" type="char"/>
+            <field name="AcqInstId" type="num"/>
+            <field name="RetRefNum" type="char"/>
+            <field name="AuthCode" type="char"/>
+            <field name="RespCode" type="char"/>
+            <field name="TerminalId" type="char"/>
+            <field name="CurrencyCode" type="char"/>
+            <field name="MontoCuota" type="monto"/>
+            <field name="InteresMensual" type="char"/>
+            <field name="InteresAnual" type="char"/>
+        </record>
+    </output>
+</service>
+
+<service name="ReversaPresto" saf="si" cola="colaPresto" type="Actualizacion" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Actualiza" appl="/applData">
+    <input>
+        <field name="NumTarjeta" type="char"/>
+        <field name="ProcCode" type="char" default="003000"/>
+        <field name="Monto" type="monto"/>
+        <field name="TrxDateTime" type="char"/>
+        <field name="NumJournal" type="long"/>
+        <field name="TrxLocTime" type="char"/>
+        <field name="TrxLocDate" type="char"/>
+        <field name="DateSett" type="char"/>
+        <field name="MerchantType" type="num"/>
+        <field name="AcqInstCode" type="num"/>
+        <field name="PointOfService" type="char" default="021"/>
+        <field name="PointOfServiceCC" type="char" default="00"/>
+        <field name="AcqInstId" type="num"/>
+        <field name="RetRefNum" type="char"/>
+        <field name="AuthCode" type="char"/>
+        <field name="TerminalId" type="char"/>
+        <field name="Local" type="char"/>
+        <field name="MerchantCode" type="char"/>
+        <field name="MotivoAnulacion" type="char"/>        
+        <field name="CurrencyCode" type="char"/> 
+        <field name="TipoMensaje" type="char" default="200"/>
+        <field name="OriTrxDateTime" type="char"/>
+        <field name="FwdInstCode" type="num"/>        
+    </input>
+    <output>
+        <record name="DocumentoReversaPresto" multiple="no">
+            <field name="NumTarjeta" type="char"/>
+            <field name="ProcCode" type="char" default="003000"/>
+            <field name="Monto" type="monto"/>
+            <field name="TrxDateTime" type="char"/>
+            <field name="NumJournal" type="long"/>
+            <field name="TrxLocTime" type="char"/>
+            <field name="TrxLocDate" type="char"/>
+            <field name="DateSett" type="char"/>
+            <field name="AcqInstId" type="num"/>
+            <field name="RetRefNum" type="char"/>
+            <field name="AuthCode" type="char"/>
+            <field name="RespCode" type="char"/>
+            <field name="TerminalId" type="char"/>
+            <field name="CurrencyCode" type="char"/>
+        </record>
+    </output>
+</service>
+
+<service name="AnularPresto" type="Actualizacion" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Actualiza" appl="/applData">
+    <input>
+        <field name="NumTarjeta" type="char"/>
+        <field name="ProcCode" type="char" default="203000"/>
+        <field name="Monto" type="monto"/>
+        <field name="TrxDateTime" type="char"/>
+        <field name="NumJournal" type="long"/>
+        <field name="TrxLocTime" type="char"/>
+        <field name="TrxLocDate" type="char"/>
+        <field name="MerchantType" type="num"/>
+        <field name="AcqInstCode" type="num"/>
+        <field name="PointOfService" type="char" default="021"/>
+        <field name="PointOfServiceCC" type="char" default="00"/>
+        <field name="AcqInstId" type="num"/>
+        <field name="RetRefNum" type="char"/>
+        <field name="AuthCode" type="char"/>
+        <field name="TerminalId" type="char"/>
+        <field name="Local" type="char"/>
+        <field name="Address" type="char"/>
+        <field name="City" type="char"/>
+        <field name="CountryCode" type="char"/>
+        <field name="MerchantCode" type="char"/>
+        <field name="MotivoAnulacion" type="char"/>        
+        <field name="CurrencyCode" type="char"/> 
+        <field name="TipoMensaje" type="char" default="200"/>
+        <field name="OriTrxDateTime" type="char"/>
+        <field name="FwdInstCode" type="num"/>        
+    </input>
+    <output>
+        <record name="DocumentoAnulaPresto" multiple="no">
+            <field name="NumTarjeta" type="char"/>
+            <field name="ProcCode" type="char" default="003000"/>
+            <field name="Monto" type="monto"/>
+            <field name="TrxDateTime" type="char"/>
+            <field name="NumJournal" type="long"/>
+            <field name="TrxLocTime" type="char"/>
+            <field name="TrxLocDate" type="char"/>
+            <field name="DateSett" type="char"/>
+            <field name="AcqInstId" type="num"/>
+            <field name="RetRefNum" type="char"/>
+            <field name="AuthCode" type="char"/>
+            <field name="RespCode" type="char"/>
+            <field name="TerminalId" type="char"/>
+            <field name="CurrencyCode" type="char"/>
+        </record>
+    </output>
+</service>
+
+<!--
+******************************************************************* 
+Servicios para Ripley
+*******************************************************************
+--> 
+
+<service name="ValidaRipley" type="Actualizacion" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="ProcCode" type="char" default="003000"/>
+        <field name="Monto" type="monto"/>
+        <field name="TrxDateTime" type="char"/>
+        <field name="NumVoucher" type="long"/>
+        <field name="TrxLocTime" type="char"/>
+        <field name="TrxLocDate" type="char"/>
+        <field name="ModoPos" type="char" default="022"/>
+        <field name="Nii" type="char"/>
+        <field name="CodCondicionPos" type="char" default="00"/>
+        <field name="Track2" type="char"/>
+        <field name="TerminalId" type="char"/>
+        <field name="SucursalId" type="char"/>
+        <field name="ComercioId" type="char"/>
+        <field name="TEmisor" type="char"/>
+        <field name="TProd" type="char"/>
+        <field name="TTrx" type="char"/>
+        <field name="Cuotas" type="char"/>
+        <field name="IdVendedor" type="char"/>
+        <field name="IdUnico" type="char"/>
+    </input>
+    <output>
+        <record name="DocumentoValidaRipley" multiple="no">
+            <field name="ProcCode" type="char" default="003000"/>
+            <field name="Monto" type="monto"/>
+            <field name="TrxDateTime" type="char"/>
+            <field name="NumVoucher" type="long"/>
+            <field name="TrxLocTime" type="char"/>
+            <field name="TrxLocDate" type="char"/>
+            <field name="ModoPos" type="char" default="022"/>
+            <field name="Nii" type="char"/>
+            <field name="CodCondicionPos" type="char" default="00"/>
+            <field name="Track2" type="char"/>
+            <field name="IdTrx" type="char"/>
+            <field name="AprobCode" type="char"/>
+            <field name="RespCode" type="char"/>
+            <field name="TerminalId" type="char"/>
+            <field name="ComercioId" type="char"/>
+            <field name="DataGesic" type="char"/>
+            <field name="IdUnico" type="char"/>
+            <field name="Monto1Cuota" type="monto"/>  
+            <field name="Fecha1Cuota" type="char"/>
+            <field name="Premio" type="char"/> 
+            <field name="FechaDesde" type="char"/>   
+            <field name="FechaHasta" type="char"/>           
+        </record>
+    </output>
+</service>
+
+<service name="ReversaRipley" saf="si" cola="colaPresto" type="Actualizacion" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="ProcCode" type="char" default="003000"/>
+        <field name="Monto" type="monto"/>
+        <field name="TrxDateTime" type="char"/>
+        <field name="NumVoucher" type="long"/>
+        <field name="TrxLocTime" type="char"/>
+        <field name="TrxLocDate" type="char"/>
+        <field name="ModoPos" type="char" default="022"/>
+        <field name="Nii" type="char"/>
+        <field name="CodCondicionPos" type="char" default="00"/>
+        <field name="Track2" type="char"/>
+        <field name="TerminalId" type="char"/>
+        <field name="SucursalId" type="char"/>
+        <field name="ComercioId" type="char"/>
+        <field name="TEmisor" type="char"/>
+        <field name="TProd" type="char"/>
+        <field name="TTrx" type="char"/>
+        <field name="Cuotas" type="char"/>
+        <field name="IdVendedor" type="char"/>
+        <field name="IdUnico" type="char"/> 
+    </input>
+    <output>
+        <record name="DocumentoReversaRipley" multiple="no">
+            <field name="ProcCode" type="char" default="003000"/>
+            <field name="Monto" type="monto"/>
+            <field name="TrxDateTime" type="char"/>
+            <field name="NumVoucher" type="long"/>
+            <field name="TrxLocTime" type="char"/>
+            <field name="TrxLocDate" type="char"/>
+            <field name="ModoPos" type="char" default="022"/>
+            <field name="Nii" type="char"/>
+            <field name="CodCondicionPos" type="char" default="00"/>
+            <field name="Track2" type="char"/>
+            <field name="IdTrx" type="char"/>
+            <field name="AprobCode" type="char"/>
+            <field name="RespCode" type="char"/>
+            <field name="TerminalId" type="char"/>
+            <field name="ComercioId" type="char"/>
+            <field name="IdUnico" type="char"/>
+        </record>
+    </output>
+</service>
+
+<service name="AnularRipley" type="Actualizacion" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input>
+        <field name="ProcCode" type="char" default="203000"/>
+        <field name="Monto" type="monto"/>
+        <field name="TrxDateTime" type="char"/>
+        <field name="NumVoucher" type="long"/>
+        <field name="TrxLocTime" type="char"/>
+        <field name="TrxLocDate" type="char"/>
+        <field name="Nii" type="char"/>
+        <field name="CodCondicionPos" type="char" default="00"/>
+        <field name="Track2" type="char"/>
+        <field name="TerminalId" type="char"/>
+        <field name="SucursalId" type="char"/>
+        <field name="ComercioId" type="char"/>
+        <field name="TEmisor" type="char"/>
+        <field name="TProd" type="char"/>
+        <field name="TTrx" type="char"/>
+        <field name="Cuotas" type="char"/>
+        <field name="OriTrxDateTime" type="char"/>
+        <field name="OriSucursal" type="char"/>
+        <field name="OriTerminal" type="char"/>
+        <field name="OriVoucher" type="char"/>
+        <field name="IdVendedor" type="char"/>
+        <field name="IdUnico" type="char"/>      
+    </input>
+    <output>
+        <record name="DocumentoAnulaRipley" multiple="no">
+            <field name="ProcCode" type="char" default="203000"/>
+            <field name="Monto" type="monto"/>
+            <field name="TrxDateTime" type="char"/>
+            <field name="NumVoucher" type="long"/>
+            <field name="TrxLocTime" type="char"/>
+            <field name="TrxLocDate" type="char"/>
+            <field name="ModoPos" type="char" default="022"/>
+            <field name="Nii" type="char"/>
+            <field name="CodCondicionPos" type="char" default="00"/>
+            <field name="Track2" type="char"/>
+            <field name="IdTrx" type="char"/>
+            <field name="AprobCode" type="char"/>
+            <field name="RespCode" type="char"/>
+            <field name="TerminalId" type="char"/>
+            <field name="ComercioId" type="char"/>
+            <field name="IdUnico" type="char"/>
+        </record>
+    </output>
+</service>
+
+<service name="TRV" type="Actualizacion" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData"/>
+<service name="SAF" type="Notificacion" class="cl.hyh.redpagos.caja.base.Servicio" host="$URL_Consulta" appl="/applData">
+    <input></input>
+    <output></output>
+</service>
+</services>

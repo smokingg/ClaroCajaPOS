@@ -1,0 +1,262 @@
+<parameters>
+	<paramSet name="posCfg" type="resource" fName="config/pos.cfg">		
+		<field name="OperSafDir" type="char"/>
+		<field name="FtpSafDir" type="char"/>
+		<field name="ServiceSafDir" type="char"/>
+		<field name="VoucherDir" type="char"/>
+		<field name="PaymentDir" type="char"/>
+		<field name="testMode" type="char"/>
+		<field name="URL" type="char"/>
+		<field name="soapTimeout" type="num"/>
+		<field name="Version" type="char"/>
+		<field name="configUser" type="char"/>   
+		<field name="configPass" type="char"/> 
+		<field name="versionAmbiente" type="char"/>  		
+		<field name="hostFtp" type="char"/>
+		<field name="userFtp" type="char"/>
+		<field name="passwFtp" type="char"/>
+		<field name="timeoutFtp" type="char"/>
+		<field name="dirFtp" type="char"/>
+		<field name="zipFile" type="char"/>
+		<field name="montoRemesa" type="char"/>
+		<field name="montoDevolucion" type="long"/>
+		<field name="cierreCaja" type="long"/>
+		<field name="diasCheque" type="long"/>
+		<field name="discoInit" type="char"/>
+		<field name="ipMulticardP" type="char"/>
+		<field name="portMulticardTbkP" type="char"/>
+		<field name="portMulticardP" type="char"/>
+		<field name="ipMulticardD" type="char"/>
+		<field name="portMulticardTbkD" type="char"/>
+		<field name="portMulticardD" type="char"/>
+		<field name="maxDocs" type="num"/>
+	</paramSet>
+	
+	<paramSet name="posDat" type="file" fName="/RedDePagos/data/config/pos.dat">
+		<field name="NumeroOperacion" type="long"/>
+		<field name="Entidad" type="long"/>
+		<field name="Agencia" type="long"/>
+		<field name="Caja" type="long"/>
+		<field name="Usuario" type="char"/>
+		<field name="Online" type="char"/>
+		<field name="Perfil" type="char"/>
+		<field name="Cajero" type="char"/>
+		<field name="URL_Proxy" type="char"/>	
+		<field name="URL_Consultar" type="char"/>	
+		<field name="URL_Notificar" type="char"/>
+		<field name="URL_Validar_Cheque" type="char"/>
+		<field name="URL_Recargar" type="char"/>
+		<field name="offline" type="char" default="no"/>
+		<field name="Direccion" type="char"/>
+		<field name="transbank" type="char"/>
+		<field name="configurado" type="char"/>
+		<field name="versionAmbiente" type="char"/>
+		<field name="printer" type="char"/>
+		<field name="FechaApertura" type="char"/>
+		<field name="Comuna" type="char"/>
+		<field name="Ciudad" type="char"/>
+		<field name="Canal" type="char"/>
+		<field name="SessionId" type="char"/>
+		<field name="sinConexion" type="char"/>
+		<field name="planCuotas" type="char"/>
+	</paramSet>
+	<paramSet name="bancos" type="resource" fName="config/bancos.cfg">
+        <field name="banco_1" type="char"/>
+        <field name="banco_2" type="char"/>
+        <field name="banco_3" type="char"/>
+        <field name="banco_4" type="char"/>
+        <field name="banco_5" type="char"/>
+        <field name="banco_6" type="char"/>
+        <field name="banco_7" type="char"/>
+        <field name="banco_8" type="char"/>
+        <field name="banco_9" type="char"/>
+        <field name="banco_10" type="char"/>
+    </paramSet>
+    <paramSet name="bancosCorto" type="resource" fName="config/bancosCorto.cfg">
+        <field name="banco_1" type="char"/>
+        <field name="banco_2" type="char"/>
+        <field name="banco_3" type="char"/>
+        <field name="banco_4" type="char"/>
+        <field name="banco_5" type="char"/>
+        <field name="banco_6" type="char"/>
+        <field name="banco_7" type="char"/>
+        <field name="banco_8" type="char"/>
+        <field name="banco_9" type="char"/>
+        <field name="banco_10" type="char"/>
+    </paramSet>
+    <paramSet name="sociedades" type="resource" fName="config/sociedades.cfg">
+        <field name="sociedad_1" type="char"/>
+        <field name="sociedad_2" type="char"/>
+        <field name="sociedad_3" type="char"/>
+        <field name="sociedad_4" type="char"/>
+        <field name="sociedad_5" type="char"/>
+        <field name="sociedad_6" type="char"/>
+        <field name="sociedad_7" type="char"/>
+        <field name="sociedad_8" type="char"/>
+        <field name="sociedad_9" type="char"/>
+        <field name="sociedad_10" type="char"/>
+    </paramSet>
+    <paramSet name="emisores" type="resource" fName="config/emisores.cfg">
+        <field name="emisor_1" type="char"/>
+    </paramSet>
+    <paramSet name="emisoresMulti" type="resource" fName="config/emisoresMulti.cfg">
+        <field name="emisor_1" type="char"/>
+    </paramSet>
+    <paramSet name="emisoresCredito" type="resource" fName="config/emisoresCredito.cfg">
+        <field name="emisor_1" type="char"/>
+    </paramSet>
+    <paramSet name="emisoresDebito" type="resource" fName="config/emisoresDebito.cfg">
+        <field name="emisor_1" type="char"/>
+    </paramSet>
+    <paramSet name="emisoresCasaComercial" type="resource" fName="config/emisoresCasaComercial.cfg">
+        <field name="emisor_1" type="char"/>
+    </paramSet>    
+    <paramSet name="totales" type="resource" fName="config/totaliza.cfg">
+        <field name="total_1" type="char"/>
+        <field name="total_2" type="char"/>
+        <field name="total_3" type="char"/>
+        <field name="total_4" type="char"/>
+        <field name="total_5" type="char"/>
+        <field name="total_6" type="char"/>
+        <field name="total_7" type="char"/>
+        <field name="total_8" type="char"/>
+        <field name="total_9" type="char"/>
+        <field name="total_10" type="char"/>
+        <field name="total_11" type="char"/>
+        <field name="total_12" type="char"/>
+        <field name="total_13" type="char"/>
+    </paramSet>
+    <paramSet name="totalesPagos" type="resource" fName="config/totalizaPagos.cfg">
+        <field name="total_1" type="char"/>
+        <field name="total_2" type="char"/>
+        <field name="total_3" type="char"/>
+        <field name="total_4" type="char"/>
+        <field name="total_5" type="char"/>
+        <field name="total_6" type="char"/>
+        <field name="total_7" type="char"/>
+        <field name="total_8" type="char"/>
+        <field name="total_9" type="char"/>
+        <field name="total_10" type="char"/>
+    </paramSet>
+    <paramSet name="diccionario" type="resource" fName="config/diccionario.cfg">
+        <field name="total_1" type="char"/>
+    </paramSet>
+    <paramSet name="totalesPagosDepositables" type="resource" fName="config/totalizaPagosDepositables.cfg">
+        <field name="total_1" type="char"/>
+        <field name="total_2" type="char"/>
+        <field name="total_3" type="char"/>
+        <field name="total_4" type="char"/>
+        <field name="total_5" type="char"/>
+    </paramSet>
+    
+    <!-- 
+    <paramSet name="tiposDocumentosAtis" type="resource" fName="config/tiposDocumentosAtis.cfg">
+        <field name="doc_1" type="char"/>
+        <field name="doc_2" type="char"/>
+        <field name="doc_3" type="char"/>
+        <field name="doc_4" type="char"/>
+        <field name="doc_5" type="char"/>
+        <field name="doc_6" type="char"/>
+        <field name="doc_7" type="char"/>
+        <field name="doc_8" type="char"/>
+    </paramSet>
+    <paramSet name="tiposDocumentosGlobus" type="resource" fName="config/tiposDocumentosGlobus.cfg">
+        <field name="doc_1" type="char"/>
+        <field name="doc_2" type="char"/>
+        <field name="doc_3" type="char"/>
+    </paramSet>
+    <paramSet name="tiposDocumentosMovistarDist" type="resource" fName="config/tiposDocumentosMovistarDist.cfg">
+        <field name="doc_1" type="char"/>
+        <field name="doc_2" type="char"/>
+        <field name="doc_3" type="char"/>
+    </paramSet>
+    <paramSet name="tiposDocumentosMundo" type="resource" fName="config/tiposDocumentosMundo.cfg">
+        <field name="doc_1" type="char"/>
+        <field name="doc_2" type="char"/>
+        <field name="doc_3" type="char"/>
+    </paramSet>
+    <paramSet name="tiposDocumentosProsegur" type="resource" fName="config/tiposDocumentosProsegur.cfg">
+        <field name="doc_1" type="char"/>
+        <field name="doc_2" type="char"/>
+        <field name="doc_3" type="char"/>
+    </paramSet>
+    <paramSet name="tiposDocumentosTerra" type="resource" fName="config/tiposDocumentosTerra.cfg">
+        <field name="doc_1" type="char"/>
+        <field name="doc_2" type="char"/>
+        <field name="doc_3" type="char"/>
+    </paramSet>
+    <paramSet name="tiposDocumentosCain" type="resource" fName="config/tiposDocumentosCain.cfg">
+        <field name="doc_1" type="char"/>
+        <field name="doc_2" type="char"/>
+        <field name="doc_3" type="char"/>
+    </paramSet>
+    <paramSet name="tiposDocumentosGuia" type="resource" fName="config/tiposDocumentosGuia.cfg">
+        <field name="doc_1" type="char"/>
+    </paramSet>
+    <paramSet name="tiposDocumentosSiscli" type="resource" fName="config/tiposDocumentosSiscli.cfg">
+        <field name="doc_1" type="char"/>
+        <field name="doc_2" type="char"/>
+    </paramSet>
+    <paramSet name="tiposDocumentosRetail" type="resource" fName="config/tiposDocumentosRetail.cfg">
+        <field name="doc_1" type="char"/>
+        <field name="doc_2" type="char"/>
+        <field name="doc_3" type="char"/>
+    </paramSet>
+    <paramSet name="tiposDocumentosTelefonica" type="resource" fName="config/tiposDocumentosTelefonica.cfg">
+        <field name="doc_1" type="char"/>
+        <field name="doc_2" type="char"/>
+    </paramSet>
+     -->
+     
+    <paramSet name="tiposDocumentos" type="resource" fName="config/tiposDocumentos.cfg">
+        <field name="doc_1" type="char"/>
+        <field name="doc_2" type="char"/>
+        <field name="doc_3" type="char"/>
+        <field name="doc_4" type="char"/>
+        <field name="doc_5" type="char"/>
+        <field name="doc_6" type="char"/>
+        <field name="doc_7" type="char"/>
+        <field name="doc_8" type="char"/>
+        <field name="doc_9" type="char"/>
+        <field name="doc_10" type="char"/>
+        <field name="doc_11" type="char"/>
+        <field name="doc_12" type="char"/>
+        <field name="doc_13" type="char"/>
+        <field name="doc_14" type="char"/>
+        <field name="doc_15" type="char"/>
+    </paramSet>
+    <paramSet name="diasCheque" type="resource" fName="config/diasCheque.cfg">
+        <field name="dia_1" type="num"/>
+        <field name="dia_2" type="num"/>
+        <field name="dia_3" type="num"/>
+        <field name="dia_4" type="num"/>
+    </paramSet>
+    
+    <!-- cbriones Este documento no se encontaba en confiog desde VTr ??
+         Se llama recarga2.cfg !!!  
+    <paramSet name="recargaCfg" type="resource" fName="config/recarga.cfg">
+        <field name="montoMax" type="monto"/>
+        <field name="montoMin" type="monto"/>
+        <field name="NII" type="char"/>
+        <field name="PosCondition" type="char"/>
+        <field name="IdEmpresa" type="char"/>
+        <field name="PinDistribuidor" type="char"/>
+        <field name="CodProducto" type="char"/>
+    </paramSet>
+    -->
+    
+    <paramSet name="recargaDat" type="file" fName="/RedDePagos/data/config/recarga.dat">
+        <field name="NumeroSecuencia" type="num"/>
+        <field name="IdTerminal" type="char"/>
+        <field name="Usuario" type="char"/>
+        <field name="CodUbicacion" type="char"/>
+        <field name="FechaPago" type="char"/>
+    </paramSet>
+    <paramSet name="config" type="resource" fName="config/config.cfg">
+        <field name="l0" type="char"/>    
+        <field name="l1" type="char"/>
+        <field name="l2" type="char"/>
+        <field name="l3" type="char"/>
+        <field name="l4" type="char"/>
+    </paramSet>
+</parameters>

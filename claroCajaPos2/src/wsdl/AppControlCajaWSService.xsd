@@ -1,0 +1,1397 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. --><xs:schema xmlns:tns="http://cl.claro.ws/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://cl.claro.ws/">
+
+<xs:element name="actualizarEstadoEnvio" type="tns:actualizarEstadoEnvio"/>
+
+<xs:element name="actualizarEstadoEnvioResponse" type="tns:actualizarEstadoEnvioResponse"/>
+
+<xs:element name="actualizarVoucherTbk" type="tns:actualizarVoucherTbk"/>
+
+<xs:element name="actualizarVoucherTbkResponse" type="tns:actualizarVoucherTbkResponse"/>
+
+<xs:element name="aperturaCaja" type="tns:aperturaCaja"/>
+
+<xs:element name="aperturaCajaResponse" type="tns:aperturaCajaResponse"/>
+
+<xs:element name="autentificar" type="tns:autentificar"/>
+
+<xs:element name="autentificarResponse" type="tns:autentificarResponse"/>
+
+<xs:element name="cierreCaja" type="tns:cierreCaja"/>
+
+<xs:element name="cierreCajaFecha" type="tns:cierreCajaFecha"/>
+
+<xs:element name="cierreCajaFechaResponse" type="tns:cierreCajaFechaResponse"/>
+
+<xs:element name="cierreCajaResponse" type="tns:cierreCajaResponse"/>
+
+<xs:element name="consultarAdjunto" type="tns:consultarAdjunto"/>
+
+<xs:element name="consultarAdjuntoResponse" type="tns:consultarAdjuntoResponse"/>
+
+<xs:element name="consultarAprobacionCheque" type="tns:consultarAprobacionCheque"/>
+
+<xs:element name="consultarAprobacionChequeResponse" type="tns:consultarAprobacionChequeResponse"/>
+
+<xs:element name="consultarBancos" type="tns:consultarBancos"/>
+
+<xs:element name="consultarBancosResponse" type="tns:consultarBancosResponse"/>
+
+<xs:element name="consultarDenominacion" type="tns:consultarDenominacion"/>
+
+<xs:element name="consultarDenominacionResponse" type="tns:consultarDenominacionResponse"/>
+
+<xs:element name="consultarDevolucion" type="tns:consultarDevolucion"/>
+
+<xs:element name="consultarDevolucionResponse" type="tns:consultarDevolucionResponse"/>
+
+<xs:element name="consultarOperTbkRut" type="tns:consultarOperTbkRut"/>
+
+<xs:element name="consultarOperTbkRutResponse" type="tns:consultarOperTbkRutResponse"/>
+
+<xs:element name="consultarOperacion" type="tns:consultarOperacion"/>
+
+<xs:element name="consultarOperacionResponse" type="tns:consultarOperacionResponse"/>
+
+<xs:element name="desconectarCaja" type="tns:desconectarCaja"/>
+
+<xs:element name="desconectarCajaResponse" type="tns:desconectarCajaResponse"/>
+
+<xs:element name="getMediosPago" type="tns:getMediosPago"/>
+
+<xs:element name="getMediosPagoResponse" type="tns:getMediosPagoResponse"/>
+
+<xs:element name="getMotivoJustificacion" type="tns:getMotivoJustificacion"/>
+
+<xs:element name="getMotivoJustificacionResponse" type="tns:getMotivoJustificacionResponse"/>
+
+<xs:element name="guardarVoucherTbk" type="tns:guardarVoucherTbk"/>
+
+<xs:element name="guardarVoucherTbkResponse" type="tns:guardarVoucherTbkResponse"/>
+
+<xs:element name="inicializarCaja" type="tns:inicializarCaja"/>
+
+<xs:element name="inicializarCajaResponse" type="tns:inicializarCajaResponse"/>
+
+<xs:element name="listaBancosCtas" type="tns:listaBancosCtas"/>
+
+<xs:element name="listaBancosCtasResponse" type="tns:listaBancosCtasResponse"/>
+
+<xs:element name="listaRecaudadores" type="tns:listaRecaudadores"/>
+
+<xs:element name="listaRecaudadoresResponse" type="tns:listaRecaudadoresResponse"/>
+
+<xs:element name="listaTarjetasMultitienda" type="tns:listaTarjetasMultitienda"/>
+
+<xs:element name="listaTarjetasMultitiendaResponse" type="tns:listaTarjetasMultitiendaResponse"/>
+
+<xs:element name="login" type="tns:login"/>
+
+<xs:element name="loginResponse" type="tns:loginResponse"/>
+
+<xs:element name="numeroOperacion" type="tns:numeroOperacion"/>
+
+<xs:element name="numeroOperacionResponse" type="tns:numeroOperacionResponse"/>
+
+<xs:element name="obtenerAnunciosMarketing" type="tns:obtenerAnunciosMarketing"/>
+
+<xs:element name="obtenerAnunciosMarketingResponse" type="tns:obtenerAnunciosMarketingResponse"/>
+
+<xs:element name="obtenerAprobacionDescuento" type="tns:obtenerAprobacionDescuento"/>
+
+<xs:element name="obtenerAprobacionDescuentoResponse" type="tns:obtenerAprobacionDescuentoResponse"/>
+
+<xs:element name="obtenerAuthMail" type="tns:obtenerAuthMail"/>
+
+<xs:element name="obtenerAuthMailResponse" type="tns:obtenerAuthMailResponse"/>
+
+<xs:element name="obtenerDetalleCierre" type="tns:obtenerDetalleCierre"/>
+
+<xs:element name="obtenerDetalleCierreResponse" type="tns:obtenerDetalleCierreResponse"/>
+
+<xs:element name="obtenerEmailsPorRut" type="tns:obtenerEmailsPorRut"/>
+
+<xs:element name="obtenerEmailsPorRutResponse" type="tns:obtenerEmailsPorRutResponse"/>
+
+<xs:element name="obtenerValidacionChequesProtestados" type="tns:obtenerValidacionChequesProtestados"/>
+
+<xs:element name="obtenerValidacionChequesProtestadosResponse" type="tns:obtenerValidacionChequesProtestadosResponse"/>
+
+<xs:element name="obtenerVoucherOperacion" type="tns:obtenerVoucherOperacion"/>
+
+<xs:element name="obtenerVoucherOperacionResponse" type="tns:obtenerVoucherOperacionResponse"/>
+
+<xs:element name="pingCaja" type="tns:pingCaja"/>
+
+<xs:element name="pingCajaResponse" type="tns:pingCajaResponse"/>
+
+<xs:element name="registrarJustificacionCierre" type="tns:registrarJustificacionCierre"/>
+
+<xs:element name="registrarJustificacionCierreResponse" type="tns:registrarJustificacionCierreResponse"/>
+
+<xs:element name="registrarSencilloCajero" type="tns:registrarSencilloCajero"/>
+
+<xs:element name="registrarSencilloCajeroResponse" type="tns:registrarSencilloCajeroResponse"/>
+
+<xs:element name="registrarSencilloCierre" type="tns:registrarSencilloCierre"/>
+
+<xs:element name="registrarSencilloCierreResponse" type="tns:registrarSencilloCierreResponse"/>
+
+<xs:element name="ultimaSesion" type="tns:ultimaSesion"/>
+
+<xs:element name="ultimaSesionResponse" type="tns:ultimaSesionResponse"/>
+
+<xs:element name="updateUserPassword" type="tns:updateUserPassword"/>
+
+<xs:element name="updateUserPasswordResponse" type="tns:updateUserPasswordResponse"/>
+
+<xs:element name="validarJustificacionCierre" type="tns:validarJustificacionCierre"/>
+
+<xs:element name="validarJustificacionCierreResponse" type="tns:validarJustificacionCierreResponse"/>
+
+<xs:element name="validarSencilloCajero" type="tns:validarSencilloCajero"/>
+
+<xs:element name="validarSencilloCajeroResponse" type="tns:validarSencilloCajeroResponse"/>
+
+<xs:complexType name="cierreCajaFecha">
+<xs:sequence>
+<xs:element name="request" type="tns:headerDTO" minOccurs="0"/>
+<xs:element name="fechaCierre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="headerDTO">
+<xs:sequence>
+<xs:element name="agencia" type="xs:string" minOccurs="0"/>
+<xs:element name="cajaFisica" type="xs:string" minOccurs="0"/>
+<xs:element name="cajero" type="xs:string" minOccurs="0"/>
+<xs:element name="entidad" type="xs:string" minOccurs="0"/>
+<xs:element name="recaudador" type="xs:string" minOccurs="0"/>
+<xs:element name="session" type="xs:string" minOccurs="0"/>
+<xs:element name="usuario" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cierreCajaFechaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:cierreCajaOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cierreCajaOutDTO">
+<xs:sequence>
+<xs:element name="anulacionCierre" type="tns:operacionDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="conceptosArqueo" type="tns:arqueoConceptoDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="fecha" type="xs:string" minOccurs="0"/>
+<xs:element name="itemsArqueo" type="tns:itemArqueoDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+<xs:element name="sesion" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="operacionDTO">
+<xs:sequence>
+<xs:element name="agencia" type="xs:string" minOccurs="0"/>
+<xs:element name="anulable" type="xs:string" minOccurs="0"/>
+<xs:element name="anulableTbk" type="xs:string" minOccurs="0"/>
+<xs:element name="caja" type="xs:string" minOccurs="0"/>
+<xs:element name="canal" type="xs:string" minOccurs="0"/>
+<xs:element name="codigoOperacion" type="xs:string" minOccurs="0"/>
+<xs:element name="codigoRecaudador" type="xs:string" minOccurs="0"/>
+<xs:element name="codigoSesion" type="xs:string" minOccurs="0"/>
+<xs:element name="entidad" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaOperacion" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaPago" type="xs:string" minOccurs="0"/>
+<xs:element name="horaOperacion" type="xs:string" minOccurs="0"/>
+<xs:element name="idOperacionExterno" type="xs:string" minOccurs="0"/>
+<xs:element name="mediosdepago" type="tns:medioPagoDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="monto" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroOperacion" type="xs:string" minOccurs="0"/>
+<xs:element name="transacciones" type="tns:transaccionDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="usuario" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="medioPagoDTO">
+<xs:sequence>
+<xs:element name="cantidadCuotas" type="xs:string" minOccurs="0"/>
+<xs:element name="codigoAutorizacion" type="xs:string" minOccurs="0"/>
+<xs:element name="codigoBanco" type="xs:string" minOccurs="0"/>
+<xs:element name="codigoPlaza" type="xs:string" minOccurs="0"/>
+<xs:element name="depositante" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaContable" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaVencimiento" type="xs:string" minOccurs="0"/>
+<xs:element name="idTrxTbk" type="xs:string" minOccurs="0"/>
+<xs:element name="montoPagado" type="xs:string" minOccurs="0"/>
+<xs:element name="nombrePagador" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroCheque" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroCtaCte" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroDeposito" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroTarjeta" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroTransaccion" type="xs:string" minOccurs="0"/>
+<xs:element name="productoTarjeta" type="xs:string" minOccurs="0"/>
+<xs:element name="rutPagador" type="xs:string" minOccurs="0"/>
+<xs:element name="serieValeVista" type="xs:string" minOccurs="0"/>
+<xs:element name="tbkContingencia" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoTotal" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoTransaccion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="transaccionDTO">
+<xs:sequence>
+<xs:element name="codigoPortador" type="xs:string" minOccurs="0"/>
+<xs:element name="controlInterno" type="xs:string" minOccurs="0"/>
+<xs:element name="cuentaCliente" type="xs:string" minOccurs="0"/>
+<xs:element name="dv" type="xs:string" minOccurs="0"/>
+<xs:element name="empresa" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaVencimiento" type="xs:string" minOccurs="0"/>
+<xs:element name="montoDocumento" type="xs:string" minOccurs="0"/>
+<xs:element name="nroCorrelativo" type="xs:string" minOccurs="0"/>
+<xs:element name="nroOperacionAReversar" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroDocumento" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroTransaccion" type="xs:string" minOccurs="0"/>
+<xs:element name="origen" type="xs:string" minOccurs="0"/>
+<xs:element name="rut" type="xs:string" minOccurs="0"/>
+<xs:element name="servicio" type="xs:string" minOccurs="0"/>
+<xs:element name="telefono" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoCorrelativo" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoDocumento" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoRegistro" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoTotal" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoTransaccion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="arqueoConceptoDTO">
+<xs:sequence>
+<xs:element name="concepto" type="xs:string" minOccurs="0"/>
+<xs:element name="totalCajero" type="xs:long"/>
+<xs:element name="totalSistema" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="itemArqueoDTO">
+<xs:sequence>
+<xs:element name="banco" type="xs:string" minOccurs="0"/>
+<xs:element name="concepto" type="xs:string" minOccurs="0"/>
+<xs:element name="numero" type="xs:string" minOccurs="0"/>
+<xs:element name="valor" type="xs:long"/>
+<xs:element name="vencimiento" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizarEstadoEnvio">
+<xs:sequence>
+<xs:element name="numeroOperacion" type="xs:string" minOccurs="0"/>
+<xs:element name="estadoEnvio" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizarEstadoEnvioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="genericResponseDTO">
+<xs:sequence>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarSencilloCierre">
+<xs:sequence>
+<xs:element name="request" type="tns:registrarSencilloCierreRequestDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarSencilloCierreRequestDTO">
+<xs:sequence>
+<xs:element name="fechaRecibo" type="xs:string" minOccurs="0"/>
+<xs:element name="idAgencia" type="xs:long"/>
+<xs:element name="idCaja" type="xs:long"/>
+<xs:element name="idCajero" type="xs:long"/>
+<xs:element name="montoCierre" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarSencilloCierreResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:registrarSencilloCierreResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarSencilloCierreResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="idSencilloCajeroAgencia" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="numeroOperacion">
+<xs:sequence>
+<xs:element name="request" type="tns:headerDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="numeroOperacionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:numeroOperacionOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="numeroOperacionOutDTO">
+<xs:sequence>
+<xs:element name="numeroOperacion" type="xs:long"/>
+<xs:element name="numeroOperacionReversa" type="xs:long"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validarSencilloCajero">
+<xs:sequence>
+<xs:element name="request" type="tns:validarSencilloCajeroRequestDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validarSencilloCajeroRequestDTO">
+<xs:sequence>
+<xs:element name="fechaRecibo" type="xs:string" minOccurs="0"/>
+<xs:element name="idAgencia" type="xs:long"/>
+<xs:element name="idCaja" type="xs:long"/>
+<xs:element name="idCajero" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validarSencilloCajeroResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:validarSencilloCajeroResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validarSencilloCajeroResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="sencilloIngresado" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="getMediosPago">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getMediosPagoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:medioPagoResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="medioPagoResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="mediosPagos" type="tns:tipoTransaccionDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="tipoTransaccionDTO">
+<xs:sequence>
+<xs:element name="desTransaccion" type="xs:string" minOccurs="0"/>
+<xs:element name="regjournal" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoTransaccion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarDevolucion">
+<xs:sequence>
+<xs:element name="request" type="tns:consultarDevolucionInDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarDevolucionInDTO">
+<xs:complexContent>
+<xs:extension base="tns:headerDTO">
+<xs:sequence>
+<xs:element name="dv" type="xs:string" minOccurs="0"/>
+<xs:element name="rut" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="consultarDevolucionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:consultarDevolucionOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarDevolucionOutDTO">
+<xs:sequence>
+<xs:element name="devolucionesList" type="tns:devolucionDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="devolucionDTO">
+<xs:sequence>
+<xs:element name="codDevolucion" type="xs:int"/>
+<xs:element name="concepto" type="xs:string" minOccurs="0"/>
+<xs:element name="dv" type="xs:string" minOccurs="0"/>
+<xs:element name="monto" type="xs:int"/>
+<xs:element name="numCuenta" type="xs:string" minOccurs="0"/>
+<xs:element name="observaciones" type="xs:string" minOccurs="0"/>
+<xs:element name="rut" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listaRecaudadores">
+<xs:sequence>
+<xs:element name="request" type="tns:headerDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listaRecaudadoresResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:listaRecaudadoresOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listaRecaudadoresOutDTO">
+<xs:sequence>
+<xs:element name="listaRecaudadores" type="tns:recaudadorDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="recaudadorDTO">
+<xs:sequence>
+<xs:element name="codRecaudador" type="xs:int"/>
+<xs:element name="nombreRecaudador" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pingCaja">
+<xs:sequence>
+<xs:element name="request" type="tns:headerDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pingCajaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:pingOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pingOutDTO">
+<xs:sequence>
+<xs:element name="cheques" type="xs:long"/>
+<xs:element name="chequesFecha" type="xs:long"/>
+<xs:element name="efectivo" type="xs:long"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listaBancosCtas">
+<xs:sequence>
+<xs:element name="request" type="tns:headerDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listaBancosCtasResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:listaBancosCtasOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listaBancosCtasOutDTO">
+<xs:sequence>
+<xs:element name="listaBancosCtas" type="tns:bancoCtaCteDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="bancoCtaCteDTO">
+<xs:sequence>
+<xs:element name="codBanco" type="xs:int"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="numCtaCte" type="xs:string" minOccurs="0"/>
+<xs:element name="uso" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inicializarCaja">
+<xs:sequence>
+<xs:element name="request" type="tns:headerDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inicializarCajaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:inicializarCajaDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inicializarCajaDTO">
+<xs:sequence>
+<xs:element name="parametrosCaja" type="tns:parametroCajaDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="parametroCajaDTO">
+<xs:sequence>
+<xs:element name="dominio" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="valor" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMotivoJustificacion">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getMotivoJustificacionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:motivoJustificacionResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="motivoJustificacionResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="motivosJustificacion" type="tns:motivoJustificacionDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="motivoJustificacionDTO">
+<xs:sequence>
+<xs:element name="descMotivoJustificacion" type="xs:string" minOccurs="0"/>
+<xs:element name="estado" type="xs:string" minOccurs="0"/>
+<xs:element name="fecha" type="xs:string" minOccurs="0"/>
+<xs:element name="idMotivoJustificacion" type="xs:long"/>
+<xs:element name="idUsuario" type="xs:long"/>
+<xs:element name="tipoJustificacion" type="tns:tipoJustifacionDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tipoJustifacionDTO">
+<xs:sequence>
+<xs:element name="descTipoJustificacion" type="xs:string" minOccurs="0"/>
+<xs:element name="idTipoJustificacion" type="xs:long"/>
+<xs:element name="idUsuario" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="login">
+<xs:sequence>
+<xs:element name="user" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="loginResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:respuestaLoginTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="respuestaLoginTO">
+<xs:sequence>
+<xs:element name="retCod" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerVoucherOperacion">
+<xs:sequence>
+<xs:element name="numeroOperacion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerVoucherOperacionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:voucherOperacionResponseDTO" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="voucherOperacionResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="codigoSesion" type="xs:string" minOccurs="0"/>
+<xs:element name="codigoUsuarioEnvia" type="xs:string" minOccurs="0"/>
+<xs:element name="comprobantePdf" type="xs:string" minOccurs="0"/>
+<xs:element name="emailPara" type="xs:string" minOccurs="0"/>
+<xs:element name="estadoAlmacenamiento" type="xs:string" minOccurs="0"/>
+<xs:element name="estadoEnvio" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaEnvio" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaRegistro" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaUltimoReenvio" type="xs:string" minOccurs="0"/>
+<xs:element name="idComprobanteAdjunto" type="xs:string" minOccurs="0"/>
+<xs:element name="idComprobanteOperacion" type="xs:string" minOccurs="0"/>
+<xs:element name="idEnvioComprobante" type="xs:string" minOccurs="0"/>
+<xs:element name="idFileNet" type="xs:string" minOccurs="0"/>
+<xs:element name="idNumeroOperacion" type="xs:string" minOccurs="0"/>
+<xs:element name="propietario" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoComprobante" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoCopia" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoOperacion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="guardarVoucherTbk">
+<xs:sequence>
+<xs:element name="voucherTBK" type="tns:guardarVoucherTbkRequestDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="guardarVoucherTbkRequestDTO">
+<xs:sequence>
+<xs:element name="codigoSesion" type="xs:string" minOccurs="0"/>
+<xs:element name="codigoUsuarioEnvia" type="xs:string" minOccurs="0"/>
+<xs:element name="comprobante" type="xs:string" minOccurs="0"/>
+<xs:element name="emailPara" type="xs:string" minOccurs="0"/>
+<xs:element name="numerOperacion" type="xs:string" minOccurs="0"/>
+<xs:element name="propietario" type="xs:string" minOccurs="0"/>
+<xs:element name="tipOperacion" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoComprobante" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoCopia" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="guardarVoucherTbkResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:guardarVoucherTbkResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="guardarVoucherTbkResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="idCompoperacion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="consultarOperacion">
+<xs:sequence>
+<xs:element name="request" type="tns:consultarOperacionInDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarOperacionInDTO">
+<xs:complexContent>
+<xs:extension base="tns:headerDTO">
+<xs:sequence>
+<xs:element name="numeroOperacion" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="consultarOperacionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:consultarOperacionOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarOperacionOutDTO">
+<xs:sequence>
+<xs:element name="operacion" type="tns:operacionDTO" minOccurs="0"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validarJustificacionCierre">
+<xs:sequence>
+<xs:element name="request" type="tns:validarJustificacionRequestDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validarJustificacionRequestDTO">
+<xs:sequence>
+<xs:element name="datosOperacion" type="tns:justificacionOperacionDTO" minOccurs="0"/>
+<xs:element name="justificacion" type="tns:justificacionCierreDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="justificacionOperacionDTO">
+<xs:sequence>
+<xs:element name="cuentaCliente" type="xs:string" minOccurs="0"/>
+<xs:element name="numeroDocumento" type="xs:long"/>
+<xs:element name="rut" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="justificacionCierreDTO">
+<xs:sequence>
+<xs:element name="estado" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaRegistro" type="xs:string" minOccurs="0"/>
+<xs:element name="idAgencia" type="xs:long"/>
+<xs:element name="idMedioPago" type="xs:string" minOccurs="0"/>
+<xs:element name="idMotivoJustificacion" type="xs:long"/>
+<xs:element name="idOperacion" type="xs:long"/>
+<xs:element name="idUsuario" type="xs:long"/>
+<xs:element name="montoJustificado" type="xs:long"/>
+<xs:element name="observacion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validarJustificacionCierreResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:validarJustificacionResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validarJustificacionResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="existeJustificacion" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="registrarJustificacionCierre">
+<xs:sequence>
+<xs:element name="request" type="tns:registrarJustificacionRequestDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarJustificacionRequestDTO">
+<xs:sequence>
+<xs:element name="justificacion" type="tns:justificacionCierreDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarJustificacionCierreResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:registrarJustificacionResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarJustificacionResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="idJustificacionCierre" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="actualizarVoucherTbk">
+<xs:sequence>
+<xs:element name="voucherTBK" type="tns:actualizarVoucherTbkRequestDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizarVoucherTbkRequestDTO">
+<xs:sequence>
+<xs:element name="idComprobanteAdjunto" type="xs:string" minOccurs="0"/>
+<xs:element name="idFilenet" type="xs:string" minOccurs="0"/>
+<xs:element name="numerOperacion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizarVoucherTbkResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:guardarVoucherTbkResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerAnunciosMarketing">
+<xs:sequence>
+<xs:element name="request" type="tns:anuncioMarketingRequestDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="anuncioMarketingRequestDTO">
+<xs:sequence>
+<xs:element name="ruts" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerAnunciosMarketingResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:anuncioMarketingResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="anuncioMarketingResponseDTO">
+<xs:sequence>
+<xs:element name="anuncios" type="xs:string" minOccurs="0"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerDetalleCierre">
+<xs:sequence>
+<xs:element name="request" type="tns:obtenerDetalleCierreRequestDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerDetalleCierreRequestDTO">
+<xs:sequence>
+<xs:element name="codSesion" type="xs:long"/>
+<xs:element name="fecha" type="xs:string" minOccurs="0"/>
+<xs:element name="idAgencia" type="xs:long"/>
+<xs:element name="idCaja" type="xs:long"/>
+<xs:element name="idCajero" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerDetalleCierreResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:obtenerDetalleCierreResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerDetalleCierreResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="cantidadJustificaciones" type="xs:long"/>
+<xs:element name="cantidadReversas" type="xs:long"/>
+<xs:element name="diferenciaCuadratura" type="xs:long"/>
+<xs:element name="diferenciaSencillo" type="xs:long"/>
+<xs:element name="justificaciones" type="tns:justificacionDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="remesas" type="tns:remesaDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="sencilloApertura" type="xs:long"/>
+<xs:element name="sencilloCierre" type="xs:long"/>
+<xs:element name="totalMontoJustificado" type="xs:long"/>
+<xs:element name="totalMontoReversado" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="justificacionDTO">
+<xs:complexContent>
+<xs:extension base="tns:justificacionCierreDTO">
+<xs:sequence>
+<xs:element name="idJustificacion" type="xs:long"/>
+<xs:element name="motivo" type="tns:motivoJustificacionDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="remesaDTO">
+<xs:sequence>
+<xs:element name="codAgencia" type="xs:long"/>
+<xs:element name="codCajafisica" type="xs:long"/>
+<xs:element name="codOperacion" type="xs:int"/>
+<xs:element name="codRecaudador" type="xs:long"/>
+<xs:element name="codSesion" type="xs:long"/>
+<xs:element name="descripcionOperacion" type="xs:string" minOccurs="0"/>
+<xs:element name="estadoOperacion" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaPago" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaProc" type="xs:string" minOccurs="0"/>
+<xs:element name="horaPago" type="xs:string" minOccurs="0"/>
+<xs:element name="horaProc" type="xs:string" minOccurs="0"/>
+<xs:element name="montoOperacion" type="xs:long"/>
+<xs:element name="numOperacion" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarAprobacionCheque">
+<xs:sequence>
+<xs:element name="request" type="tns:consultarAprobacionChInDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarAprobacionChInDTO">
+<xs:sequence>
+<xs:element name="codigoAprobacion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarAprobacionChequeResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:consultarAprobacionChOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarAprobacionChOutDTO">
+<xs:sequence>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listaTarjetasMultitienda">
+<xs:sequence>
+<xs:element name="request" type="tns:headerDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listaTarjetasMultitiendaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:consultarTarjetasMTOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarTarjetasMTOutDTO">
+<xs:sequence>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+<xs:element name="tajetasMultiTienda" type="tns:tarjetaMultitiendaDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tarjetaMultitiendaDTO">
+<xs:sequence>
+<xs:element name="codTarjeta" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerAprobacionDescuento">
+<xs:sequence>
+<xs:element name="request" type="tns:aprobacionDescuentoRequestDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aprobacionDescuentoRequestDTO">
+<xs:sequence>
+<xs:element name="cuenta" type="xs:string" minOccurs="0"/>
+<xs:element name="dv" type="xs:string" minOccurs="0"/>
+<xs:element name="origen" type="xs:string" minOccurs="0"/>
+<xs:element name="rut" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerAprobacionDescuentoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:aprobacionDescuentoResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aprobacionDescuentoResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="agencia" type="xs:string" minOccurs="0"/>
+<xs:element name="cuenta" type="xs:string" minOccurs="0"/>
+<xs:element name="descuento" type="xs:double" minOccurs="0"/>
+<xs:element name="dv" type="xs:string" minOccurs="0"/>
+<xs:element name="estado" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaAutorizacion" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="origen" type="xs:string" minOccurs="0"/>
+<xs:element name="rut" type="xs:long" minOccurs="0"/>
+<xs:element name="usuario" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="obtenerEmailsPorRut">
+<xs:sequence>
+<xs:element name="rut" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerEmailsPorRutResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarSencilloCajero">
+<xs:sequence>
+<xs:element name="request" type="tns:registrarSencilloCajeroRequestDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarSencilloCajeroRequestDTO">
+<xs:sequence>
+<xs:element name="fechaRecibo" type="xs:string" minOccurs="0"/>
+<xs:element name="idAgencia" type="xs:long"/>
+<xs:element name="idCaja" type="xs:long"/>
+<xs:element name="idCajero" type="xs:long"/>
+<xs:element name="montoRecibido" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarSencilloCajeroResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:registrarSencilloCajeroResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarSencilloCajeroResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="idSencilloCajeroAgencia" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="cierreCaja">
+<xs:sequence>
+<xs:element name="request" type="tns:headerDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cierreCajaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:cierreCajaOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarDenominacion">
+<xs:sequence>
+<xs:element name="request" type="tns:consultarDenominacionInDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarDenominacionInDTO">
+<xs:sequence>
+<xs:element name="tipoDenominacion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarDenominacionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:consultarDenominacionOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarDenominacionOutDTO">
+<xs:sequence>
+<xs:element name="denominacionesList" type="tns:denominacionDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="denominacionDTO">
+<xs:sequence>
+<xs:element name="codDenominacion" type="xs:int"/>
+<xs:element name="denominacion" type="xs:string" minOccurs="0"/>
+<xs:element name="montoMaximo" type="xs:int"/>
+<xs:element name="montoMinimo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerAuthMail">
+<xs:sequence>
+<xs:element name="paramSet" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerAuthMailResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:obtenerAuthMailResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerAuthMailResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="mapa" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="desconectarCaja">
+<xs:sequence>
+<xs:element name="request" type="tns:headerDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="desconectarCajaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:desconectarCajaOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="desconectarCajaOutDTO">
+<xs:sequence>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateUserPassword">
+<xs:sequence>
+<xs:element name="user" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+<xs:element name="newPass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateUserPasswordResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:respuestaLoginTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarAdjunto">
+<xs:sequence>
+<xs:element name="idAdjunto" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarAdjuntoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:consultaAdjuntoResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultaAdjuntoResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="parametroDos" type="xs:string" minOccurs="0"/>
+<xs:element name="parametroTres" type="xs:string" minOccurs="0"/>
+<xs:element name="parametroUno" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="autentificar">
+<xs:sequence>
+<xs:element name="request" type="tns:autentificarInDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="autentificarInDTO">
+<xs:complexContent>
+<xs:extension base="tns:headerDTO">
+<xs:sequence>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="autentificarResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:autentificarOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="autentificarOutDTO">
+<xs:sequence>
+<xs:element name="cajero" type="xs:int"/>
+<xs:element name="perfil" type="xs:string" minOccurs="0"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ultimaSesion">
+<xs:sequence>
+<xs:element name="request" type="tns:ultimaSesionRequestDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ultimaSesionRequestDTO">
+<xs:sequence>
+<xs:element name="agencia" type="xs:string" minOccurs="0"/>
+<xs:element name="recaudador" type="xs:string" minOccurs="0"/>
+<xs:element name="usuario" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ultimaSesionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:ultimaSesionResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ultimaSesionResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="sesion" type="tns:sesionDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="sesionDTO">
+<xs:sequence>
+<xs:element name="codAgencia" type="xs:string" minOccurs="0"/>
+<xs:element name="codCajaFisica" type="xs:string" minOccurs="0"/>
+<xs:element name="codRecaudador" type="xs:string" minOccurs="0"/>
+<xs:element name="codSesion" type="xs:string" minOccurs="0"/>
+<xs:element name="codUsuario" type="xs:string" minOccurs="0"/>
+<xs:element name="conectada" type="xs:string" minOccurs="0"/>
+<xs:element name="estadoSesion" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaApertura" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaCierre" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaSesion" type="xs:string" minOccurs="0"/>
+<xs:element name="ultimaConexion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aperturaCaja">
+<xs:sequence>
+<xs:element name="request" type="tns:aperturaCajaInDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aperturaCajaInDTO">
+<xs:complexContent>
+<xs:extension base="tns:headerDTO">
+<xs:sequence>
+<xs:element name="fechaPago" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="aperturaCajaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:aperturaCajaOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aperturaCajaOutDTO">
+<xs:sequence>
+<xs:element name="canal" type="xs:int"/>
+<xs:element name="codRecaudador" type="xs:int"/>
+<xs:element name="entidad" type="xs:int"/>
+<xs:element name="estado" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreRecaudador" type="xs:string" minOccurs="0"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+<xs:element name="sessionId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarOperTbkRut">
+<xs:sequence>
+<xs:element name="request" type="tns:consultarOperTbkInDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarOperTbkInDTO">
+<xs:sequence>
+<xs:element name="dv" type="xs:string" minOccurs="0"/>
+<xs:element name="rut" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarOperTbkRutResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:operacionTbkResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="operacionTbkResponseDTO">
+<xs:sequence>
+<xs:element name="cantRegistros" type="xs:long"/>
+<xs:element name="operacionTbkList" type="tns:operacionTbkDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="operacionTbkDTO">
+<xs:sequence>
+<xs:element name="codagencia" type="xs:int"/>
+<xs:element name="codcajafisica" type="xs:int"/>
+<xs:element name="dv" type="xs:string" minOccurs="0"/>
+<xs:element name="fechapago" type="xs:string" minOccurs="0"/>
+<xs:element name="idtrxtbk" type="xs:string" minOccurs="0"/>
+<xs:element name="monto" type="xs:long"/>
+<xs:element name="rut" type="xs:int"/>
+<xs:element name="tipoTrx" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerValidacionChequesProtestados">
+<xs:sequence>
+<xs:element name="request" type="tns:validacionChequesProtestadosRequestDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validacionChequesProtestadosRequestDTO">
+<xs:sequence>
+<xs:element name="dv" type="xs:string" minOccurs="0"/>
+<xs:element name="rut" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerValidacionChequesProtestadosResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:validacionChequesProtestadosResponseDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validacionChequesProtestadosResponseDTO">
+<xs:complexContent>
+<xs:extension base="tns:genericResponseDTO">
+<xs:sequence>
+<xs:element name="hasAprobacion" type="xs:boolean"/>
+<xs:element name="hasProtesto" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="consultarBancos">
+<xs:sequence>
+<xs:element name="request" type="tns:headerDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarBancosResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:consultarBancosOutDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarBancosOutDTO">
+<xs:sequence>
+<xs:element name="bancos" type="tns:bancoDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="retCode" type="xs:string" minOccurs="0"/>
+<xs:element name="retDesc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="bancoDTO">
+<xs:sequence>
+<xs:element name="codBanco" type="xs:int"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="estado" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

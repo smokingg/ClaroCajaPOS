@@ -1,0 +1,645 @@
+<documents>
+
+<document name="AtisTelefonica" class="cl.hyh.redpagos.caja.docpago.AtisTelefonica" empresa="Atis" customerVoucher="VoucherAtisTelefonica" commerceVoucher="VoucherAtisTelefonicaCommerce">
+	<field name="DocTipo" type="char"/>
+	<field name="TipoDoc" type="char" transmit="no"/>
+	<field name="DocNumeroLATAM" type="char"/>
+	<field name="DocSaldo" type="monto"/>
+	<field name="CodigoBarra" type="char" transmit="no"/>
+	<field name="Monto" type="monto" />	
+	<field name="Cliente" type="char"/>
+	<field name="Cuenta" type="char"/>
+	<field name="Area" type="char"/>
+	<field name="Telefono" type="char"/>
+	<field name="Rut" type="char" default=" "/>
+	<field name="isRut" type="num" transmit="no" default="1"/>
+	<field name="isTelefono" type="num" transmit="no" default="1"/>
+	<field name="AreaTelefono" type="char" transmit="no"/>
+	<field name="ClienteCuenta" type="char" transmit="no"/>
+	<field name="Nombre Cliente" type="char" transmit="no"/>
+	<field name="CodTrxLatam" type="char"/>
+	<field name="CodMoneda" type="char"/>
+	<field name="FechaEmision" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+	<field name="AccFinanciamiento" type="num" transmit="no" default="0"/>
+	<field name="AcuerdoFinan" type="num" transmit="no" default="0"/>
+	<field name="IndiceCuota" type="num" transmit="no"/>
+	<field name="NumeroCuota" type="num" transmit="no" default="999"/>
+	<field name="TipoTotal" type="char"/>
+</document>
+
+<document name="AtisCodBarraOffline" class="cl.hyh.redpagos.caja.docpago.AtisCodBarraOffline" empresa="Atis" customerVoucher="VoucherAtisOffline" commerceVoucher="VoucherDocumentoAtisCommerce">
+	<field name="CodigoBarra" type="char"/>
+	<field name="Monto" type="monto" />
+	<field name="CodTrxLatam" type="char" default="01"/>
+	<field name="CodMoneda" type="char" default="27"/>
+	<field name="TipoTotal" type="char"/>
+</document>
+
+<document name="AtisPagoExterno" class="cl.hyh.redpagos.caja.docpago.AtisTelefonica" empresa="Atis" customerVoucher="VoucherAtisTelefonicaExterno" commerceVoucher="VoucherDocumentoAtisCommerce">
+    <field name="CodigoBarra" type="char"/>
+    <field name="Area" type="char" />
+    <field name="Telefono" type="char"/>
+    <field name="CodMoneda" type="char"/>
+    <field name="CodTrx" type="char"/>
+    <field name="TipoTotal" type="char"/>
+    <field name="Monto" type="monto"/>
+</document>
+
+<document name="AtisTotalizado" class="cl.hyh.redpagos.caja.docpago.AtisTotalizado" empresa="Atis" customerVoucher="VoucherAtisTotalizado" commerceVoucher="VoucherAtisTotalizadoCommerce">
+	<field name="DocTipo" type="char"/>
+	<field name="DocNumeroLATAM" type="char"/>
+	<field name="DocSaldo" type="monto"/>
+	<field name="CodigoBarra" type="char" transmit="no"/>
+	<field name="Monto" type="monto" />
+	<field name="FechaEmision" type="char" transmit="no"/>
+	<field name="FechaVencimiento" type="char" transmit="no"/>
+	<field name="Cliente" type="char"/>
+	<field name="Cuenta" type="char"/>
+	<field name="Area" type="char"/>
+    <field name="Telefono" type="char"/>
+    <field name="AreaTelefono" type="char" transmit="no"/>
+	<field name="ClienteCuenta" type="char" transmit="no"/>
+	<field name="Nombre Cliente" type="char" transmit="no"/>
+	<field name="CodTrxLatam" type="char"/>
+	<field name="CodMoneda" type="char"/>
+	<field name="AccFinanciamiento" type="num"/>
+	<field name="TipoTotal" type="char"/>
+</document>
+
+<document name="AtisMontoMenor" class="cl.hyh.redpagos.caja.docpago.AtisMontoMenor" empresa="Atis" customerVoucher="VoucherDocumentoAtisAnalisis" commerceVoucher="VoucherDocumentoAtisAnalisisCommerce">
+	<field name="DocTipo" type="char"/>
+	<field name="DocNumeroLATAM" type="char"/>
+	<field name="DocSaldo" type="monto"/>
+	<field name="CodigoBarra" type="char" transmit="no"/>
+	<field name="Monto" type="monto" />
+	<field name="FechaEmision" type="char" transmit="no"/>
+	<field name="FechaVencimiento" type="char" transmit="no"/>
+	<field name="Cliente" type="char"/>
+	<field name="Cuenta" type="char"/>
+	<field name="CodTrxLatam" type="char"/>
+	<field name="CodMoneda" type="char"/>
+	<field name="AccFinanciamiento" type="num" transmit="no"/>
+	<field name="TipoTotal" type="char"/>
+</document>
+
+<document name="AtisAbonoCtaCte" class="cl.hyh.redpagos.caja.docpago.AtisAbonoCtaCte" empresa="Atis" customerVoucher="VoucherAtisAbonoCtaCte">
+	<field name="Monto" type="monto" />
+	<field name="Cliente" type="char"/>
+	<field name="Cuenta" type="char"/>
+	<field name="Area" type="char"/>
+	<field name="Telefono" type="char"/>
+	<field name="CodTrxLatam" type="char"/>
+	<field name="CodMoneda" type="char"/>
+	<field name="TipoTotal" type="char"/>
+	<field name="TelefonoArea" type="char" transmit="no"/>
+	<field name="AreaTelefono" type="char" transmit="no"/>
+</document>
+
+<document name="DocumentoAtisDevolucion" class="cl.hyh.redpagos.caja.docpago.DocumentoAtisDevolucion" customerVoucher="VoucherDevolucionAtis" commerceVoucher="VoucherDevolucionAtisCommerce">
+    <field name="Cliente" type="char"/>
+    <field name="Cuenta" type="char"/>
+    <field name="CodTrxLatam" type="char"/> 
+    <field name="DocTipo" type="char"/>
+    <field name="DocNumeroLATAM" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="DocSaldo" type="monto"/>    
+    <field name="TipoTotal" type="char"/>
+    <field name="TelefonoArea" type="char" transmit="no"/>
+    <field name="Rut" type="char" transmit="no"/>
+    <field name="Nombre" type="char" transmit="no"/>
+    <field name="ClienteCuenta" type="char" transmit="no"/>
+</document>
+
+<document name="DocumentoGuiaDevolucion" class="cl.hyh.redpagos.caja.docpago.DocumentoGuiaDevolucion" customerVoucher="VoucherDocumentoGuiaDevolucion" commerceVoucher="VoucherDocumentoGuiaDevolucionCommerce">
+    <field name="NumeroDocumento" type="char"/>
+    <field name="MontoDocumento" type="monto"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+
+<document name="DocumentoTelefonicaEmpresas" class="cl.hyh.redpagos.caja.docpago.DocumentoTelefonicaEmpresas" empresa="TelefonicaE" customerVoucher="VoucherDocumentoTelefonicaEmpresas" commerceVoucher="VoucherDocumentoTelefonicaEmpresasCommerce">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="BoletaFlexible" type="char"/>
+    <field name="Servicio" type="char"/>
+    <field name="Cut" type="char"/>
+    <field name="MontoCut" type="monto"/>
+    <field name="NumFolio" type="char"/>
+    <field name="isAviso" type="num" transmit="no" default="1"/>
+    <field name="isOffline" type="num" transmit="no" default="1"/>
+    <field name="isOfflineAviso" type="num" transmit="no" default="1"/>
+    <field name="isOfflineFactura" type="num" transmit="no" default="1"/>
+    <field name="FolioB" type="char" transmit="no"/>
+    <field name="NumDocB" type="char" transmit="no"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+
+<document name="DocumentoTelefonicaEmpresasDetalle" class="cl.hyh.redpagos.caja.docpago.DocumentoTelefonicaEmpresas" empresa="TelefonicaE" customerVoucher="VoucherDocumentoTelefonicaEmpresasDetalle" commerceVoucher="VoucherDocumentoTelefonicaEmpresasCommerce">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="BoletaFlexible" type="char"/>
+    <field name="Servicio" type="char"/>
+    <field name="Cut" type="char"/>
+    <field name="MontoCut" type="monto"/>
+    <field name="NumFolio" type="char"/>
+    <field name="Movil" type="char"/>
+    <field name="isAviso" type="num" transmit="no" default="1"/>
+    <field name="isOffline" type="num" transmit="no" default="1"/>
+    <field name="isOfflineAviso" type="num" transmit="no" default="1"/>
+    <field name="isOfflineFactura" type="num" transmit="no" default="1"/>
+    <field name="FolioB" type="char" transmit="no"/>
+    <field name="NumDocB" type="char" transmit="no"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+
+<document name="DocumentoTelefonica" class="cl.hyh.redpagos.caja.docpago.DocumentoTelefonica" empresa="TelefonicaE" customerVoucher="VoucherDocumentoTelefonica" commerceVoucher="VoucherDocumentoTelefonicaCommerce">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+
+<document name="DocumentoMovistar" class="cl.hyh.redpagos.caja.docpago.DocumentoMovistar" empresa="Movistar" customerVoucher="VoucherDocumentoMovistar" commerceVoucher="VoucherDocumentoMovistarCommerce">        
+    <field name="OrigenConsulta" type="char"/>
+    <field name="Celular" type="long"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+
+<document name="DocumentoPubliguias" class="cl.hyh.redpagos.caja.docpago.DocumentoEmpresasExternas" empresa="Publiguias" customerVoucher="VoucherDocumentoPubliguias" commerceVoucher="VoucherDocumentoPubliguiasCommerce">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="NumeroFactura" type="char" transmit="no"/>
+    <field name="isFactura" type="char" transmit="no"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+<document name="AnulacionDocumentoPubliguias" class="cl.hyh.redpagos.caja.docpago.DocumentoEmpresasExternas" empresa="Publiguias" customerVoucher="VoucherDocumentoPubliguias" commerceVoucher="VoucherDocumentoPubliguiasCommerce">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="NumeroFactura" type="char" transmit="no"/>
+    <field name="isFactura" type="char" transmit="no"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+<document name="DocumentoCain" class="cl.hyh.redpagos.caja.docpago.DocumentoEmpresasExternas" empresa="Cain" customerVoucher="VoucherDocumentoCain" commerceVoucher="VoucherDocumentoCainCommerce">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+<document name="DocumentoSap" class="cl.hyh.redpagos.caja.docpago.DocumentoEmpresasExternas" empresa="Sap" customerVoucher="VoucherDocumentoSap" commerceVoucher="VoucherDocumentoSapCommerce">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+<document name="DocumentoEmpresa991" class="cl.hyh.redpagos.caja.docpago.DocumentoEmpresasExternas" empresa="Sap" customerVoucher="VoucherDocumentoEmpresa991" commerceVoucher="VoucherDocumentoEmpresa991Commerce">
+    <field name="Monto" type="monto"/> 
+    <field name="TipoDocumento" type="char"/> 
+    <field name="NumeroDocumento" type="char"/>
+    <field name="Rut" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+<document name="DocumentoGuias" class="cl.hyh.redpagos.caja.docpago.DocumentoEmpresasExternas" empresa="Guias" customerVoucher="VoucherDocumentoGuias" commerceVoucher="VoucherDocumentoGuiasCommerce">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+<document name="DocumentoProsegur" class="cl.hyh.redpagos.caja.docpago.DocumentoEmpresasExternas" empresa="Prosegur" customerVoucher="VoucherDocumentoProsegur" commerceVoucher="VoucherDocumentoProsegurCommerce">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+
+<document name="DocumentoMovistarDist" class="cl.hyh.redpagos.caja.docpago.DocumentoEmpresasExternas" empresa="MovistarDist" customerVoucher="VoucherDocumentoMovistarDist" commerceVoucher="VoucherDocumentoMovistarDistCommerce">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+
+<document name="DocumentoMundo" class="cl.hyh.redpagos.caja.docpago.DocumentoMundo" empresa="Mundo" customerVoucher="VoucherDocumentoMundo">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+
+<document name="DocumentoGlobus" class="cl.hyh.redpagos.caja.docpago.DocumentoEmpresasExternas" empresa="Globus" customerVoucher="VoucherDocumentoGlobus">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+
+<document name="DocumentoTerra" class="cl.hyh.redpagos.caja.docpago.DocumentoEmpresasExternas" empresa="Terra" customerVoucher="VoucherDocumentoTerra">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+
+<document name="DocumentoRetail" class="cl.hyh.redpagos.caja.docpago.DocumentoEmpresasExternas" empresa="Retail" customerVoucher="VoucherDocumentoRetail">
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="MontoSaldo" type="monto"/>
+    <field name="MontoFacturado" type="monto"/>
+    <field name="TipoDocumento" type="char"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumFolio" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+
+<document name="Recarga" class="cl.hyh.redpagos.caja.docpago.Recarga" reversable="false" customerVoucher="VoucherRecarga" commerceVoucher="VoucherRecargaCommerce">
+    <field name="Telefono" type="char"/>
+    <field name="Monto" type="monto"/>
+    <field name="NumeroSecuencia" type="num"/>
+    <field name="Fecha" type="char"/>
+    <field name="Hora" type="char"/>
+    <field name="IdTrx" type="char" transmit="no"/>
+    <field name="CodAutorizacion" type="char"/>
+    <field name="CodRespuesta" type="char"/>
+    <field name="CodAprobacion" type="char"/>
+    <field name="IdTerminal" type="char"/>
+    <field name="IdEmpresa" type="char"/>
+    <field name="TipoTotal" type="char"/>
+</document>
+
+<document name="DocumentoTLP" class="cl.hyh.redpagos.caja.docpago.DocumentoTLP" customerVoucher="VoucherTLPCliente" commerceVoucher="VoucherTLPCommerce">
+		<field name="Monto" type="monto"/>
+		<field name="CorrelativoTerminal" type="num"/>
+		<field name="FechaYHora" type="char"/>
+		<field name="Fecha" type="char" transmit="no"/>
+		<field name="Hora" type="char" transmit="no"/>
+		<field name="FechaContable" type="char"/>
+		<field name="CodigoAdquirente" type="char"/>
+		<field name="NumRefRecuperacion" type="num"/>
+		<field name="CodigoAprobacion" type="char"/>
+		<field name="CodigoRespuesta" type="num"/>
+		<field name="IdentificacionTerminal" type="char"/>
+		<field name="CodigoComercio" type="char"/>
+		<field name="GlosaError" type="char"/>
+		<field name="FechaVencimientoTLP" type="char"/>
+		<field name="Vencimiento" type="char" transmit="no"/>
+		<field name="NumOperacion" type="char" transmit="no"/>
+		<field name="DiasExpiracionTLP" type="num"/>
+		<field name="SerieTLP" type="num"/>
+		<field name="TipoTotal" type="char"/>
+		<field name="PinTLP" type="char"/>		
+</document>
+
+<document name="DocumentoLSE" class="cl.hyh.redpagos.caja.docpago.DocumentoLSE" customerVoucher="VoucherLSECliente" commerceVoucher="VoucherLSECommerce">
+        <field name="Monto" type="monto"/>
+        <field name="CorrelativoTerminal" type="num"/>
+        <field name="FechaYHora" type="char"/>
+        <field name="FechaContable" type="char"/>
+        <field name="CodigoAdquirente" type="char"/>
+        <field name="NumRefRecuperacion" type="num"/>
+        <field name="CodigoAprobacion" type="char"/>
+        <field name="CodigoRespuesta" type="num"/>
+        <field name="IdentificacionTerminal" type="char"/>
+        <field name="CodigoComercio" type="char"/>
+        <field name="GlosaError" type="char"/>
+        <field name="EstadoCliente" type="char"/>
+        <field name="FechaVencimientoLSE" type="char"/>
+        <field name="DiasExpiracionLSE" type="num"/>
+        <field name="FechaUltPago" type="char"/>
+        <field name="FechaSigPago" type="char"/>
+        <field name="Plan" type="char"/>
+        <field name="CostoPlanActual" type="monto"/>
+        <field name="SerieLSE" type="num"/>
+        <field name="TipoTotal" type="char"/>
+        <field name="Area" type="char" transmit="no"/>
+        <field name="Telefono" type="char" transmit="no"/>
+        <field name="NumOperacion" type="char" transmit="no"/>
+        <field name="Fecha" type="char" transmit="no"/>
+        <field name="Hora" type="char" transmit="no"/>
+        <field name="FechaUltPagoB" type="char" transmit="no"/>
+        <field name="FechaSigPagoB" type="char" transmit="no"/>
+        <field name="Nombre" type="char" transmit="no"/>
+        <field name="Direccion" type="char" transmit="no"/>
+        <field name="AreaTelefono" type="char" transmit="no"/>
+</document>
+
+<document name="DocumentoCambioLSE" class="cl.hyh.redpagos.caja.docpago.DocumentoLSE" customerVoucher="VoucherLSECambioCliente" commerceVoucher="VoucherLSECambioCommerce">
+        <field name="Monto" type="monto"/>
+        <field name="CorrelativoTerminal" type="num"/>
+        <field name="FechaYHora" type="char"/>
+        <field name="FechaContable" type="char"/>
+        <field name="CodigoAdquirente" type="char"/>
+        <field name="NumRefRecuperacion" type="num"/>
+        <field name="CodigoAprobacion" type="char"/>
+        <field name="CodigoRespuesta" type="num"/>
+        <field name="IdentificacionTerminal" type="char"/>
+        <field name="CodigoComercio" type="char"/>
+        <field name="GlosaError" type="char"/>
+        <field name="EstadoCliente" type="char"/>
+        <field name="FechaVencimientoLSE" type="char"/>
+        <field name="DiasExpiracionLSE" type="num"/>
+        <field name="FechaUltPago" type="char"/>
+        <field name="FechaSigPago" type="char"/>
+        <field name="Plan" type="char"/>
+        <field name="CostoPlanActual" type="monto"/>
+        <field name="SerieLSE" type="num"/>
+        <field name="TipoTotal" type="char"/>
+        <field name="Area" type="char" transmit="no"/>
+        <field name="Telefono" type="char" transmit="no"/>
+        <field name="NumOperacion" type="char" transmit="no"/>
+        <field name="Fecha" type="char" transmit="no"/>
+        <field name="Hora" type="char" transmit="no"/>
+        <field name="FechaUltPagoB" type="char" transmit="no"/>
+        <field name="FechaSigPagoB" type="char" transmit="no"/>
+        <field name="Nombre" type="char" transmit="no"/>
+        <field name="Direccion" type="char" transmit="no"/>
+        <field name="AreaTelefono" type="char" transmit="no"/>
+</document>
+
+<document name="DocumentoBA" class="cl.hyh.redpagos.caja.docpago.DocumentoBA" customerVoucher="VoucherBACliente" commerceVoucher="VoucherBACommerce">
+        <field name="Monto" type="monto"/>
+        <field name="CorrelativoTerminal" type="num"/>
+        <field name="FechaYHora" type="char"/>        
+        <field name="FechaContable" type="char"/>
+        <field name="CodigoAdquirente" type="char"/>
+        <field name="NumRefRecuperacion" type="num"/>
+        <field name="CodigoRespuesta" type="num"/>
+        <field name="IdentificacionTerminal" type="char"/>
+        <field name="CodigoComercio" type="char"/>
+        <field name="GlosaError" type="char"/>
+        <field name="TipoTotal" type="char"/>
+        <field name="Area" type="char" transmit="no"/>
+        <field name="Telefono" type="char" transmit="no"/>
+        <field name="Local" type="char" transmit="no"/>
+        <field name="Producto" type="char" transmit="no"/>
+        <field name="Concentrador" type="char" transmit="no"/>
+        <field name="NumOperacion" type="char" transmit="no"/>
+        <field name="Fecha" type="char" transmit="no"/>
+        <field name="Hora" type="char" transmit="no"/>
+</document>
+
+<document name="DocumentoCuentaVtr" class="cl.hyh.redpagos.caja.docpago.DocumentoCuentaVtr" empresa="TelefonicaE" customerVoucher="VoucherDocumentoCuentaVtr" commerceVoucher="VoucherDocumentoCuentaVtrCommerce">
+    <field name="Monto" type="monto"/>    
+    <field name="CuentaUnica" type="char"/>
+    <field name="DireccionCobranza" type="char"/>
+    <field name="NumeroCuenta" type="char"/>
+    <field name="SistemaOrigen" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="RutCliente" type="char"/>
+    <field name="Tipo" type="char"/>
+</document>
+
+<document name="DocumentoVtr" class="cl.hyh.redpagos.caja.docpago.DocumentoVtr" empresa="TelefonicaE" customerVoucher="VoucherDocumentoVtr" commerceVoucher="VoucherDocumentoVtrCommerce">
+    <field name="Monto" type="monto"/>    
+    <field name="CuentaUnica" type="char"/>
+    <field name="DireccionCobranza" type="char"/>
+    <field name="NumeroCuenta" type="char"/>
+    <field name="NumeroDocumento" type="char"/>
+    <field name="NumeroCorrelativo" type="char"/>
+    <field name="SistemaOrigen" type="char"/>
+    <field name="FechaVencimiento" type="char"/>
+    <field name="FechaEmision" type="char"/>
+    <field name="TipoDocumento" type="char"/>
+    <field name="TipoCorrelativo" type="char"/>
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="RutCliente" type="char"/>
+    <field name="Tipo" type="char"/>
+</document>
+
+<document name="DocumentoServicioVtr" class="cl.hyh.redpagos.caja.docpago.DocumentoServicioVtr" empresa="TelefonicaE" customerVoucher="VoucherDocumentoServicioVtr" commerceVoucher="VoucherDocumentoServicioVtrCommerce">
+    <field name="Monto" type="monto"/>    
+    <field name="CuentaUnica" type="char"/>
+    <field name="EstadoServicio" type="char"/>
+    <field name="IdentificadorServicio" type="char"/>
+    <field name="Producto" type="char"/>
+    <field name="NumeroCuenta" type="char"/>
+    <field name="NumeroServicio" type="char"/>
+    <field name="NumeroDocumento" type="char"/>
+    <field name="SistemaOrigen" type="char"/>
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="RutCliente" type="char"/>
+    <field name="Tipo" type="char"/>
+    <field name="Cut" type="char"/>
+</document>
+
+<document name="DocumentoAbonoVtr" class="cl.hyh.redpagos.caja.docpago.DocumentoAbonoVtr" empresa="TelefonicaE" customerVoucher="VoucherDocumentoAbonoVtr" commerceVoucher="VoucherDocumentoAbonoVtrCommerce">
+    <field name="Monto" type="monto"/>    
+    <field name="NumeroCuenta" type="char"/>
+    <field name="SistemaOrigen" type="char"/>
+    <field name="DireccionPostal" type="char"/>
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="RutCliente" type="char"/>
+</document>
+
+<document name="DocumentoAbonoClaro" class="cl.hyh.redpagos.caja.docpago.DocumentoAbonoClaro" empresa="TelefonicaE" customerVoucher="VoucherDocumentoAbonoClaro" commerceVoucher="VoucherDocumentoAbonoVtrCommerce">
+    <field name="Monto" type="monto"/>    
+    <field name="NumeroCuenta" type="char"/>
+    <field name="SistemaOrigen" type="char"/>
+    <field name="DireccionPostal" type="char"/>
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="RutCliente" type="char"/>
+</document>
+
+<document name="DocumentoAccesorioClaro" class="cl.hyh.redpagos.caja.docpago.DocumentoAccesorioClaro" empresa="TelefonicaE" customerVoucher="VoucherDocumentoAccesorioClaro" commerceVoucher="VoucherDocumentoAbonoAccesorioCommerce">
+    <field name="Monto" type="monto"/>    
+    <field name="NumeroDocumento" type="char"/>
+    <field name="CodigoRecaudador" type="char"/>
+    <field name="CodigoSucursal" type="char"/>
+    <field name="Rut" type="char"/>
+    <field name="RutAccesorio" type="char"/>
+    <field name="Glosa" type="char"/>
+</document>
+
+<document name="DocumentoDevolucionVtr" class="cl.hyh.redpagos.caja.docpago.DocumentoDevolucionVtr" empresa="TelefonicaE" customerVoucher="VoucherDocumentoDevolucionVtr" commerceVoucher="VoucherDocumentoDevolucionVtrCommerce">
+    <field name="Monto" type="monto"/>    
+    <field name="NumeroCuenta" type="char"/>
+    <field name="CuentaUnica" type="char"/>
+    <field name="DireccionCobranza" type="char"/>
+    <field name="SistemaOrigen" type="char"/>
+</document>
+
+<document name="DocumentoDevolucionClaro" class="cl.hyh.redpagos.caja.docpago.DocumentoDevolucionClaro" empresa="TelefonicaE" customerVoucher="VoucherDocumentoDevolucionClaro" commerceVoucher="VoucherDocumentoDevolucionVtrCommerce">
+    <field name="Monto" type="monto"/>    
+    <field name="NumeroCuenta" type="char"/>
+    <field name="CuentaUnica" type="char"/>
+    <field name="DireccionCobranza" type="char"/>
+    <field name="SistemaOrigen" type="char"/>
+</document>
+
+<document name="RemesaEfectivo" class="cl.hyh.redpagos.caja.docpago.RemesaEfectivo" empresa="TelefonicaE" customerVoucher="VoucherRemesaEfectivo" commerceVoucher="VoucherRemesaEfectivoCommerce">
+    <field name="Monto" type="monto"/>    
+</document>
+<document name="RemesaChequeDia" class="cl.hyh.redpagos.caja.docpago.RemesaChequeDia" empresa="TelefonicaE" customerVoucher="VoucherRemesaChequeDia" commerceVoucher="VoucherRemesaChequeDiaCommerce">
+    <field name="Monto" type="monto"/>    
+</document>
+<document name="RemesaChequeFecha" class="cl.hyh.redpagos.caja.docpago.RemesaChequeFecha" empresa="TelefonicaE" customerVoucher="VoucherRemesaChequeFecha" commerceVoucher="VoucherRemesaChequeFechaCommerce">
+    <field name="Monto" type="monto"/>    
+</document>
+
+<!-- cbriones: definimos un documento de Cuenta de pruebas para Claro -->
+<document name="DocumentoCuentaClaro" class="cl.hyh.redpagos.caja.docpago.DocumentoCuentaClaro" empresa="Claro" customerVoucher="VoucherDocumentoCuentaClaro" commerceVoucher="VoucherDocumentoCuentaVtrCommerce">
+	<field name="Rut" type="char"/>
+	<field name="Tipo" type="char"/>
+	<field name="CuentaClaro" type="char"/>
+    <field name="SaldoClaro" type="monto"/>    
+    <field name="SaldoAdeudadoClaro" type="monto"/> 
+    <field name="DireccionCobranzaClaro" type="char"/>
+    <field name="ClienteClaro" type="char"/>
+    <field name="SistemaOrigenClaro" type="char"/>
+    <field name="FechaEmisionClaro" type="char"/>
+    <field name="FechaVencimientoClaro" type="char"/>
+    <field name="FolioDocumentoClaro" type="monto"/>
+    <field name="NumeroDocumentoClaro" type="monto"/>
+    <field name="CodigoEmpresaClaro" type="monto"/>
+    <field name="Telefono" type="char"/>
+    
+</document>
+
+
+<!-- cbriones: definimos un documento de pruebas para Claro -->
+<document name="DocumentoClaro" class="cl.hyh.redpagos.caja.docpago.DocumentoClaro" empresa="Claro" customerVoucher="VoucherDocumentoClaro" commerceVoucher="VoucherDocumentoCuentaVtrCommerce">
+    <field name="MontoClaro" type="monto"/>    
+    <field name="CuentaClaro" type="char"/>
+    <field name="NumeroCuentaClaro" type="char"/>
+    <field name="Rut" type="char"/>
+    <field name="ClienteClaro" type="char"/>
+    <field name="RutClienteClaro" type="char"/>
+    <field name="SistemaOrigen" type="char"/>
+</document>
+
+<!-- cbriones: definimos un documento para Items de Claro -->
+<document name="DocumentoItemClaro" class="cl.hyh.redpagos.caja.docpago.DocumentoItemClaro" customerVoucher="VoucherDocumentoItemClaro" commerceVoucher="VoucherDocumentoServicioVtrCommerce">
+    <field name="Monto" type="monto"/>    
+    <field name="EstadoServicio" type="char"/>
+    <field name="IdentificadorServicio" type="char"/>
+    <field name="Producto" type="char"/>
+    <field name="NumeroCuenta" type="char"/>
+    <field name="NumeroServicio" type="char"/>
+    <field name="NumeroDocumento" type="char"/>
+    <field name="SistemaOrigen" type="char"/>
+    <field name="Rut" type="char"/>
+    <field name="Cliente" type="char"/>
+    <field name="RutCliente" type="char"/>
+    <field name="Tipo" type="char"/>
+</document>
+
+<!-- cbriones: definimos un documento para Recargas de productos Claro -->
+<document name="DocumentoRecargaClaro" class="cl.hyh.redpagos.caja.docpago.DocumentoRecargaClaro" customerVoucher="VoucherDocumentoRecargaClaro" commerceVoucher="VoucherDocumentoServicioVtrCommerce">
+    <field name="Monto" type="monto"/>    
+    <field name="Telefono" type="char"/>
+    <field name="RutRec" type="char"/>
+    <field name="Tipo" type="char"/>
+</document>
+
+</documents>
